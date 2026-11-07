@@ -1,40 +1,179 @@
-<div class="terminal relative flex items-center rounded-[10px] bg-bg-2 dark:bg-bg-dark-2 {class}"
+<div class="terminal {class}"
      style="border:var(--pop-border); box-shadow:var(--pop-shadow-sm)"
      {#if id}id="{id}"{/if}
      data-kiw-component="Terminal">
-  <div class="terminal-body flex items-center gap-2.5 px-3.5 py-2.5 overflow-x-auto flex-1 min-w-0 {#if command}pr-16{/if}">
-    <span class="font-mono font-black {#if promptColor == "muted"}text-muted dark:text-muted-dark{:else}text-primary{/if} text-sm shrink-0 select-none">{#if prompt}{prompt}{:else}${/if}</span>
-    <code class="font-mono text-xs font-bold text-fg dark:text-fg-dark whitespace-nowrap">{#if command}{command}{:else if body}{body}{/if}</code>
+  {#if title}
+  <div class="terminal-bar">
+    <div class="terminal-dots" aria-hidden="true">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-yellow"></span>
+      <span class="terminal-dot dot-green"></span>
+    </div>
+    <span class="terminal-title font-mono">{title}</span>
+    {#if command && !hideCopy}
+      <button type="button"
+              class="terminal-copy-btn"
+              aria-label="Copy command to clipboard"
+              onclick="copyTerminal(this)">Copy</button>
+    {/if}
   </div>
-  {#if command && !hideCopy}
-  <button type="button"
-          class="btn-copy shrink-0 text-xs font-black px-2.5 py-1 rounded-md bg-secondary text-secondary-content transition-all duration-150 cursor-pointer hover:bg-primary z-10"
-          style="border:var(--pop-border-thin); box-shadow:1.5px 1.5px 0px var(--border)"
-          onclick="copyCmd(this, '{command}')">Copy</button>
-  {:else if actions}
-    {actions}
   {/if}
+  <div class="terminal-body flex items-center gap-2.5 px-3.5 py-2.5 overflow-x-auto min-w-0">
+    {#if !title}
+    <div class="terminal-dots hidden sm:flex items-center gap-1.5 shrink-0 select-none mr-0.5" aria-hidden="true">
+      <span class="terminal-dot dot-red"></span>
+      <span class="terminal-dot dot-yellow"></span>
+      <span class="terminal-dot dot-green"></span>
+    </div>
+    {/if}
+    <span class="terminal-prompt font-mono font-black {#if promptColor == 'muted'}text-[#8fa2bc]{:else}text-[#39D353]{/if} text-sm shrink-0 select-none">{#if prompt}{prompt}{:else}${/if}</span>
+    <code class="terminal-code font-mono text-xs sm:text-[13px] font-bold text-[#FAF8F4] whitespace-nowrap overflow-x-auto flex-1 min-w-0">{#if command}{command}{:else if body}{body}{/if}</code>
+    {#if (!title && command && !hideCopy)}
+      <button type="button"
+              class="terminal-copy-btn shrink-0 ml-auto"
+              aria-label="Copy command to clipboard"
+              onclick="copyTerminal(this)">Copy</button>
+    {:else if (!title && actions)}
+      {actions}
+    {/if}
+  </div>
 </div>
 
 <style>
 .terminal {
   position: relative;
+  background: #0B1F3B;
+  color: #FAF8F4;
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border, 2.5px solid #0B1F3B);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px #0B1F3B);
   box-sizing: border-box;
   max-width: 100%;
+  overflow: hidden;
 }
-.btn-copy {
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+html[data-theme="dark"] .terminal,
+.dark .terminal {
+  background: #071426;
+  border-color: #FAF8F4;
+  box-shadow: 2px 2px 0px #39D353;
 }
-.btn-copy:hover {
-  transform: translateY(-50%) translate(-1px, -1px);
-  box-shadow: 2.5px 2.5px 0px var(--border);
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #112646;
+  border-bottom: 2px solid var(--border, #0B1F3B);
 }
-.btn-copy:active {
-  transform: translateY(-50%) translate(0px, 0px);
-  box-shadow: 1px 1px 0px var(--border);
+html[data-theme="dark"] .terminal-bar,
+.dark .terminal-bar {
+  background: #0B1F3B;
+  border-bottom-color: #FAF8F4;
+}
+.terminal-dots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.terminal-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  display: inline-block;
+}
+.terminal-dot.dot-red { background: #FF3B2E; }
+.terminal-dot.dot-yellow { background: #ffbd2e; }
+.terminal-dot.dot-green { background: #39D353; }
+.terminal-title {
+  margin-left: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8fa2bc;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.terminal-body {
+  box-sizing: border-box;
+  width: 100%;
+}
+.terminal-prompt {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.terminal-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.4;
+  scrollbar-width: thin;
+}
+.terminal-copy-btn {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FAF8F4;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+  user-select: none;
+}
+.terminal-copy-btn:hover {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+  border-color: var(--primary, #39D353);
+  transform: translate(-1px, -1px);
+}
+.terminal-copy-btn:active {
+  transform: translate(0, 0);
+}
+.terminal-copy-btn.copied {
+  background: var(--primary, #39D353) !important;
+  color: var(--primary-content, #0B1F3B) !important;
+  border-color: var(--primary, #39D353) !important;
 }
 </style>
+
+<script>
+function copyTerminal(btn) {
+  var term = btn.closest('.terminal');
+  var code = term ? term.querySelector('.terminal-code, code') : null;
+  var text = (code ? code.innerText : '').trim();
+  if (!text) return;
+  var orig = btn.innerText;
+  function showCopied() {
+    btn.innerText = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.innerText = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopied).catch(function() {
+      fallbackCopyTerminal(text, showCopied);
+    });
+  } else {
+    fallbackCopyTerminal(text, showCopied);
+  }
+}
+function fallbackCopyTerminal(text, cb) {
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (cb) cb();
+  } catch (err) {}
+}
+window.copyTerminal = copyTerminal;
+window.copyCmd = copyTerminal;
+</script>

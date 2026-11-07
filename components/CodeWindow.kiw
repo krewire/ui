@@ -13,7 +13,23 @@
     {/if}
   </div>
   <pre class="code-window-pre"><code class="code-window-code">{#if body}{body}{:else if code}{code}{:else if showDefaultSample}<span class="c"># Terminal Shell</span>
-<span class="p">$ </span><span>echo "Hello, world!"</span>{/if}</code></pre>
+<span class="p">$ </span><span>echo "Hello, world!"</span>{:else}<span class="c">// Krewire — Modular Go Libraries for Every Workload</span>
+<span class="k">package</span> main
+
+<span class="k">import</span> (
+    <span class="s">"github.com/krewire/krewire/pkg/web"</span>
+)
+
+<span class="k">func</span> <span class="f">main</span>() {
+    app := web.New()
+    app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
+        <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
+            <span class="s">"status"</span>:   <span class="s">"running"</span>,
+            <span class="s">"platform"</span>: <span class="s">"Krewire"</span>,
+        })
+    })
+    app.Run(<span class="s">":8080"</span>)
+}{/if}</code></pre>
 </div>
 
 <style>
@@ -111,7 +127,15 @@ html[data-theme="dark"] .code-window-bar {
 .code-window .c { color: #8fa2bc; font-style: italic; }
 .code-window .k { color: #00D1C1; font-weight: 700; }
 .code-window .t { color: #39D353; font-weight: 700; }
+.code-window .s { color: #ffbd2e; }
+.code-window .f { color: #60a5fa; font-weight: 700; }
+.code-window .n { color: #f472b6; font-weight: 600; }
 .code-window .p { color: #8fa2bc; user-select: none; }
+.btn-copy-code.copied {
+  background: var(--primary, #39D353) !important;
+  color: var(--primary-content, #0B1F3B) !important;
+  border-color: var(--primary, #39D353) !important;
+}
 </style>
 
 <script>
@@ -122,7 +146,11 @@ function copyCodeWindow(btn) {
   var orig = btn.innerText;
   function showCopied() {
     btn.innerText = '✓ Copied!';
-    setTimeout(function() { btn.innerText = orig; }, 2000);
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.innerText = orig;
+      btn.classList.remove('copied');
+    }, 2000);
   }
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(showCopied).catch(function() {
