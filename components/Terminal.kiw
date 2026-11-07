@@ -19,13 +19,6 @@
   </div>
   {/if}
   <div class="terminal-body flex items-center gap-2.5 px-3.5 py-2.5 overflow-x-auto min-w-0">
-    {#if !title}
-    <div class="terminal-dots hidden sm:flex items-center gap-1.5 shrink-0 select-none mr-0.5" aria-hidden="true">
-      <span class="terminal-dot dot-red"></span>
-      <span class="terminal-dot dot-yellow"></span>
-      <span class="terminal-dot dot-green"></span>
-    </div>
-    {/if}
     <span class="terminal-prompt font-mono font-black {#if promptColor == 'muted'}text-[#8fa2bc]{:else}text-[#39D353]{/if} text-sm shrink-0 select-none">{#if prompt}{prompt}{:else}${/if}</span>
     <code class="terminal-code font-mono text-xs sm:text-[13px] font-bold text-[#FAF8F4] whitespace-nowrap overflow-x-auto flex-1 min-w-0">{#if command}{command}{:else if body}{body}{/if}</code>
     {#if (!title && command && !hideCopy)}
