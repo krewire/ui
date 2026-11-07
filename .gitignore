@@ -1,0 +1,11 @@
+# Binaries
+bin/
+*.exe
+*.test
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
