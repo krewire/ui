@@ -1,8 +1,8 @@
-# Krewire UI (`kui`)
+# Krewire UI
 
 Composable, zero-dependency `.kiw` layout & UI components for the Krewire ecosystem.
 
-Inspired by **shadcn/ui**: you do not install an opaque node_modules or rigid black-box library. Instead, you **own your components**. You copy-paste or install the `.kiw` files directly into your project via the `kui` CLI, and adapt the markup and CSS styles as your project demands.
+Inspired by **shadcn/ui**: you do not install an opaque node_modules or rigid black-box library. Instead, you **own your components**. You copy `.kiw` component files directly into your project's `components/` directory, adapting the markup and styling to fit your exact product needs.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/krewire/ui.svg)](https://pkg.go.dev/github.com/krewire/ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -13,62 +13,33 @@ Inspired by **shadcn/ui**: you do not install an opaque node_modules or rigid bl
 
 - **Zero Runtime Dependencies**: Pure Go and `.kiw` templates with zero external npm/node dependencies.
 - **Own Your Code**: Components live directly in your project's `./components` directory. No breaking upstream lock-ins.
-- **Native `.kiw` DSL**: Native support for scoped `<style>`, slots, conditional rendering (`{#if}`), loops (`{#each}`), and props.
+- **Native `.kiw` DSL**: Full support for scoped `<style>`, slots, conditional rendering (`{#if}`), loops (`{#each}`), and props.
 - **Integrated Design System**: Complete set of CSS custom properties (colors, typography, geometry, shadows) with built-in Light and Dark themes.
-- **Dual Distribution**:
-  1. **CLI / Copy-Paste Mode**: Add `.kiw` files into your project via `kui add <component>`.
-  2. **Go Embedded FS Mode**: Import `github.com/krewire/ui/components` directly in Go apps via `embed.FS`.
+- **Go Embed Friendly**: Import `github.com/krewire/ui/components` directly in Go apps via `embed.FS`.
 
 ---
 
-## Installation & Setup
+## How to Use
 
-### 1. Install the `kui` CLI
+### 1. Copy Components into Your Project
 
-```bash
-go install github.com/krewire/ui/cmd/kui@latest
-```
-
-### 2. Initialize in Your Project
-
-In any Krewire project (`site`, `app`, `book`, etc.):
+Place the desired `.kiw` component files into your project's `components/` directory:
 
 ```bash
-kui init
+# Example: copy Button and Navbar into your local components/ directory
+cp path/to/krewire/ui/components/Button.kiw ./components/
+cp path/to/krewire/ui/components/Navbar.kiw ./components/
 ```
 
-This generates:
-- `kui.json`: Configuration defining component and CSS directories.
-- `components/`: Target folder for your `.kiw` components.
-- `static/css/krewire-ui.css`: Design system CSS variables and layout primitives.
+### 2. Include the Stylesheet
 
-### 3. Add Components
+Include the design system tokens in your page layout:
 
-Add only the components you need:
-
-```bash
-# Add specific components
-kui add Button Navbar HStack VStack Card
-
-# Or install the full suite (51 components)
-kui add --all
+```html
+<link rel="stylesheet" href="/styles/krewire-ui.css">
 ```
 
----
-
-## CLI Command Reference
-
-- `kui init`: Initialize Krewire UI and download the base stylesheet.
-- `kui list`: Browse all available components, categories, and descriptions.
-- `kui add <names...>`: Copy `.kiw` components into your `./components/` directory.
-- `kui info <name>`: View component documentation and inspect template preview.
-- `kui version`: Display CLI version.
-
----
-
-## Using Components in `.kiw`
-
-Once a component is added to your project, you can use it anywhere in your `.kiw` pages or layouts:
+### 3. Use in `.kiw` Pages
 
 ```html
 <Navbar brand="My App" current="/">
@@ -98,7 +69,7 @@ Once a component is added to your project, you can use it anywhere in your `.kiw
 
 ## Go Module / Embed Usage
 
-For Go backend services or applications that want to mount components without copying individual files:
+For Go backend services or applications that want to embed components directly:
 
 ```go
 package main
