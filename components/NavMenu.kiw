@@ -6,12 +6,12 @@
       {dropdown}
     {:else if !hideProducts}
       <!-- Products Dropdown -->
-      <div class="relative group dropdown-container">
-        <button type="button" class="dropdown-trigger flex items-center gap-1.5 text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150 cursor-pointer" aria-haspopup="true" aria-expanded="false" onclick="toggleNavDropdown(this)">
+      <details class="relative group dropdown-container">
+        <summary class="dropdown-trigger flex items-center gap-1.5 text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150 cursor-pointer list-none select-none" aria-haspopup="true">
           <span data-i18n="nav.products">Products</span>
-          <svg class="w-3.5 h-3.5 transition-transform duration-150 dropdown-chevron group-hover:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
-        </button>
-        <div class="dropdown-menu absolute left-0 top-full pt-1.5 hidden group-hover:block z-50">
+          <svg class="w-3.5 h-3.5 transition-transform duration-150 dropdown-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+        </summary>
+        <div class="dropdown-menu absolute left-0 top-full pt-1.5 z-50">
           <div class="w-72 bg-bg dark:bg-bg-dark p-2 rounded-xl flex flex-col gap-1 border-pop" style="border:var(--pop-border); box-shadow:var(--pop-shadow)">
             <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
               <span class="icon-box bg-primary text-primary-content text-sm shrink-0" style="width:30px;height:30px">⚡</span>
@@ -60,59 +60,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </details>
     {/if}
-
-    <!-- Workloads Dropdown -->
-    <div class="relative group dropdown-container">
-      <button type="button" class="dropdown-trigger flex items-center gap-1.5 text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150 cursor-pointer" aria-haspopup="true" aria-expanded="false" onclick="toggleNavDropdown(this)">
-        <span data-i18n="nav.workloads">8 Workloads</span>
-        <svg class="w-3.5 h-3.5 transition-transform duration-150 dropdown-chevron group-hover:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
-      </button>
-      <div class="dropdown-menu absolute left-0 top-full pt-1.5 hidden group-hover:block z-50">
-        <div class="w-80 bg-bg dark:bg-bg-dark p-2.5 rounded-xl flex flex-col gap-1 border-pop" style="border:var(--pop-border); box-shadow:var(--pop-shadow)">
-          <div class="grid grid-cols-2 gap-1">
-            <a href="/docs/workloads/app" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">▲</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">app</span>
-            </a>
-            <a href="/docs/workloads/cli" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">›_</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">cli</span>
-            </a>
-            <a href="/docs/workloads/site" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">◧</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">site</span>
-            </a>
-            <a href="/docs/workloads/book" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">≡</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">book</span>
-            </a>
-            <a href="/docs/workloads/worker" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">⚙</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">worker</span>
-            </a>
-            <a href="/docs/workloads/service" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">⬢</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">service</span>
-            </a>
-            <a href="/docs/workloads/infra" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">☁</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">infra</span>
-            </a>
-            <a href="/docs/workloads/gateway" class="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-colors">
-              <span class="icon-box bg-primary text-primary-content text-xs w-6 h-6 shrink-0 flex items-center justify-center font-bold">◈</span>
-              <span class="text-xs font-bold text-fg dark:text-fg-dark">gateway</span>
-            </a>
-          </div>
-          <div class="pt-1 mt-1 border-t border-border-subtle">
-            <a href="/docs/workloads" class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-bold text-fg dark:text-fg-dark hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-colors">
-              <span data-i18n="nav.view_all_workloads">Explore all 8 Workloads →</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     {#if links}
       {links}
@@ -126,45 +75,28 @@
 </nav>
 
 <style>
-.dropdown-container.is-open .dropdown-menu {
-  display: block !important;
+details.dropdown-container summary::-webkit-details-marker,
+details.dropdown-container summary::marker {
+  display: none !important;
 }
-.dropdown-container.is-open .dropdown-chevron {
-  transform: rotate(180deg) !important;
+details.dropdown-container summary {
+  list-style: none !important;
 }
-</style>
-
-<script>
-function toggleNavDropdown(btn) {
-  var container = btn.closest('.dropdown-container');
-  if (!container) return;
-  var isOpen = container.classList.contains('is-open');
-  document.querySelectorAll('.dropdown-container.is-open').forEach(function(el) {
-    if (el !== container) {
-      el.classList.remove('is-open');
-      var b = el.querySelector('.dropdown-trigger');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    }
-  });
-  if (isOpen) {
-    container.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-  } else {
-    container.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
+details.dropdown-container:not([open]) .dropdown-menu {
+  display: none;
+}
+details.dropdown-container[open] .dropdown-menu {
+  display: block;
+}
+details.dropdown-container[open] .dropdown-chevron {
+  transform: rotate(180deg);
+}
+@media (hover: hover) and (pointer: fine) {
+  details.dropdown-container:hover .dropdown-menu {
+    display: block;
+  }
+  details.dropdown-container:hover .dropdown-chevron {
+    transform: rotate(180deg);
   }
 }
-window.toggleNavDropdown = toggleNavDropdown;
-if (!window._navDropdownBound) {
-  window._navDropdownBound = true;
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown-container')) {
-      document.querySelectorAll('.dropdown-container.is-open').forEach(function(el) {
-        el.classList.remove('is-open');
-        var b = el.querySelector('.dropdown-trigger');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
-}
-</script>
+</style>

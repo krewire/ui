@@ -2,161 +2,523 @@
  * Krewire UI (kui) Design System Stylesheet
  * https://github.com/krewire/ui
  *
- * Provides CSS design tokens, CSS variables, resets, and layout primitives
- * designed specifically for .kiw components.
+ * Comprehensive CSS design tokens, resets, typography scale, spacing scale,
+ * elevation, neo-brutalist pop shadows, and responsive layout primitives
+ * designed specifically for .kiw components and the Krewire ecosystem.
  */
 
 :root {
-  /* Typography */
-  --ui-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* =========================================================================
+     1. TYPOGRAPHY SCALE & TOKENS
+     ========================================================================= */
+  --ui-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --ui-font-display: 'Outfit', 'Inter', system-ui, sans-serif;
-  --ui-font-mono: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --ui-font-mono: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Layout & Geometry */
-  --ui-radius: 12px;
-  --ui-radius-sm: 6px;
-  --ui-radius-lg: 16px;
-  --ui-radius-round: 9999px;
-  --ui-transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Font Aliases */
+  --font-sans: var(--ui-font-sans);
+  --font-display: var(--ui-font-display);
+  --font-mono: var(--ui-font-mono);
+
+  /* Font Sizes */
+  --ui-text-2xs: 0.625rem;  /* 10px */
+  --ui-text-xs: 0.6875rem;   /* 11px */
+  --ui-text-sm: 0.8125rem;   /* 13px */
+  --ui-text-base: 0.90625rem;/* 14.5px */
+  --ui-text-md: 1rem;        /* 16px */
+  --ui-text-lg: 1.0625rem;   /* 17px */
+  --ui-text-xl: 1.25rem;     /* 20px */
+  --ui-text-2xl: 1.5rem;     /* 24px */
+  --ui-text-3xl: 1.875rem;   /* 30px */
+  --ui-text-4xl: 2.25rem;    /* 36px */
+  --ui-text-5xl: 3rem;       /* 48px */
+
+  /* Line Heights */
+  --ui-leading-none: 1;
+  --ui-leading-tight: 1.25;
+  --ui-leading-snug: 1.375;
+  --ui-leading-normal: 1.5;
+  --ui-leading-relaxed: 1.625;
+  --ui-leading-loose: 2;
+
+  /* Tracking (Letter Spacing) */
+  --ui-tracking-tighter: -0.05em;
+  --ui-tracking-tight: -0.025em;
+  --ui-tracking-normal: 0em;
+  --ui-tracking-wide: 0.025em;
+  --ui-tracking-wider: 0.05em;
+  --ui-tracking-widest: 0.1em;
+
+  /* Font Weights */
+  --ui-font-normal: 400;
+  --ui-font-medium: 500;
+  --ui-font-semibold: 600;
+  --ui-font-bold: 700;
+  --ui-font-extrabold: 800;
+  --ui-font-black: 900;
+
+  /* =========================================================================
+     2. SPACING & GEOMETRY SCALE (4px / 8px Grid)
+     ========================================================================= */
+  --ui-space-0: 0px;
+  --ui-space-1: 0.25rem;   /* 4px */
+  --ui-space-1-5: 0.375rem;/* 6px */
+  --ui-space-2: 0.5rem;    /* 8px */
+  --ui-space-2-5: 0.625rem;/* 10px */
+  --ui-space-3: 0.75rem;   /* 12px */
+  --ui-space-3-5: 0.875rem;/* 14px */
+  --ui-space-4: 1rem;      /* 16px */
+  --ui-space-5: 1.25rem;   /* 20px */
+  --ui-space-6: 1.5rem;    /* 24px */
+  --ui-space-8: 2rem;      /* 32px */
+  --ui-space-10: 2.5rem;   /* 40px */
+  --ui-space-12: 3rem;     /* 48px */
+  --ui-space-14: 3.5rem;   /* 56px */
+  --ui-space-16: 4rem;     /* 64px */
+  --ui-space-20: 5rem;     /* 80px */
+  --ui-space-24: 6rem;     /* 96px */
+
+  /* Layout dimensions */
   --ui-max-width: 1240px;
-  --ui-gap: 1.5rem;
+  --ui-max-width-site: 108rem;
+  --ui-gap: var(--ui-space-6);
 
-  /* Elevation & Shadows */
+  /* Corner Radius */
+  --ui-radius-xs: 4px;
+  --ui-radius-sm: 6px;
+  --ui-radius: 10px;
+  --ui-radius-md: 12px;
+  --ui-radius-lg: 14px;
+  --ui-radius-xl: 18px;
+  --ui-radius-round: 9999px;
+  --radius: var(--ui-radius);
+  --radius-sm: var(--ui-radius-sm);
+  --radius-lg: var(--ui-radius-lg);
+
+  /* =========================================================================
+     3. ELEVATION, SHADOWS & NEO-BRUTALIST POP TOKENS
+     ========================================================================= */
   --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --ui-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --ui-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
 
-  /* Light Theme Palette (Default) */
-  --base-1: #FAF8F4;
-  --base-1-content: #0B1F3B;
-  --base-2: #f0ede5;
-  --base-2-content: #475569;
-  --base-3: #e3dfd5;
-  --base-3-content: #334155;
+  /* Pop-Brutalist Offsets (Signature Krewire UI aesthetic) */
+  --pop-border: 2.5px solid var(--border, #0B1F3B);
+  --pop-border-thin: 2px solid var(--border, #0B1F3B);
+  --pop-shadow: 4px 4px 0px var(--border, #0B1F3B);
+  --pop-shadow-lg: 6px 6px 0px var(--border, #0B1F3B);
+  --pop-shadow-sm: 2px 2px 0px var(--border, #0B1F3B);
+  --pop-shadow-hover: 6px 6px 0px var(--border, #0B1F3B);
+
+  /* =========================================================================
+     4. TRANSITION, MOTION & FOCUS
+     ========================================================================= */
+  --ui-duration-fast: 120ms;
+  --ui-duration-normal: 180ms;
+  --ui-duration-slow: 280ms;
+  --ui-ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+  --ui-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-transition: var(--ui-duration-normal) var(--ui-ease-default);
+
+  /* Focus ring */
+  --ui-focus-ring: 2px solid var(--primary, #39D353);
+  --ui-focus-ring-offset: 2px;
+
+  /* =========================================================================
+     5. Z-INDEX SCALE
+     ========================================================================= */
+  --ui-z-hide: -1;
+  --ui-z-base: 0;
+  --ui-z-raised: 10;
+  --ui-z-dropdown: 1000;
+  --ui-z-sticky: 1100;
+  --ui-z-drawer-backdrop: 1200;
+  --ui-z-drawer: 1250;
+  --ui-z-modal-backdrop: 1300;
+  --ui-z-modal: 1350;
+  --ui-z-popover: 1400;
+  --ui-z-tooltip: 1500;
+  --ui-z-toast: 1600;
+
+  /* =========================================================================
+     6. LIGHT THEME PALETTE (Default)
+     ========================================================================= */
+  --bg: #FAF8F4;
+  --bg-2: #f2ede4;
+  --bg-3: #e8e2d5;
+  --bg-subtle: rgba(11, 31, 59, 0.04);
+  --fg: #0B1F3B;
+  --fg-muted: #57677d;
+  --fg-subtle: #8fa2bc;
+
+  --border: #0B1F3B;
+  --border-subtle: rgba(11, 31, 59, 0.18);
+  --border-focus: #0B1F3B;
 
   --primary: #39D353;
   --primary-content: #0B1F3B;
+  --primary-hover: #2ecc50;
+  --primary-active: #28b846;
+  --primary-subtle: rgba(57, 211, 83, 0.15);
+
   --secondary: #00D1C1;
   --secondary-content: #0B1F3B;
+  --secondary-hover: #00b8aa;
+  --secondary-subtle: rgba(0, 209, 193, 0.15);
+
   --accent: #FF3B2E;
   --accent-content: #ffffff;
-  --ghost: #e9e6dc;
-  --ghost-content: #475569;
-  --neutral: #e3dfd5;
-  --neutral-content: #475569;
+  --accent-hover: #e02f23;
+  --accent-subtle: rgba(255, 59, 46, 0.15);
 
   --success: #39D353;
   --success-content: #0B1F3B;
   --info: #00D1C1;
   --info-content: #0B1F3B;
-  --warning: #f59e0b;
+  --warning: #ffb703;
   --warning-content: #0B1F3B;
   --error: #FF3B2E;
   --error-content: #ffffff;
+
+  --dot-color: rgba(11, 31, 59, 0.08);
+
+  /* Scrollbar */
+  --scrollbar-track: #f0ede5;
+  --scrollbar-thumb: #0B1F3B;
+  --scrollbar-thumb-hover: #39D353;
+
+  /* Semantic UI Aliases */
+  --ui-bg: var(--bg);
+  --ui-bg-subtle: var(--bg-2);
+  --ui-fg: var(--fg);
+  --ui-fg-muted: var(--fg-muted);
+  --ui-border: var(--border);
+  --ui-border-subtle: var(--border-subtle);
+  --ui-primary: var(--primary);
+  --ui-primary-content: var(--primary-content);
+  --ui-secondary: var(--secondary);
+  --ui-secondary-content: var(--secondary-content);
+  --ui-accent: var(--accent);
+  --ui-accent-content: var(--accent-content);
+  --ui-success: var(--success);
+  --ui-info: var(--info);
+  --ui-warning: var(--warning);
+  --ui-error: var(--error);
+
+  /* DaisyUI / Base compat aliases */
+  --base-1: var(--bg);
+  --base-1-content: var(--fg);
+  --base-2: var(--bg-2);
+  --base-2-content: var(--fg-muted);
+  --base-3: var(--bg-3);
+  --base-3-content: var(--fg-muted);
+  --neutral: var(--bg-2);
+  --neutral-content: var(--fg-muted);
+  --ghost: var(--bg-2);
+  --ghost-content: var(--fg);
+
+  --show-sun: inline;
+  --show-moon: none;
 }
 
+/* =========================================================================
+   7. DARK THEME PALETTE
+   ========================================================================= */
 [data-theme="dark"],
-html.dark {
-  --base-1: #0B1F3B;
-  --base-1-content: #FAF8F4;
-  --base-2: #112646;
-  --base-2-content: #8fa2bc;
-  --base-3: #1a355d;
-  --base-3-content: #c4d1e2;
+html.dark,
+.dark {
+  --bg: #0B1F3B;
+  --bg-2: #112646;
+  --bg-3: #1a3865;
+  --bg-subtle: rgba(250, 248, 244, 0.05);
+  --fg: #FAF8F4;
+  --fg-muted: #9ab0ce;
+  --fg-subtle: #627b9b;
+
+  --border: #FAF8F4;
+  --border-subtle: rgba(250, 248, 244, 0.2);
+  --border-focus: #39D353;
 
   --primary: #39D353;
   --primary-content: #0B1F3B;
+  --primary-hover: #4ae664;
+  --primary-active: #39D353;
+  --primary-subtle: rgba(57, 211, 83, 0.2);
+
   --secondary: #112646;
   --secondary-content: #FAF8F4;
+  --secondary-hover: #1a3865;
+  --secondary-subtle: rgba(17, 38, 70, 0.4);
+
   --accent: #FF3B2E;
   --accent-content: #ffffff;
-  --ghost: #162e52;
-  --ghost-content: #8fa2bc;
-  --neutral: #1a355d;
-  --neutral-content: #8fa2bc;
+  --accent-hover: #ff5247;
+  --accent-subtle: rgba(255, 59, 46, 0.2);
 
   --success: #39D353;
   --success-content: #0B1F3B;
   --info: #00D1C1;
   --info-content: #0B1F3B;
-  --warning: #f59e0b;
+  --warning: #ffb703;
   --warning-content: #0B1F3B;
   --error: #FF3B2E;
   --error-content: #ffffff;
 
+  /* Pop Brutalist offsets in Dark Mode */
+  --pop-border: 2.5px solid #FAF8F4;
+  --pop-border-thin: 2px solid #FAF8F4;
+  --pop-shadow: 4px 4px 0px #39D353;
+  --pop-shadow-lg: 6px 6px 0px #39D353;
+  --pop-shadow-sm: 2px 2px 0px #39D353;
+  --pop-shadow-hover: 6px 6px 0px #39D353;
+
+  --dot-color: rgba(250, 248, 244, 0.09);
+
+  /* Scrollbar */
+  --scrollbar-track: #112646;
+  --scrollbar-thumb: #57677d;
+  --scrollbar-thumb-hover: #39D353;
+
+  /* Elevation */
   --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   --ui-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   --ui-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+
+  /* DaisyUI / Base compat aliases */
+  --base-1: var(--bg);
+  --base-1-content: var(--fg);
+  --base-2: var(--bg-2);
+  --base-2-content: var(--fg-muted);
+  --base-3: var(--bg-3);
+  --base-3-content: var(--fg-muted);
+  --neutral: var(--bg-2);
+  --neutral-content: var(--fg-muted);
+  --ghost: var(--bg-2);
+  --ghost-content: var(--fg);
+
+  --show-sun: none;
+  --show-moon: inline;
 }
 
-/* Base Resets */
+/* =========================================================================
+   8. BASE RESETS & SCROLLBAR
+   ========================================================================= */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
+html {
+  line-height: var(--ui-leading-normal);
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
   font-family: var(--ui-font-sans);
-  background-color: var(--base-1);
-  color: var(--base-1-content);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--ui-font-sans);
+  font-size: var(--ui-text-base);
+  line-height: var(--ui-leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--ui-radius-sm);
+  border: 2.5px solid var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* Clean Links */
 a {
   text-decoration: none;
   color: inherit;
-  transition: color var(--ui-transition);
+  transition: color var(--ui-transition), transform var(--ui-transition);
+}
+a:hover:not(.btn):not([class*="btn"]) {
+  color: var(--primary);
 }
 
-/* Container Primitives */
+/* Form element resets */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+button:disabled, input:disabled, textarea:disabled, select:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Focus Visibility & Accessibility */
+:focus-visible {
+  outline: var(--ui-focus-ring);
+  outline-offset: var(--ui-focus-ring-offset);
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--primary-content);
+  padding: 0.5rem 1.25rem;
+  font-weight: var(--ui-font-bold);
+  border: var(--pop-border);
+  box-shadow: var(--pop-shadow);
+  z-index: var(--ui-z-toast);
+  border-radius: var(--ui-radius-sm);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* =========================================================================
+   9. CONTAINER & RESPONSIVE LAYOUT PRIMITIVES
+   ========================================================================= */
 .container {
   width: 100%;
   max-width: var(--ui-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: var(--ui-space-6);
+  padding-right: var(--ui-space-6);
+  box-sizing: border-box;
 }
 
-@media (max-width: 640px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+.container-site {
+  width: 100%;
+  min-width: 0;
+  max-width: var(--ui-max-width-site);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .container-site {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .container-site {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-site {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-site {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1536px) {
+  .container-site {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 
-/* Responsive Grid Primitives */
+/* Background Patterns */
+.bg-dots {
+  background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* =========================================================================
+   10. GRID & FLEX PRIMITIVES
+   ========================================================================= */
 .grid {
   display: grid;
   gap: var(--ui-gap);
 }
-.grid-1 { grid-template-columns: repeat(1, 1fr); }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-.grid-5 { grid-template-columns: repeat(5, 1fr); }
-.grid-6 { grid-template-columns: repeat(6, 1fr); }
+.grid-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.grid-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 
-@media (max-width: 900px) {
-  .grid-3, .grid-4, .grid-5, .grid-6 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 1024px) {
+  .grid-5, .grid-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-
+@media (max-width: 768px) {
+  .grid-3, .grid-4, .grid-5, .grid-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 560px) {
-  .grid-2, .grid-3, .grid-4, .grid-5, .grid-6 {
-    grid-template-columns: 1fr;
-  }
+  .grid-2, .grid-3, .grid-4, .grid-5, .grid-6 { grid-template-columns: 1fr; }
 }
 
-/* Flex & Stack Primitives */
 .flex { display: flex; }
+.inline-flex { display: inline-flex; }
 .flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-start { align-items: flex-start; }
 .items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
+.items-end { align-items: flex-end; }
+.justify-start { justify-content: flex-start; }
 .justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
 .flex-1 { flex: 1 1 0%; }
+.shrink-0 { flex-shrink: 0; }
 
 .hstack {
   display: flex;
@@ -169,4 +531,146 @@ a {
   display: flex;
   flex-direction: column;
   gap: var(--ui-gap, 1rem);
+}
+
+/* =========================================================================
+   11. CORE ATOMIC UI STYLES
+   ========================================================================= */
+
+/* Border Pop utility */
+.border-pop {
+  border: var(--pop-border);
+}
+.border-pop-thin {
+  border: var(--pop-border-thin);
+}
+.shadow-pop {
+  box-shadow: var(--pop-shadow);
+}
+.shadow-pop-sm {
+  box-shadow: var(--pop-shadow-sm);
+}
+.shadow-pop-lg {
+  box-shadow: var(--pop-shadow-lg);
+}
+
+/* Badge Base Style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: var(--ui-radius-sm, 8px);
+  padding: 0.125rem 0.625rem;
+  font-family: var(--ui-font-mono);
+  font-size: var(--ui-text-2xs);
+  line-height: var(--ui-leading-snug);
+  font-weight: var(--ui-font-black);
+  text-transform: uppercase;
+  letter-spacing: var(--ui-tracking-widest);
+  border: var(--pop-border-thin);
+  box-shadow: var(--pop-shadow-sm);
+  white-space: nowrap;
+}
+.badge-primary {
+  background-color: var(--primary);
+  color: var(--primary-content);
+}
+.badge-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-content);
+}
+.badge-accent {
+  background-color: var(--accent);
+  color: var(--accent-content);
+}
+.badge-muted {
+  background-color: var(--bg-2);
+  color: var(--fg);
+}
+
+/* Card Base Style */
+.card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  border-radius: var(--ui-radius-lg, 14px);
+  background-color: var(--bg);
+  padding: 1.25rem;
+  border: var(--pop-border);
+  box-shadow: var(--pop-shadow);
+  transition: transform var(--ui-duration-fast) var(--ui-ease-standard), box-shadow var(--ui-duration-fast) var(--ui-ease-standard);
+  box-sizing: border-box;
+}
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--pop-shadow-lg);
+}
+
+/* Section Heading Pattern */
+.section-head {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  display: flex;
+  width: 100%;
+  max-width: 48rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.section-head h2 {
+  font-size: clamp(22px, 5vw, 36px);
+  font-weight: var(--ui-font-black);
+  letter-spacing: var(--ui-tracking-tight);
+  line-height: var(--ui-leading-tight);
+  color: var(--fg);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+.section-head p {
+  font-size: var(--ui-text-sm);
+  line-height: var(--ui-leading-relaxed);
+  color: var(--fg-muted);
+  max-width: 42rem;
+  margin: 0;
+}
+
+/* Icon Box */
+.icon-box {
+  display: grid;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: var(--ui-radius-md, 12px);
+  font-size: 1.0625rem;
+  font-weight: var(--ui-font-black);
+  border: var(--pop-border-thin);
+  box-shadow: var(--pop-shadow-sm);
+  line-height: 1;
+}
+
+/* Code Inline */
+.code-inline {
+  border-radius: var(--ui-radius-xs, 4px);
+  padding: 0.125rem 0.375rem;
+  font-family: var(--ui-font-mono);
+  font-size: var(--ui-text-xs);
+  font-weight: var(--ui-font-bold);
+  background-color: var(--bg-2);
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  line-height: var(--ui-leading-normal);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
