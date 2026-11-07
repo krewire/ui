@@ -1,0 +1,166 @@
+<details class="dropdown {class}" data-kiw-component="Dropdown">
+  <summary class="dropdown-trigger">
+    {#if trigger}
+      {trigger}
+    {:else}
+      <button type="button" class="btn btn-outline btn-sm">
+        <span>{#if label}{label}{:else}Menu{/if}</span>
+        <svg class="dropdown-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M4 6l4 4 4-4" />
+        </svg>
+      </button>
+    {/if}
+  </summary>
+  <div class="dropdown-content {#if align == 'right'}align-right{:else}align-left{/if}">
+    <div class="dropdown-box">
+      {#if body}
+        {body}
+      {:else if items}
+        {#each items as item}
+          {#if item.divider}
+            <div class="dropdown-divider"></div>
+          {:else}
+            <a href="{item.href}" class="dropdown-item {#if item.error}item-error{/if}" {#if item.target}target="{item.target}" rel="noopener"{/if}>
+              {#if item.icon}<span class="item-icon">{item.icon}</span>{/if}
+              <span class="item-label">{item.label}</span>
+              {#if item.badge}<span class="badge badge-muted item-badge">{item.badge}</span>{/if}
+              {#if item.shortcut}<kbd class="item-shortcut">{item.shortcut}</kbd>{/if}
+            </a>
+          {/if}
+        {/each}
+      {/if}
+    </div>
+  </div>
+</details>
+
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.dropdown-trigger {
+  display: inline-flex;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.dropdown-trigger::-webkit-details-marker,
+.dropdown-trigger::marker {
+  display: none !important;
+}
+
+.dropdown-arrow {
+  width: 0.85rem;
+  height: 0.85rem;
+  transition: transform 0.15s ease;
+}
+.dropdown[open] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  z-index: var(--ui-z-dropdown, 1000);
+  min-width: 13rem;
+  animation: dropdownIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.align-left { left: 0; }
+.align-right { right: 0; }
+
+.dropdown-box {
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--fg, #0B1F3B);
+  text-decoration: none;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  user-select: none;
+}
+.dropdown-item:hover {
+  background: var(--bg-2, #f2ede4);
+  color: var(--primary, #39D353);
+}
+
+.item-error:hover {
+  background: rgba(255, 59, 46, 0.12);
+  color: var(--error, #FF3B2E);
+}
+
+.item-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.item-label {
+  flex: 1 1 auto;
+}
+
+.item-shortcut {
+  font-family: var(--ui-font-mono, monospace);
+  font-size: 0.68rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: var(--bg-2, #f2ede4);
+  border: 1px solid var(--border-subtle, rgba(11, 31, 59, 0.2));
+  color: var(--fg-muted, #57677d);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border-subtle, rgba(11, 31, 59, 0.15));
+  margin: 0.25rem 0;
+}
+
+html.dark .dropdown-box, [data-theme="dark"] .dropdown-box, .dark .dropdown-box {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 4px 4px 0px #39D353;
+  color: var(--fg, #FAF8F4);
+}
+html.dark .dropdown-item, [data-theme="dark"] .dropdown-item, .dark .dropdown-item {
+  color: var(--fg, #FAF8F4);
+}
+html.dark .dropdown-item:hover, [data-theme="dark"] .dropdown-item:hover, .dark .dropdown-item:hover {
+  background: var(--bg-2, #112646);
+  color: #39D353;
+}
+html.dark .item-shortcut, [data-theme="dark"] .item-shortcut, .dark .item-shortcut {
+  background: var(--bg-2, #112646);
+  border-color: var(--border-subtle, rgba(250, 248, 244, 0.2));
+  color: var(--fg-muted, #9ab0ce);
+}
+html.dark .dropdown-divider, [data-theme="dark"] .dropdown-divider, .dark .dropdown-divider {
+  background: var(--border-subtle, rgba(250, 248, 244, 0.15));
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+</style>

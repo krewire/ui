@@ -1,0 +1,84 @@
+<span class="{{class "tag" .Variant "default" .Size "md" .Class}} {#if selected}tag-selected{/if}" data-kiw-component="Tag" {#if id}id="{id}"{/if}>
+  {#if icon}<span class="tag-icon">{icon}</span>{/if}
+  <span class="tag-text">{#if text}{text}{:else if body}{body}{/if}</span>
+  {#if removable}
+  <button type="button" class="tag-remove" aria-label="Remove tag" onclick="this.closest('.tag').remove()">×</button>
+  {/if}
+</span>
+
+<style>
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: var(--radius-sm, 6px);
+  border: 1.5px solid var(--border, #0B1F3B);
+  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+  user-select: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.tag:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2.5px 2.5px 0px var(--border, #0B1F3B);
+}
+
+.tag-sm { padding: 0.2rem 0.5rem; font-size: 0.72rem; }
+.tag-md { padding: 0.35rem 0.65rem; font-size: 0.8rem; }
+.tag-lg { padding: 0.45rem 0.85rem; font-size: 0.88rem; }
+
+.tag-default {
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg, #0B1F3B);
+}
+.tag-primary {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+}
+.tag-secondary {
+  background: var(--secondary, #00D1C1);
+  color: var(--secondary-content, #0B1F3B);
+}
+.tag-accent {
+  background: var(--accent, #FF3B2E);
+  color: #ffffff;
+}
+
+.tag-selected {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+  box-shadow: 2px 2px 0px var(--border, #0B1F3B);
+}
+
+.tag-remove {
+  background: transparent;
+  border: none;
+  padding: 0 0.15rem;
+  font-size: 0.85rem;
+  font-weight: 900;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.tag-remove:hover {
+  opacity: 1;
+  color: var(--error, #FF3B2E);
+}
+
+html.dark .tag, [data-theme="dark"] .tag, .dark .tag {
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 1.5px 1.5px 0px #39D353;
+}
+html.dark .tag-default, [data-theme="dark"] .tag-default, .dark .tag-default {
+  background: var(--bg-2, #112646);
+  color: var(--fg, #FAF8F4);
+}
+</style>

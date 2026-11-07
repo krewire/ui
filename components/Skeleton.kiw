@@ -1,0 +1,73 @@
+<div class="{{class "skeleton" .Variant "text" .Class}}" data-kiw-component="Skeleton" {#if width}style="width:{width};{#if height}height:{height};{/if}"{:else if height}style="height:{height};"{/if} aria-hidden="true"></div>
+
+<style>
+.skeleton {
+  display: block;
+  background-color: var(--bg-2, #f2ede4);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--border-subtle, rgba(11, 31, 59, 0.1));
+}
+
+.skeleton-text {
+  height: 0.9rem;
+  width: 100%;
+  margin: 0.35rem 0;
+  border-radius: 4px;
+}
+
+.skeleton-heading {
+  height: 1.6rem;
+  width: 60%;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+}
+
+.skeleton-avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-button {
+  height: 2.5rem;
+  width: 7.5rem;
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+}
+
+.skeleton-card {
+  height: 12rem;
+  width: 100%;
+  border-radius: var(--radius-lg, 14px);
+  border: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+}
+
+html.dark .skeleton, [data-theme="dark"] .skeleton, .dark .skeleton {
+  background-color: var(--bg-2, #112646);
+  background-image: linear-gradient(
+    90deg,
+    rgba(250, 248, 244, 0) 0%,
+    rgba(250, 248, 244, 0.08) 50%,
+    rgba(250, 248, 244, 0) 100%
+  );
+  border-color: var(--border-subtle, rgba(250, 248, 244, 0.15));
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+</style>

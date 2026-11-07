@@ -1,0 +1,142 @@
+<div class="stat-card {class}" data-kiw-component="Stat">
+  <div class="stat-head">
+    <span class="stat-label">{label}</span>
+    {#if icon}<span class="stat-icon">{icon}</span>{/if}
+  </div>
+  <div class="stat-value-wrap">
+    <span class="stat-value">{value}</span>
+    {#if unit}<span class="stat-unit">{unit}</span>{/if}
+  </div>
+  {#if change || trend || subtitle || help}
+  <div class="stat-footer">
+    {#if change}
+      <span class="stat-trend {#if trend == 'up' || positive}trend-up{:else if trend == 'down' || negative}trend-down{:else}trend-neutral{/if}">
+        {#if trend == 'up' || positive}↑{:else if trend == 'down' || negative}↓{/if} {change}
+      </span>
+    {/if}
+    {#if subtitle || help}
+      <span class="stat-subtitle">{#if subtitle}{subtitle}{:else}{help}{/if}</span>
+    {/if}
+  </div>
+  {/if}
+</div>
+
+<style>
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  border-radius: var(--radius-lg, 14px);
+  border: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  box-sizing: border-box;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.stat-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--pop-shadow-lg, 6px 6px 0px var(--border, #0B1F3B));
+}
+
+.stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg-muted, #57677d);
+}
+
+.stat-icon {
+  font-size: 1.15rem;
+  opacity: 0.8;
+}
+
+.stat-value-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg, #0B1F3B);
+}
+
+.stat-unit {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg-muted, #57677d);
+}
+
+.stat-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+}
+
+.stat-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.72rem;
+  border: 1px solid currentColor;
+}
+
+.trend-up {
+  color: #0d7328;
+  background: rgba(57, 211, 83, 0.15);
+}
+
+.trend-down {
+  color: var(--error, #FF3B2E);
+  background: rgba(255, 59, 46, 0.12);
+}
+
+.trend-neutral {
+  color: var(--fg-muted, #57677d);
+  background: var(--bg-2, #f2ede4);
+}
+
+.stat-subtitle {
+  color: var(--fg-muted, #57677d);
+  font-weight: 600;
+}
+
+html.dark .stat-card, [data-theme="dark"] .stat-card, .dark .stat-card {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 4px 4px 0px #39D353;
+}
+html.dark .stat-card:hover, [data-theme="dark"] .stat-card:hover, .dark .stat-card:hover {
+  box-shadow: 6px 6px 0px #39D353;
+}
+html.dark .stat-value, [data-theme="dark"] .stat-value, .dark .stat-value {
+  color: var(--fg, #FAF8F4);
+}
+html.dark .stat-label, [data-theme="dark"] .stat-label, .dark .stat-label,
+html.dark .stat-unit, [data-theme="dark"] .stat-unit, .dark .stat-unit,
+html.dark .stat-subtitle, [data-theme="dark"] .stat-subtitle, .dark .stat-subtitle {
+  color: var(--fg-muted, #9ab0ce);
+}
+html.dark .trend-up, [data-theme="dark"] .trend-up, .dark .trend-up {
+  color: #39D353;
+}
+</style>

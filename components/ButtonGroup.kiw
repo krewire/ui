@@ -1,0 +1,87 @@
+<div class="button-group {class}" data-kiw-component="ButtonGroup" role="group" {#if ariaLabel}aria-label="{ariaLabel}"{/if}>
+  {#if body}
+    {body}
+  {:else if items}
+    {#each items as item}
+      <button
+        type="button"
+        class="btn btn-group-item {#if item.active}btn-active{/if}"
+        {#if item.onClick}onclick="{item.onClick}"{/if}
+        {#if item.disabled}disabled{/if}
+      >
+        {#if item.icon}<span class="btn-group-icon">{item.icon}</span>{/if}
+        <span class="btn-group-text">{item.label}</span>
+      </button>
+    {/each}
+  {/if}
+</div>
+
+<style>
+.button-group {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.button-group > .btn,
+.button-group > button,
+.button-group > a {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-right: 1.5px solid var(--border, #0B1F3B) !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background-color 0.12s ease;
+}
+
+.button-group > .btn:last-child,
+.button-group > button:last-child,
+.button-group > a:last-child {
+  border-right: none !important;
+}
+
+.button-group > .btn:hover:not(:disabled),
+.button-group > button:hover:not(:disabled),
+.button-group > a:hover {
+  background: var(--bg-2, #f2ede4);
+  transform: none !important;
+}
+
+.button-group > .btn-active,
+.button-group > [aria-pressed="true"],
+.button-group > [aria-current="page"] {
+  background: var(--primary, #39D353) !important;
+  color: var(--primary-content, #0B1F3B) !important;
+}
+
+html.dark .button-group, [data-theme="dark"] .button-group, .dark .button-group {
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .button-group > .btn, [data-theme="dark"] .button-group > .btn, .dark .button-group > .btn,
+html.dark .button-group > button, [data-theme="dark"] .button-group > button, .dark .button-group > button {
+  background: var(--bg, #0B1F3B);
+  color: var(--fg, #FAF8F4);
+  border-right-color: var(--border, #FAF8F4) !important;
+}
+html.dark .button-group > .btn:hover:not(:disabled), [data-theme="dark"] .button-group > .btn:hover:not(:disabled), .dark .button-group > .btn:hover:not(:disabled),
+html.dark .button-group > button:hover:not(:disabled), [data-theme="dark"] .button-group > button:hover:not(:disabled), .dark .button-group > button:hover:not(:disabled) {
+  background: var(--bg-2, #112646);
+}
+html.dark .button-group > .btn-active, [data-theme="dark"] .button-group > .btn-active, .dark .button-group > .btn-active {
+  background: #39D353 !important;
+  color: #0B1F3B !important;
+}
+</style>

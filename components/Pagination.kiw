@@ -1,0 +1,134 @@
+<nav class="pagination {class}" data-kiw-component="Pagination" aria-label="Pagination Navigation">
+  {#if hasPrev || currentPage > 1}
+    <a href="{#if prevUrl}{prevUrl}{:else}?page={currentPage - 1}{/if}" class="page-btn page-prev" aria-label="Previous Page">
+      ← <span class="page-btn-text">Previous</span>
+    </a>
+  {:else}
+    <span class="page-btn page-disabled" aria-disabled="true">
+      ← <span class="page-btn-text">Previous</span>
+    </span>
+  {/if}
+
+  <div class="page-numbers">
+    {#if pages}
+      {#each pages as p}
+        {#if p.ellipsis}
+          <span class="page-ellipsis">…</span>
+        {:else if p.current || p.number == currentPage}
+          <span class="page-number page-current" aria-current="page">{p.number}</span>
+        {:else}
+          <a href="{p.url}" class="page-number">{p.number}</a>
+        {/if}
+      {/each}
+    {:else}
+      <span class="page-number page-current" aria-current="page">{#if currentPage}{currentPage}{:else}1{/if}</span>
+      {#if totalPages && totalPages > 1}
+        <span class="page-info">of {totalPages}</span>
+      {/if}
+    {/if}
+  </div>
+
+  {#if hasNext || (totalPages && currentPage < totalPages)}
+    <a href="{#if nextUrl}{nextUrl}{:else}?page={currentPage + 1}{/if}" class="page-btn page-next" aria-label="Next Page">
+      <span class="page-btn-text">Next</span> →
+    </a>
+  {:else}
+    <span class="page-btn page-disabled" aria-disabled="true">
+      <span class="page-btn-text">Next</span> →
+    </span>
+  {/if}
+</nav>
+
+<style>
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.page-btn, .page-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border-radius: var(--radius-sm, 6px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  user-select: none;
+}
+
+.page-number {
+  min-width: 2.25rem;
+  padding: 0 0.5rem;
+}
+
+.page-btn:hover:not(.page-disabled), .page-number:hover:not(.page-current) {
+  background: var(--bg-2, #f2ede4);
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 3px 3px 0px var(--border, #0B1F3B);
+}
+
+.page-current {
+  background: var(--primary, #39D353) !important;
+  color: var(--primary-content, #0B1F3B) !important;
+  cursor: default;
+  transform: none;
+}
+
+.page-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  border-style: dashed;
+}
+
+.page-ellipsis {
+  font-weight: 900;
+  padding: 0 0.35rem;
+  color: var(--fg-muted, #57677d);
+}
+
+.page-info {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--fg-muted, #57677d);
+  padding: 0 0.35rem;
+}
+
+@media (max-width: 560px) {
+  .page-btn-text {
+    display: none;
+  }
+}
+
+html.dark .page-btn, [data-theme="dark"] .page-btn, .dark .page-btn,
+html.dark .page-number, [data-theme="dark"] .page-number, .dark .page-number {
+  background: var(--bg, #0B1F3B);
+  color: var(--fg, #FAF8F4);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .page-current, [data-theme="dark"] .page-current, .dark .page-current {
+  background: #39D353 !important;
+  color: #0B1F3B !important;
+  box-shadow: 2px 2px 0px #FAF8F4;
+}
+</style>

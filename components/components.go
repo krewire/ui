@@ -46,13 +46,16 @@ var Registry = map[string]ComponentMeta{
 	"Text":     {Name: "Text", Category: "Atoms", Description: "Versatile typography text atom with muted, lead, and size props"},
 
 	// Forms & Inputs
-	"Checkbox": {Name: "Checkbox", Category: "Forms", Description: "Accessible checkbox input with label and description support"},
-	"Form":     {Name: "Form", Category: "Forms", Description: "Form layout wrapper with accessible grouping and validation slots"},
-	"Input":    {Name: "Input", Category: "Forms", Description: "Text input with prefix/suffix icons, helper text, and error states"},
-	"Radio":    {Name: "Radio", Category: "Forms", Description: "Radio selection control for mutually exclusive options"},
-	"Select":   {Name: "Select", Category: "Forms", Description: "Dropdown selection menu with custom styled options"},
-	"Textarea": {Name: "Textarea", Category: "Forms", Description: "Multi-line text input with autoresize and character counter"},
-	"Toggle":   {Name: "Toggle", Category: "Forms", Description: "Binary switch toggle for boolean settings"},
+	"ButtonGroup": {Name: "ButtonGroup", Category: "Forms", Description: "Segmented button group for view switching or filter toggles"},
+	"Checkbox":    {Name: "Checkbox", Category: "Forms", Description: "Accessible checkbox input with label and description support"},
+	"Form":        {Name: "Form", Category: "Forms", Description: "Form layout wrapper with accessible grouping and validation slots"},
+	"Input":       {Name: "Input", Category: "Forms", Description: "Text input with prefix/suffix icons, helper text, and error states"},
+	"Radio":       {Name: "Radio", Category: "Forms", Description: "Radio selection control for mutually exclusive options"},
+	"SearchInput": {Name: "SearchInput", Category: "Forms", Description: "Search input box with shortcut badge and clear button"},
+	"Select":      {Name: "Select", Category: "Forms", Description: "Dropdown selection menu with custom styled options"},
+	"Slider":      {Name: "Slider", Category: "Forms", Description: "Range slider input with thumb, track, and value indicator"},
+	"Textarea":    {Name: "Textarea", Category: "Forms", Description: "Multi-line text input with autoresize and character counter"},
+	"Toggle":      {Name: "Toggle", Category: "Forms", Description: "Binary switch toggle for boolean settings"},
 
 	// Navigation
 	"Breadcrumb":     {Name: "Breadcrumb", Category: "Navigation", Description: "Hierarchical page breadcrumb navigation trail"},
@@ -61,6 +64,7 @@ var Registry = map[string]ComponentMeta{
 	"LangSwitch":     {Name: "LangSwitch", Category: "Navigation", Description: "Multi-language locale switcher dropdown"},
 	"Navbar":         {Name: "Navbar", Category: "Navigation", Description: "Top navigation bar with brand, menu links, slots, and responsive drawer"},
 	"NavMenu":        {Name: "NavMenu", Category: "Navigation", Description: "Composable navigation item list with slot for active page tracking"},
+	"Pagination":     {Name: "Pagination", Category: "Navigation", Description: "Responsive pagination bar with page numbers, prev/next, and ellipsis"},
 	"Sidebar":        {Name: "Sidebar", Category: "Navigation", Description: "Full-height vertical collapsible side navigation container"},
 	"SideMenu":       {Name: "SideMenu", Category: "Navigation", Description: "Structured sidebar links with category groupings and badges"},
 	"Tabs":           {Name: "Tabs", Category: "Navigation", Description: "Tabbed content switcher with underline or pill styling"},
@@ -68,22 +72,33 @@ var Registry = map[string]ComponentMeta{
 
 	// Feedback & Alerts
 	"Alert":   {Name: "Alert", Category: "Feedback", Description: "Contextual alert box with info, success, warning, and error types"},
+	"Banner":  {Name: "Banner", Category: "Feedback", Description: "Top or bottom announcement banner with action link and dismiss button"},
 	"Callout": {Name: "Callout", Category: "Feedback", Description: "Prominent callout banner for highlights, tips, or quotes"},
+	"Toast":   {Name: "Toast", Category: "Feedback", Description: "Floating notification toast banner with auto-dismiss and status variants"},
 
 	// Overlays
-	"Collapse": {Name: "Collapse", Category: "Overlays", Description: "Expandable accordion disclosure block with smooth animation"},
-	"Drawer":   {Name: "Drawer", Category: "Overlays", Description: "Slide-out panel overlay anchored to left or right screen edge"},
-	"Modal":    {Name: "Modal", Category: "Overlays", Description: "Accessible dialog modal overlay with header, body, and footer slots"},
-	"Tooltip":  {Name: "Tooltip", Category: "Overlays", Description: "Contextual hover tooltip bubble"},
+	"ActionMenu": {Name: "ActionMenu", Category: "Overlays", Description: "Contextual kebab action menu for table rows and card action items"},
+	"Collapse":   {Name: "Collapse", Category: "Overlays", Description: "Expandable accordion disclosure block with smooth animation"},
+	"Drawer":     {Name: "Drawer", Category: "Overlays", Description: "Slide-out panel overlay anchored to left or right screen edge"},
+	"Dropdown":   {Name: "Dropdown", Category: "Overlays", Description: "Composable dropdown menu with trigger, item shortcuts, and dividers"},
+	"Modal":      {Name: "Modal", Category: "Overlays", Description: "Accessible dialog modal overlay with header, body, and footer slots"},
+	"Popover":    {Name: "Popover", Category: "Overlays", Description: "Floating rich content popover with header and trigger button"},
+	"Tooltip":    {Name: "Tooltip", Category: "Overlays", Description: "Contextual hover tooltip bubble"},
 
 	// Data Display & Complex
+	"Accordion":  {Name: "Accordion", Category: "Data Display", Description: "Multi-item collapsible disclosure accordion with smooth chevron rotation"},
 	"Card":       {Name: "Card", Category: "Data Display", Description: "Content card container with header, media, body, and footer slots"},
 	"CodeWindow": {Name: "CodeWindow", Category: "Data Display", Description: "Syntax-highlighted code display window with copy button and titlebar"},
 	"Ecosystem":  {Name: "Ecosystem", Category: "Data Display", Description: "Interactive ecosystem showcase grid with category filtering"},
+	"Empty":      {Name: "Empty", Category: "Data Display", Description: "Zero-data state illustration with title, message, and call-to-action button"},
 	"Footer":     {Name: "Footer", Category: "Data Display", Description: "Full-width site footer with customizable link columns and copyright"},
 	"List":       {Name: "List", Category: "Data Display", Description: "Styled bulleted or numbered list container with custom markers"},
+	"Skeleton":   {Name: "Skeleton", Category: "Data Display", Description: "Content placeholder loading skeleton with subtle shimmer animation"},
+	"Stat":       {Name: "Stat", Category: "Data Display", Description: "Metric KPI display card with label, value, trend badge, and subtitle"},
 	"Table":      {Name: "Table", Category: "Data Display", Description: "Responsive data table with striped, bordered, and hover states"},
+	"Tag":        {Name: "Tag", Category: "Data Display", Description: "Interactive tag chip with optional removable button and filter state"},
 	"Terminal":   {Name: "Terminal", Category: "Data Display", Description: "Retro-modern CLI terminal window display with animated prompts"},
+	"Timeline":   {Name: "Timeline", Category: "Data Display", Description: "Vertical event history and changelog milestone timeline"},
 
 	// Document
 	"Head": {Name: "Head", Category: "Document", Description: "HTML head document tags injector for titles, meta, and styles"},

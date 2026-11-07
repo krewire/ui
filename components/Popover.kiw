@@ -1,0 +1,100 @@
+<details class="popover-container {class}" data-kiw-component="Popover">
+  <summary class="popover-trigger">
+    {#if trigger}
+      {trigger}
+    {:else}
+      <button type="button" class="btn btn-outline btn-sm">
+        {#if triggerText}{triggerText}{:else}Open Popover{/if}
+      </button>
+    {/if}
+  </summary>
+  <div class="popover-panel">
+    {#if title}
+      <div class="popover-head">
+        <span class="popover-title">{title}</span>
+      </div>
+    {/if}
+    <div class="popover-body">
+      {#if content}{content}{:else if body}{body}{/if}
+    </div>
+  </div>
+</details>
+
+<style>
+.popover-container {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.popover-trigger {
+  display: inline-flex;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.popover-trigger::-webkit-details-marker,
+.popover-trigger::marker {
+  display: none !important;
+}
+
+.popover-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: var(--ui-z-popover, 1400);
+  width: 18rem;
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  border-radius: var(--radius-lg, 14px);
+  border: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: popoverFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popover-head {
+  padding: 0.75rem 1rem;
+  background: var(--bg-2, #f2ede4);
+  border-bottom: 1.5px solid var(--border-subtle, rgba(11, 31, 59, 0.15));
+}
+
+.popover-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.popover-body {
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+  color: var(--fg-muted, #57677d);
+  line-height: 1.5;
+}
+
+html.dark .popover-panel, [data-theme="dark"] .popover-panel, .dark .popover-panel {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 4px 4px 0px #39D353;
+  color: var(--fg, #FAF8F4);
+}
+html.dark .popover-head, [data-theme="dark"] .popover-head, .dark .popover-head {
+  background: var(--bg-2, #112646);
+  border-bottom-color: var(--border-subtle, rgba(250, 248, 244, 0.15));
+}
+html.dark .popover-body, [data-theme="dark"] .popover-body, .dark .popover-body {
+  color: var(--fg-muted, #9ab0ce);
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+</style>

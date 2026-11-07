@@ -1,0 +1,122 @@
+<div class="{{class "banner" .Variant "primary" .Class}}" data-kiw-component="Banner" role="region" aria-label="Announcement" {#if id}id="{id}"{/if}>
+  <div class="banner-container">
+    <div class="banner-content">
+      {#if icon}<span class="banner-icon">{icon}</span>{/if}
+      {#if badge}<span class="badge badge-primary banner-badge">{badge}</span>{/if}
+      <div class="banner-text">
+        {#if title}<strong class="banner-title">{title}</strong>{/if}
+        <span class="banner-message">{#if message}{message}{:else if body}{body}{/if}</span>
+      </div>
+      {#if action}
+        <div class="banner-action">{action}</div>
+      {:else if href}
+        <a href="{href}" class="banner-link" {#if target}target="{target}" rel="noopener"{/if}>
+          {#if cta}{cta}{:else}Learn more →{/if}
+        </a>
+      {/if}
+    </div>
+    {#if dismissible != false}
+    <button type="button" class="banner-close" aria-label="Dismiss banner" onclick="this.closest('.banner').remove()">✕</button>
+    {/if}
+  </div>
+</div>
+
+<style>
+.banner {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  box-sizing: border-box;
+  border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  font-size: 0.85rem;
+  line-height: 1.4;
+  position: relative;
+  z-index: var(--ui-z-sticky, 1100);
+}
+
+.banner-container {
+  max-width: var(--ui-max-width, 1240px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.banner-icon {
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.banner-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.banner-title {
+  font-weight: 800;
+}
+
+.banner-link {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.banner-link:hover {
+  opacity: 0.85;
+}
+
+.banner-close {
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  padding: 0.25rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+.banner-close:hover {
+  opacity: 1;
+}
+
+/* Variants */
+.banner-primary {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+}
+.banner-secondary {
+  background: var(--secondary, #00D1C1);
+  color: var(--secondary-content, #0B1F3B);
+}
+.banner-accent {
+  background: var(--accent, #FF3B2E);
+  color: #ffffff;
+}
+.banner-muted {
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg, #0B1F3B);
+}
+
+html.dark .banner-muted, [data-theme="dark"] .banner-muted, .dark .banner-muted {
+  background: var(--bg-2, #112646);
+  color: var(--fg, #FAF8F4);
+  border-bottom-color: var(--border, #FAF8F4);
+}
+</style>

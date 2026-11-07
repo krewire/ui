@@ -1,0 +1,144 @@
+<div class="timeline {class}" data-kiw-component="Timeline">
+  {#if body}
+    {body}
+  {:else if items}
+    {#each items as item}
+      <div class="timeline-item">
+        <div class="timeline-line"></div>
+        <div class="timeline-dot {#if item.variant}dot-{item.variant}{/if}">
+          {#if item.icon}{item.icon}{:else}●{/if}
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-head">
+            <span class="timeline-title">{item.title}</span>
+            {#if item.date}<span class="timeline-date">{item.date}</span>{/if}
+          </div>
+          {#if item.description}
+            <div class="timeline-desc">{item.description}</div>
+          {/if}
+        </div>
+      </div>
+    {/each}
+  {/if}
+</div>
+
+<style>
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0.95rem;
+  top: 1.5rem;
+  bottom: 0;
+  width: 2.5px;
+  background: var(--border-subtle, rgba(11, 31, 59, 0.2));
+}
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg, #0B1F3B);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  font-size: 0.75rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.dot-primary {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+}
+.dot-secondary {
+  background: var(--secondary, #00D1C1);
+  color: var(--secondary-content, #0B1F3B);
+}
+.dot-accent {
+  background: var(--accent, #FF3B2E);
+  color: #ffffff;
+}
+
+.timeline-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--bg, #FAF8F4);
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  padding: 0.85rem 1.15rem;
+}
+
+.timeline-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.timeline-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--fg, #0B1F3B);
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  font-family: var(--ui-font-mono, monospace);
+  font-weight: 700;
+  color: var(--fg-muted, #57677d);
+}
+
+.timeline-desc {
+  font-size: 0.82rem;
+  color: var(--fg-muted, #57677d);
+  line-height: 1.5;
+}
+
+html.dark .timeline-line, [data-theme="dark"] .timeline-line, .dark .timeline-line {
+  background: var(--border-subtle, rgba(250, 248, 244, 0.2));
+}
+html.dark .timeline-dot, [data-theme="dark"] .timeline-dot, .dark .timeline-dot {
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 1.5px 1.5px 0px #39D353;
+}
+html.dark .timeline-content, [data-theme="dark"] .timeline-content, .dark .timeline-content {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .timeline-title, [data-theme="dark"] .timeline-title, .dark .timeline-title {
+  color: var(--fg, #FAF8F4);
+}
+html.dark .timeline-date, [data-theme="dark"] .timeline-date, .dark .timeline-date,
+html.dark .timeline-desc, [data-theme="dark"] .timeline-desc, .dark .timeline-desc {
+  color: var(--fg-muted, #9ab0ce);
+}
+</style>

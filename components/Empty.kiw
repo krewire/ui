@@ -1,0 +1,92 @@
+<div class="empty-state {class}" data-kiw-component="Empty">
+  <div class="empty-icon-wrap">
+    {#if icon}
+      <span class="empty-icon">{icon}</span>
+    {:else}
+      <span class="empty-icon">📭</span>
+    {/if}
+  </div>
+  <h3 class="empty-title">{#if title}{title}{:else}No data found{/if}</h3>
+  <p class="empty-description">{#if description}{description}{:else if body}{body}{:else}There are no items to display at this time.{/if}</p>
+  {#if action}
+  <div class="empty-action">{action}</div>
+  {:else if href}
+  <div class="empty-action">
+    <a href="{href}" class="btn btn-primary btn-sm">
+      {#if actionText}{actionText}{:else}Get Started{/if}
+    </a>
+  </div>
+  {/if}
+</div>
+
+<style>
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-radius: var(--radius-lg, 14px);
+  border: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+  background: var(--bg, #FAF8F4);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.empty-icon-wrap {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-2, #f2ede4);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  margin-bottom: 1.25rem;
+}
+
+.empty-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--fg, #0B1F3B);
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-description {
+  font-size: 0.88rem;
+  color: var(--fg-muted, #57677d);
+  max-width: 24rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+}
+
+.empty-action {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+html.dark .empty-state, [data-theme="dark"] .empty-state, .dark .empty-state {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .empty-icon-wrap, [data-theme="dark"] .empty-icon-wrap, .dark .empty-icon-wrap {
+  background: var(--bg-2, #112646);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .empty-title, [data-theme="dark"] .empty-title, .dark .empty-title {
+  color: var(--fg, #FAF8F4);
+}
+html.dark .empty-description, [data-theme="dark"] .empty-description, .dark .empty-description {
+  color: var(--fg-muted, #9ab0ce);
+}
+</style>

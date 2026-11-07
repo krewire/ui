@@ -34,15 +34,15 @@ func TestEveryEmbeddedComponentIsReadable(t *testing.T) {
 		}
 	}
 
-	if count != 51 {
-		t.Fatalf("expected 51 .kiw components, got %d", count)
+	if count != 66 {
+		t.Fatalf("expected 66 .kiw components, got %d", count)
 	}
 }
 
 func TestListAndGet(t *testing.T) {
 	list := components.List()
-	if len(list) != 51 {
-		t.Fatalf("expected 51 components in List(), got %d", len(list))
+	if len(list) != 66 {
+		t.Fatalf("expected 66 components in List(), got %d", len(list))
 	}
 
 	body, err := components.Get("Button")
@@ -60,6 +60,24 @@ func TestListAndGet(t *testing.T) {
 	}
 	if len(body2) == 0 {
 		t.Errorf("expected non-empty HStack.kiw")
+	}
+
+	// Test newly introduced components
+	newComponents := []string{
+		"Toast", "Skeleton", "Banner", "Empty", "Stat",
+		"Timeline", "Accordion", "Tag", "Pagination", "Popover",
+		"Dropdown", "SearchInput", "Slider", "ButtonGroup", "ActionMenu",
+	}
+
+	for _, name := range newComponents {
+		data, err := components.Get(name)
+		if err != nil {
+			t.Errorf("Get(%s) failed: %v", name, err)
+			continue
+		}
+		if len(data) == 0 {
+			t.Errorf("expected non-empty body for %s.kiw", name)
+		}
 	}
 
 	// Non-existent component

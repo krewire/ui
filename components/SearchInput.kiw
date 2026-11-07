@@ -1,0 +1,86 @@
+<div class="search-input-wrap {class}" data-kiw-component="SearchInput">
+  <span class="search-icon">🔍</span>
+  <input
+    type="search"
+    name="{name}"
+    class="search-field"
+    placeholder="{#if placeholder}{placeholder}{:else}Search documentation, components...{/if}"
+    {#if id}id="{id}"{/if}
+    {#if value}value="{value}"{/if}
+    autocomplete="off"
+    spellcheck="false"
+  />
+  {#if shortcut != "none"}
+  <kbd class="search-kbd">{#if shortcut}{shortcut}{:else}⌘K{/if}</kbd>
+  {/if}
+</div>
+
+<style>
+.search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 28rem;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  font-size: 0.85rem;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.search-field {
+  width: 100%;
+  padding: 0.55rem 2.5rem 0.55rem 2.35rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  outline: none;
+  box-sizing: border-box;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.search-field:focus {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  border-color: var(--primary, #39D353);
+}
+
+.search-kbd {
+  position: absolute;
+  right: 0.65rem;
+  font-family: var(--ui-font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg-muted, #57677d);
+  border: 1px solid var(--border-subtle, rgba(11, 31, 59, 0.2));
+  pointer-events: none;
+  line-height: 1;
+}
+
+html.dark .search-field, [data-theme="dark"] .search-field, .dark .search-field {
+  background: var(--bg, #0B1F3B);
+  color: var(--fg, #FAF8F4);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 2px 2px 0px #39D353;
+}
+html.dark .search-field:focus, [data-theme="dark"] .search-field:focus, .dark .search-field:focus {
+  border-color: #39D353;
+  box-shadow: 4px 4px 0px #39D353;
+}
+html.dark .search-kbd, [data-theme="dark"] .search-kbd, .dark .search-kbd {
+  background: var(--bg-2, #112646);
+  color: var(--fg-muted, #9ab0ce);
+  border-color: var(--border-subtle, rgba(250, 248, 244, 0.2));
+}
+</style>

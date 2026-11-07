@@ -1,0 +1,150 @@
+<details class="action-menu {class}" data-kiw-component="ActionMenu">
+  <summary class="action-menu-trigger" aria-label="Action options">
+    {#if trigger}
+      {trigger}
+    {:else}
+      <button type="button" class="action-menu-btn" aria-label="Options">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+          <circle cx="8" cy="3" r="1.5" />
+          <circle cx="8" cy="8" r="1.5" />
+          <circle cx="8" cy="13" r="1.5" />
+        </svg>
+      </button>
+    {/if}
+  </summary>
+  <div class="action-menu-content {#if align == 'left'}align-left{:else}align-right{/if}">
+    <div class="action-menu-box">
+      {#if body}
+        {body}
+      {:else if items}
+        {#each items as item}
+          {#if item.divider}
+            <div class="action-menu-divider"></div>
+          {:else}
+            <a href="{item.href}" class="action-menu-item {#if item.error}item-error{/if}" {#if item.target}target="{item.target}" rel="noopener"{/if}>
+              {#if item.icon}<span class="item-icon">{item.icon}</span>{/if}
+              <span class="item-label">{item.label}</span>
+            </a>
+          {/if}
+        {/each}
+      {/if}
+    </div>
+  </div>
+</details>
+
+<style>
+.action-menu {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.action-menu-trigger {
+  display: inline-flex;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.action-menu-trigger::-webkit-details-marker,
+.action-menu-trigger::marker {
+  display: none !important;
+}
+
+.action-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm, 6px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.action-menu-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2.5px 2.5px 0px var(--border, #0B1F3B);
+  background: var(--bg-2, #f2ede4);
+}
+
+.action-menu-content {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  z-index: var(--ui-z-dropdown, 1000);
+  min-width: 11rem;
+}
+.align-left { left: 0; }
+.align-right { right: 0; }
+
+.action-menu-box {
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.action-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg, #0B1F3B);
+  text-decoration: none;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+.action-menu-item:hover {
+  background: var(--bg-2, #f2ede4);
+  color: var(--primary, #39D353);
+}
+
+.item-error:hover {
+  background: rgba(255, 59, 46, 0.12);
+  color: var(--error, #FF3B2E);
+}
+
+.item-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.item-label {
+  flex: 1 1 auto;
+}
+
+.action-menu-divider {
+  height: 1px;
+  background: var(--border-subtle, rgba(11, 31, 59, 0.15));
+  margin: 0.25rem 0;
+}
+
+html.dark .action-menu-btn, [data-theme="dark"] .action-menu-btn, .dark .action-menu-btn {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 1.5px 1.5px 0px #39D353;
+  color: var(--fg, #FAF8F4);
+}
+html.dark .action-menu-box, [data-theme="dark"] .action-menu-box, .dark .action-menu-box {
+  background: var(--bg, #0B1F3B);
+  border-color: var(--border, #FAF8F4);
+  box-shadow: 4px 4px 0px #39D353;
+  color: var(--fg, #FAF8F4);
+}
+html.dark .action-menu-item, [data-theme="dark"] .action-menu-item, .dark .action-menu-item {
+  color: var(--fg, #FAF8F4);
+}
+html.dark .action-menu-item:hover, [data-theme="dark"] .action-menu-item:hover, .dark .action-menu-item:hover {
+  background: var(--bg-2, #112646);
+  color: #39D353;
+}
+</style>
