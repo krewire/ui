@@ -8,7 +8,7 @@
       <!-- Products Full-Width Mega Dropdown -->
       <details class="dropdown-container">
         <summary class="dropdown-trigger flex items-center gap-1.5 text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150 cursor-pointer list-none select-none" aria-haspopup="true">
-          <span data-i18n="nav.products">Products</span>
+          <span data-i18n="nav.ecosystem">Ecosystem</span>
           <svg class="w-3.5 h-3.5 transition-transform duration-150 dropdown-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
         </summary>
         <div class="dropdown-menu-fullwidth">
@@ -16,7 +16,7 @@
             <!-- Header Strip -->
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-border-subtle">
               <div class="flex items-center gap-2">
-                <span class="badge badge-primary text-2xs font-extrabold uppercase tracking-wider" data-i18n="nav.products_badge">Core Platforms</span>
+                <span class="badge badge-primary text-2xs font-extrabold uppercase tracking-wider" data-i18n="nav.products_badge">Krewire Ecosystem</span>
                 <span class="text-xs text-muted dark:text-muted-dark font-semibold hidden sm:inline" data-i18n="nav.products_tagline">One Ecosystem. Every Workload.</span>
               </div>
               <a href="/#ecosystem" class="text-xs font-bold text-fg dark:text-fg-dark hover:text-primary transition-colors flex items-center gap-1" data-i18n="nav.view_ecosystem_map">

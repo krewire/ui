@@ -68,7 +68,7 @@
             {/each}
           {:else if showEcosystemMenu}
             <div class="px-3 py-1.5 text-2xs font-black uppercase tracking-wider text-muted dark:text-muted-dark flex items-center justify-between border-b border-border-subtle mb-1">
-              <span data-i18n="nav.products">Core Products</span>
+              <span data-i18n="nav.ecosystem">Krewire Ecosystem</span>
               <span class="text-primary font-mono text-[10px]">4 Platforms</span>
             </div>
 

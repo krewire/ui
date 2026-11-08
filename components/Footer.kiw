@@ -7,7 +7,7 @@
 {:else if variant == "simple"}
 <footer class="bg-bg-2 dark:bg-bg-dark-2 py-6 text-xs text-muted dark:text-muted-dark {class}" style="border-top:1px solid var(--border)" data-kiw-component="Footer">
   <div class="container-site flex flex-wrap items-center justify-between gap-3">
-    <span>{#if copyrightText}{copyrightText}{:else}© 2026 {#if brandName}{brandName}{:else}Krewire Contributors{/if}{/if}</span>
+    <span>{#if copyrightText}{copyrightText}{:else}© 2026 {#if brandName}{brandName}{:else}Krewire Team{/if}{/if}</span>
     {#if bottom}
       {bottom}
     {:else if gitHubURL}
@@ -26,7 +26,7 @@
         {:else}
           <div class="flex items-center gap-2 font-black text-lg mb-3 footer-brand">
             <span class="icon-box bg-primary text-primary-content w-7 h-7 text-sm flex items-center justify-center brand-mark">{#if brandIcon}{brandIcon}{:else}◈{/if}</span>
-            <span data-i18n="footer.brand_title">{#if brandName}{brandName}{:else}Krewire Contributors{/if}</span>
+            <span data-i18n="footer.brand_title">{#if brandName}{brandName}{:else}Krewire Team{/if}</span>
           </div>
           <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4 footer-desc" data-i18n-html="footer.desc_html">
             {#if brandTagline}{brandTagline}{:else}Home of the Open Source Collective.<br>Crafting an autonomous, sustainable, and scalable Go ecosystem at near-zero cost.{/if}
@@ -74,7 +74,7 @@
       {#if bottom}
         {bottom}
       {:else}
-        <span data-i18n-html="footer.bottom_rights_html">© 2026 {#if brandName}{brandName}{:else}Krewire Contributors{/if} — Built 100% with Krewire <code class="code-inline">site</code> workload.</span>
+        <span data-i18n-html="footer.bottom_rights_html">© 2026 {#if brandName}{brandName}{:else}Krewire Team{/if} — Built 100% with Krewire <code class="code-inline">site</code> workload.</span>
         <a href="https://github.com/krewire" target="_blank" rel="noopener" class="hover:text-primary transition-colors">github.com/krewire</a>
       {/if}
     </div>
@@ -174,7 +174,7 @@
       {#if bottom}
         {bottom}
       {:else}
-        <span data-i18n-html="footer.copyright_html">© 2026 {#if brandName}{brandName}{:else}Krewire Contributors{/if} — Built with Krewire <code class="code-inline">site</code> workload.</span>
+        <span data-i18n-html="footer.copyright_html">© 2026 {#if brandName}{brandName}{:else}Krewire Team{/if} — Built with Krewire <code class="code-inline">site</code> workload.</span>
         {#if !hideGitHub}
           <a href="{#if gitHubURL}{gitHubURL}{:else}https://github.com/krewire{/if}" target="_blank" rel="noopener" class="hover:text-primary transition-colors">github.com/krewire</a>
         {/if}
