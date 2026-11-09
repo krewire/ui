@@ -1,0 +1,1365 @@
+{
+  "$schema": "./components.schema.json",
+  "version": 1,
+  "packs": [
+    {
+      "name": "base",
+      "description": "Page foundation: Container, Button, Card and Input",
+      "components": [
+        "Container",
+        "Button",
+        "Card",
+        "Input"
+      ]
+    },
+    {
+      "name": "dashboard",
+      "description": "Admin and dashboard screens: Table, Stat, Sidebar and Modal",
+      "components": [
+        "Table",
+        "Stat",
+        "Sidebar",
+        "Modal"
+      ]
+    },
+    {
+      "name": "minimal",
+      "description": "Smallest useful set: Button, Card and Input",
+      "components": [
+        "Button",
+        "Card",
+        "Input"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Accordion",
+      "category": "Data Display",
+      "description": "Multi-item collapsible disclosure accordion with smooth chevron rotation",
+      "file": "Accordion.kiw",
+      "props": [
+        "body",
+        "class",
+        "items"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Accordion>…</Accordion>"
+    },
+    {
+      "name": "ActionMenu",
+      "category": "Overlays",
+      "description": "Contextual kebab action menu for table rows and card action items",
+      "file": "ActionMenu.kiw",
+      "props": [
+        "align",
+        "ariaLabel",
+        "body",
+        "class",
+        "id",
+        "items",
+        "trigger"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<ActionMenu>…</ActionMenu>"
+    },
+    {
+      "name": "Alert",
+      "category": "Feedback",
+      "description": "Contextual alert box with info, success, warning, and error types",
+      "file": "Alert.kiw",
+      "props": [
+        "action",
+        "actions",
+        "body",
+        "class",
+        "dismissible",
+        "icon",
+        "id",
+        "message",
+        "title",
+        "variant"
+      ],
+      "defaults": {
+        "variant": "info"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Alert variant=\"warning\" title=\"Heads up\">Your trial ends tomorrow.</Alert>"
+    },
+    {
+      "name": "Avatar",
+      "category": "Atoms",
+      "description": "Image or initials avatar with size variants and status indicators",
+      "file": "Avatar.kiw",
+      "props": [
+        "alt",
+        "body",
+        "class",
+        "id",
+        "initials",
+        "shape",
+        "size",
+        "src"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Avatar>…</Avatar>"
+    },
+    {
+      "name": "Badge",
+      "category": "Atoms",
+      "description": "Compact label for status, counts, or categorization",
+      "file": "Badge.kiw",
+      "props": [
+        "body",
+        "class",
+        "dot",
+        "id",
+        "label",
+        "size",
+        "text",
+        "variant"
+      ],
+      "defaults": {
+        "size": "md",
+        "variant": "neutral"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Badge variant=\"success\">Live</Badge>"
+    },
+    {
+      "name": "Banner",
+      "category": "Feedback",
+      "description": "Top or bottom announcement banner with action link and dismiss button",
+      "file": "Banner.kiw",
+      "props": [
+        "action",
+        "badge",
+        "body",
+        "class",
+        "cta",
+        "dismissible",
+        "href",
+        "icon",
+        "id",
+        "message",
+        "target",
+        "title",
+        "variant"
+      ],
+      "defaults": {
+        "variant": "primary"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Banner>…</Banner>"
+    },
+    {
+      "name": "Box",
+      "category": "Layout",
+      "description": "Generic layout container with customizable padding, margin, and borders",
+      "file": "Box.kiw",
+      "props": [
+        "body",
+        "border",
+        "class",
+        "id",
+        "rounded",
+        "shadow",
+        "variant"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Box>…</Box>"
+    },
+    {
+      "name": "Brand",
+      "category": "Atoms",
+      "description": "App brand logo and name display",
+      "file": "Brand.kiw",
+      "props": [
+        "badge",
+        "badgeI18n",
+        "body",
+        "class",
+        "hideBadge",
+        "href",
+        "icon",
+        "name",
+        "title",
+        "version"
+      ],
+      "styles": false,
+      "script": false,
+      "preview": "<Brand>…</Brand>"
+    },
+    {
+      "name": "Breadcrumb",
+      "category": "Navigation",
+      "description": "Hierarchical page breadcrumb navigation trail",
+      "file": "Breadcrumb.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "items",
+        "label"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Breadcrumb>…</Breadcrumb>"
+    },
+    {
+      "name": "BreadcrumbItem",
+      "category": "Navigation",
+      "description": "Individual crumb segment within a Breadcrumb navigation",
+      "file": "BreadcrumbItem.kiw",
+      "props": [
+        "class",
+        "current",
+        "href",
+        "label",
+        "target"
+      ],
+      "styles": false,
+      "script": false,
+      "preview": "<BreadcrumbItem />"
+    },
+    {
+      "name": "Button",
+      "category": "Atoms",
+      "description": "Interactive button with primary, secondary, ghost, and danger variants",
+      "file": "Button.kiw",
+      "props": [
+        "ariaControls",
+        "ariaExpanded",
+        "ariaLabel",
+        "ariaPressed",
+        "body",
+        "class",
+        "dataI18n",
+        "disabled",
+        "href",
+        "icon",
+        "iconRight",
+        "id",
+        "label",
+        "onClick",
+        "size",
+        "target",
+        "text",
+        "type",
+        "variant"
+      ],
+      "defaults": {
+        "size": "md",
+        "variant": "primary"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Button variant=\"primary\" size=\"md\">Save changes</Button>"
+    },
+    {
+      "name": "ButtonGroup",
+      "category": "Forms",
+      "description": "Segmented button group for view switching or filter toggles",
+      "file": "ButtonGroup.kiw",
+      "props": [
+        "ariaLabel",
+        "body",
+        "class",
+        "id",
+        "items"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<ButtonGroup>…</ButtonGroup>"
+    },
+    {
+      "name": "Callout",
+      "category": "Feedback",
+      "description": "Prominent callout banner for highlights, tips, or quotes",
+      "file": "Callout.kiw",
+      "props": [
+        "body",
+        "class",
+        "icon",
+        "id",
+        "message",
+        "role",
+        "title",
+        "variant"
+      ],
+      "defaults": {
+        "variant": "info"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Callout>…</Callout>"
+    },
+    {
+      "name": "Card",
+      "category": "Data Display",
+      "description": "Content card container with header, media, body, and footer slots",
+      "file": "Card.kiw",
+      "props": [
+        "actions",
+        "badge",
+        "body",
+        "class",
+        "footer",
+        "head",
+        "header",
+        "href",
+        "id",
+        "image",
+        "media",
+        "subtitle",
+        "target",
+        "title",
+        "variant"
+      ],
+      "defaults": {
+        "variant": "default"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Card title=\"Usage\" subtitle=\"This month\">Card content</Card>"
+    },
+    {
+      "name": "Checkbox",
+      "category": "Forms",
+      "description": "Accessible checkbox input with label and description support",
+      "file": "Checkbox.kiw",
+      "props": [
+        "body",
+        "checked",
+        "class",
+        "disabled",
+        "id",
+        "label",
+        "name",
+        "required",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Checkbox label=\"Remember me\" name=\"remember\" />"
+    },
+    {
+      "name": "Code",
+      "category": "Atoms",
+      "description": "Inline code badge with monospace typography",
+      "file": "Code.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "text",
+        "variant"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Code>…</Code>"
+    },
+    {
+      "name": "CodeWindow",
+      "category": "Data Display",
+      "description": "Syntax-highlighted code display window with copy button and titlebar",
+      "file": "CodeWindow.kiw",
+      "props": [
+        "actions",
+        "body",
+        "class",
+        "code",
+        "hideCopy",
+        "id",
+        "showDefaultSample",
+        "title"
+      ],
+      "styles": true,
+      "script": true,
+      "preview": "<CodeWindow>…</CodeWindow>"
+    },
+    {
+      "name": "Collapse",
+      "category": "Overlays",
+      "description": "Expandable accordion disclosure block with smooth animation",
+      "file": "Collapse.kiw",
+      "props": [
+        "badge",
+        "body",
+        "class",
+        "header",
+        "icon",
+        "id",
+        "name",
+        "open",
+        "summary",
+        "title",
+        "variant"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Collapse>…</Collapse>"
+    },
+    {
+      "name": "Container",
+      "category": "Layout",
+      "description": "Responsive max-width page container",
+      "file": "Container.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "size"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Container size=\"lg\">Page content</Container>"
+    },
+    {
+      "name": "Divider",
+      "category": "Atoms",
+      "description": "Horizontal or vertical separator line",
+      "file": "Divider.kiw",
+      "props": [
+        "class",
+        "id",
+        "label",
+        "text",
+        "vertical"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Divider />"
+    },
+    {
+      "name": "Drawer",
+      "category": "Overlays",
+      "description": "Slide-out panel overlay anchored to left or right screen edge",
+      "file": "Drawer.kiw",
+      "props": [
+        "actions",
+        "body",
+        "class",
+        "footer",
+        "head",
+        "header",
+        "id",
+        "noBackdrop",
+        "noClose",
+        "side",
+        "title"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Drawer>…</Drawer>"
+    },
+    {
+      "name": "Dropdown",
+      "category": "Overlays",
+      "description": "Composable dropdown menu with trigger, item shortcuts, and dividers",
+      "file": "Dropdown.kiw",
+      "props": [
+        "align",
+        "body",
+        "class",
+        "items",
+        "label",
+        "trigger"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Dropdown>…</Dropdown>"
+    },
+    {
+      "name": "Ecosystem",
+      "category": "Data Display",
+      "description": "Interactive ecosystem showcase grid with category filtering",
+      "file": "Ecosystem.kiw",
+      "props": [
+        "badge",
+        "body",
+        "class",
+        "header",
+        "items",
+        "lead",
+        "title"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Ecosystem>…</Ecosystem>"
+    },
+    {
+      "name": "Empty",
+      "category": "Data Display",
+      "description": "Zero-data state illustration with title, message, and call-to-action button",
+      "file": "Empty.kiw",
+      "props": [
+        "action",
+        "actionText",
+        "body",
+        "class",
+        "description",
+        "href",
+        "icon",
+        "id",
+        "title"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Empty title=\"No projects yet\" description=\"Create your first project.\" actionText=\"New project\" href=\"/new\" />"
+    },
+    {
+      "name": "Flex",
+      "category": "Layout",
+      "description": "Flexible box layout container with direction, wrap, and alignment",
+      "file": "Flex.kiw",
+      "props": [
+        "align",
+        "body",
+        "class",
+        "direction",
+        "gap",
+        "id",
+        "justify",
+        "wrap"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Flex>…</Flex>"
+    },
+    {
+      "name": "Footer",
+      "category": "Data Display",
+      "description": "Full-width site footer with customizable link columns and copyright",
+      "file": "Footer.kiw",
+      "props": [
+        "body",
+        "bottom",
+        "brand",
+        "brandBadge",
+        "brandIcon",
+        "brandName",
+        "brandTagline",
+        "class",
+        "columns",
+        "copyrightText",
+        "gitHubURL",
+        "hideBadge",
+        "hideGitHub",
+        "showEcosystemFooter",
+        "variant"
+      ],
+      "styles": false,
+      "script": false,
+      "preview": "<Footer variant=\"simple\" brandName=\"My App\" />"
+    },
+    {
+      "name": "Form",
+      "category": "Forms",
+      "description": "Form layout wrapper with accessible grouping and validation slots",
+      "file": "Form.kiw",
+      "props": [
+        "action",
+        "body",
+        "class",
+        "enctype",
+        "id",
+        "method"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Form>…</Form>"
+    },
+    {
+      "name": "Grid",
+      "category": "Layout",
+      "description": "Responsive CSS grid container with customizable columns and gaps",
+      "file": "Grid.kiw",
+      "props": [
+        "body",
+        "class",
+        "cols",
+        "gap",
+        "id"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Grid cols=\"3\" gap=\"md\">Grid items</Grid>"
+    },
+    {
+      "name": "HStack",
+      "category": "Layout",
+      "description": "Horizontal flex stack with configurable spacing and alignment",
+      "file": "HStack.kiw",
+      "props": [
+        "align",
+        "body",
+        "class",
+        "gap",
+        "id",
+        "justify",
+        "noWrap",
+        "nowrap"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<HStack gap=\"sm\" align=\"center\">Inline items</HStack>"
+    },
+    {
+      "name": "Hamburger",
+      "category": "Navigation",
+      "description": "Animated mobile navigation toggle button",
+      "file": "Hamburger.kiw",
+      "props": [
+        "class",
+        "controls",
+        "dataDrawerToggle",
+        "expanded",
+        "id",
+        "label"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Hamburger />"
+    },
+    {
+      "name": "Head",
+      "category": "Document",
+      "description": "HTML head document tags injector for titles, meta, and styles",
+      "file": "Head.kiw",
+      "props": [
+        "assetVersion",
+        "author",
+        "body",
+        "canonical",
+        "description",
+        "favicon",
+        "keywords",
+        "ogDescription",
+        "ogImage",
+        "ogTitle",
+        "themeColor",
+        "title"
+      ],
+      "styles": false,
+      "script": false,
+      "preview": "<Head>…</Head>"
+    },
+    {
+      "name": "Heading",
+      "category": "Atoms",
+      "description": "Semantic heading element (h1-h6) with consistent typography tokens",
+      "file": "Heading.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "level",
+        "text"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Heading level=\"2\">Section title</Heading>"
+    },
+    {
+      "name": "Input",
+      "category": "Forms",
+      "description": "Text input with prefix/suffix icons, helper text, and error states",
+      "file": "Input.kiw",
+      "props": [
+        "class",
+        "disabled",
+        "error",
+        "help",
+        "id",
+        "label",
+        "name",
+        "placeholder",
+        "required",
+        "type",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Input label=\"Email\" name=\"email\" type=\"email\" placeholder=\"you@example.com\" />"
+    },
+    {
+      "name": "Kbd",
+      "category": "Atoms",
+      "description": "Keyboard shortcut keycap indicator",
+      "file": "Kbd.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "size",
+        "text"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Kbd>…</Kbd>"
+    },
+    {
+      "name": "LangSwitch",
+      "category": "Navigation",
+      "description": "Multi-language locale switcher dropdown",
+      "file": "LangSwitch.kiw",
+      "props": [
+        "class",
+        "code",
+        "icon",
+        "id",
+        "label"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<LangSwitch />"
+    },
+    {
+      "name": "Link",
+      "category": "Atoms",
+      "description": "Accessible hyperlink with hover states and external indicator",
+      "file": "Link.kiw",
+      "props": [
+        "body",
+        "class",
+        "external",
+        "href",
+        "id",
+        "text",
+        "variant"
+      ],
+      "defaults": {
+        "variant": "default"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Link href=\"/docs\">Read the docs</Link>"
+    },
+    {
+      "name": "List",
+      "category": "Data Display",
+      "description": "Styled bulleted or numbered list container with custom markers",
+      "file": "List.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "ordered",
+        "spacing",
+        "style"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<List>…</List>"
+    },
+    {
+      "name": "Modal",
+      "category": "Overlays",
+      "description": "Accessible dialog modal overlay with header, body, and footer slots",
+      "file": "Modal.kiw",
+      "props": [
+        "actions",
+        "body",
+        "class",
+        "footer",
+        "head",
+        "header",
+        "hideClose",
+        "id",
+        "title"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Modal id=\"confirm\" title=\"Delete project?\">This cannot be undone.</Modal>"
+    },
+    {
+      "name": "NavMenu",
+      "category": "Navigation",
+      "description": "Composable navigation item list with slot for active page tracking",
+      "file": "NavMenu.kiw",
+      "props": [
+        "body",
+        "class",
+        "dropdown",
+        "hideLinks",
+        "hideProducts",
+        "items",
+        "links"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<NavMenu>…</NavMenu>"
+    },
+    {
+      "name": "Navbar",
+      "category": "Navigation",
+      "description": "Top navigation bar with brand, menu links, slots, and responsive drawer",
+      "file": "Navbar.kiw",
+      "props": [
+        "actions",
+        "body",
+        "brand",
+        "brandBadge",
+        "brandBadgeI18n",
+        "brandHref",
+        "brandIcon",
+        "brandName",
+        "drawer",
+        "drawerBody",
+        "gitHubURL",
+        "hideGitHub",
+        "items",
+        "navLinks",
+        "showEcosystemMenu",
+        "showLangToggle",
+        "showSidebarToggle",
+        "version"
+      ],
+      "dependencies": [
+        "Brand",
+        "Hamburger",
+        "LangSwitch",
+        "NavMenu",
+        "ThemeSwitch"
+      ],
+      "styles": false,
+      "script": true,
+      "preview": "<Navbar brandName=\"My App\">Links</Navbar>"
+    },
+    {
+      "name": "Pagination",
+      "category": "Navigation",
+      "description": "Responsive pagination bar with page numbers, prev/next, and ellipsis",
+      "file": "Pagination.kiw",
+      "props": [
+        "class",
+        "currentPage",
+        "hasNext",
+        "hasPrev",
+        "id",
+        "nextUrl",
+        "pages",
+        "prevUrl",
+        "totalPages"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Pagination currentPage=\"2\" totalPages=\"10\" />"
+    },
+    {
+      "name": "Popover",
+      "category": "Overlays",
+      "description": "Floating rich content popover with header and trigger button",
+      "file": "Popover.kiw",
+      "props": [
+        "body",
+        "class",
+        "content",
+        "title",
+        "trigger",
+        "triggerText"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Popover>…</Popover>"
+    },
+    {
+      "name": "Progress",
+      "category": "Atoms",
+      "description": "Determinate or indeterminate progress bar indicator",
+      "file": "Progress.kiw",
+      "props": [
+        "class",
+        "id",
+        "label",
+        "showValue",
+        "size",
+        "value",
+        "variant"
+      ],
+      "defaults": {
+        "size": "md",
+        "variant": "primary"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Progress value=\"60\" label=\"Upload\" showValue />"
+    },
+    {
+      "name": "Radio",
+      "category": "Forms",
+      "description": "Radio selection control for mutually exclusive options",
+      "file": "Radio.kiw",
+      "props": [
+        "body",
+        "checked",
+        "class",
+        "disabled",
+        "id",
+        "label",
+        "name",
+        "required",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Radio>…</Radio>"
+    },
+    {
+      "name": "SearchInput",
+      "category": "Forms",
+      "description": "Search input box with shortcut badge and clear button",
+      "file": "SearchInput.kiw",
+      "props": [
+        "class",
+        "id",
+        "name",
+        "placeholder",
+        "shortcut",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<SearchInput />"
+    },
+    {
+      "name": "Section",
+      "category": "Layout",
+      "description": "Semantic section wrapper with vertical rhythm",
+      "file": "Section.kiw",
+      "props": [
+        "align",
+        "badge",
+        "body",
+        "class",
+        "content",
+        "desc",
+        "header",
+        "id",
+        "size",
+        "subtitle",
+        "title",
+        "variant"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Section>…</Section>"
+    },
+    {
+      "name": "Select",
+      "category": "Forms",
+      "description": "Dropdown selection menu with custom styled options",
+      "file": "Select.kiw",
+      "props": [
+        "body",
+        "class",
+        "disabled",
+        "error",
+        "help",
+        "id",
+        "label",
+        "name",
+        "options",
+        "required",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Select label=\"Region\" name=\"region\" options={regions} />"
+    },
+    {
+      "name": "SideMenu",
+      "category": "Navigation",
+      "description": "Structured sidebar links with category groupings and badges",
+      "file": "SideMenu.kiw",
+      "props": [
+        "body",
+        "class",
+        "groups",
+        "id",
+        "items",
+        "label",
+        "showDocMenu"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<SideMenu>…</SideMenu>"
+    },
+    {
+      "name": "Sidebar",
+      "category": "Navigation",
+      "description": "Full-height vertical collapsible side navigation container",
+      "file": "Sidebar.kiw",
+      "props": [
+        "body",
+        "class",
+        "head",
+        "header",
+        "id",
+        "label",
+        "menu",
+        "showDocMenu",
+        "title"
+      ],
+      "dependencies": [
+        "SideMenu"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Sidebar title=\"Docs\">Navigation links</Sidebar>"
+    },
+    {
+      "name": "Skeleton",
+      "category": "Data Display",
+      "description": "Content placeholder loading skeleton with subtle shimmer animation",
+      "file": "Skeleton.kiw",
+      "props": [
+        "class",
+        "height",
+        "id",
+        "variant",
+        "width"
+      ],
+      "defaults": {
+        "variant": "text"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Skeleton />"
+    },
+    {
+      "name": "Slider",
+      "category": "Forms",
+      "description": "Range slider input with thumb, track, and value indicator",
+      "file": "Slider.kiw",
+      "props": [
+        "class",
+        "disabled",
+        "error",
+        "help",
+        "id",
+        "label",
+        "max",
+        "min",
+        "name",
+        "onInput",
+        "showValue",
+        "step",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Slider />"
+    },
+    {
+      "name": "Spinner",
+      "category": "Atoms",
+      "description": "Loading spinner indicator with speed and color variants",
+      "file": "Spinner.kiw",
+      "props": [
+        "class",
+        "id",
+        "label",
+        "size"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Spinner size=\"md\" label=\"Loading\" />"
+    },
+    {
+      "name": "Stack",
+      "category": "Layout",
+      "description": "Directional stack wrapper with uniform spacing",
+      "file": "Stack.kiw",
+      "props": [
+        "align",
+        "body",
+        "class",
+        "direction",
+        "gap",
+        "id",
+        "justify",
+        "wrap"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Stack>…</Stack>"
+    },
+    {
+      "name": "Stat",
+      "category": "Data Display",
+      "description": "Metric KPI display card with label, value, trend badge, and subtitle",
+      "file": "Stat.kiw",
+      "props": [
+        "change",
+        "class",
+        "help",
+        "icon",
+        "id",
+        "label",
+        "negative",
+        "positive",
+        "subtitle",
+        "trend",
+        "unit",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Stat label=\"Deployments\" value=\"1,429\" change=\"+18.4%\" trend=\"up\" />"
+    },
+    {
+      "name": "Table",
+      "category": "Data Display",
+      "description": "Responsive data table with striped, bordered, and hover states",
+      "file": "Table.kiw",
+      "props": [
+        "body",
+        "bordered",
+        "class",
+        "headers",
+        "hover",
+        "id",
+        "rows",
+        "striped"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Table headers={headers} rows={rows} striped hover />"
+    },
+    {
+      "name": "Tabs",
+      "category": "Navigation",
+      "description": "Tabbed content switcher with underline or pill styling",
+      "file": "Tabs.kiw",
+      "props": [
+        "body",
+        "class",
+        "id",
+        "items",
+        "label",
+        "panels",
+        "tabs"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Tabs items={tabs} />"
+    },
+    {
+      "name": "Tag",
+      "category": "Data Display",
+      "description": "Interactive tag chip with optional removable button and filter state",
+      "file": "Tag.kiw",
+      "props": [
+        "body",
+        "class",
+        "href",
+        "icon",
+        "id",
+        "label",
+        "removable",
+        "selected",
+        "size",
+        "target",
+        "text",
+        "variant"
+      ],
+      "defaults": {
+        "size": "md",
+        "variant": "default"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Tag>…</Tag>"
+    },
+    {
+      "name": "Terminal",
+      "category": "Data Display",
+      "description": "Retro-modern CLI terminal window display with animated prompts",
+      "file": "Terminal.kiw",
+      "props": [
+        "actions",
+        "body",
+        "class",
+        "command",
+        "hideCopy",
+        "id",
+        "prompt",
+        "promptColor",
+        "style",
+        "title"
+      ],
+      "styles": true,
+      "script": true,
+      "preview": "<Terminal>…</Terminal>"
+    },
+    {
+      "name": "Text",
+      "category": "Atoms",
+      "description": "Versatile typography text atom with muted, lead, and size props",
+      "file": "Text.kiw",
+      "props": [
+        "as",
+        "body",
+        "class",
+        "color",
+        "id",
+        "size",
+        "text",
+        "weight"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Text size=\"lg\" color=\"muted\">Supporting copy</Text>"
+    },
+    {
+      "name": "Textarea",
+      "category": "Forms",
+      "description": "Multi-line text input with autoresize and character counter",
+      "file": "Textarea.kiw",
+      "props": [
+        "body",
+        "class",
+        "disabled",
+        "error",
+        "help",
+        "id",
+        "label",
+        "name",
+        "placeholder",
+        "required",
+        "rows",
+        "value"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Textarea label=\"Message\" name=\"message\" rows=\"4\" />"
+    },
+    {
+      "name": "ThemeSwitch",
+      "category": "Navigation",
+      "description": "Light and dark mode theme toggle switch",
+      "file": "ThemeSwitch.kiw",
+      "props": [
+        "class",
+        "id",
+        "label"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<ThemeSwitch />"
+    },
+    {
+      "name": "Timeline",
+      "category": "Data Display",
+      "description": "Vertical event history and changelog milestone timeline",
+      "file": "Timeline.kiw",
+      "props": [
+        "body",
+        "class",
+        "items"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Timeline>…</Timeline>"
+    },
+    {
+      "name": "Toast",
+      "category": "Feedback",
+      "description": "Floating notification toast banner with auto-dismiss and status variants",
+      "file": "Toast.kiw",
+      "props": [
+        "body",
+        "class",
+        "dismissible",
+        "icon",
+        "id",
+        "message",
+        "position",
+        "title",
+        "variant"
+      ],
+      "defaults": {
+        "position": "bottom-right",
+        "variant": "info"
+      },
+      "styles": true,
+      "script": false,
+      "preview": "<Toast variant=\"success\" title=\"Saved\">Your changes are live.</Toast>"
+    },
+    {
+      "name": "Toggle",
+      "category": "Forms",
+      "description": "Binary switch toggle for boolean settings",
+      "file": "Toggle.kiw",
+      "props": [
+        "activeIcon",
+        "asSwitch",
+        "body",
+        "checked",
+        "class",
+        "disabled",
+        "id",
+        "inactiveIcon",
+        "label",
+        "name",
+        "onChange",
+        "onClick",
+        "pressed",
+        "size",
+        "text",
+        "variant"
+      ],
+      "dependencies": [
+        "Button"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Toggle label=\"Dark mode\" name=\"dark\" />"
+    },
+    {
+      "name": "Tooltip",
+      "category": "Overlays",
+      "description": "Contextual hover tooltip bubble",
+      "file": "Tooltip.kiw",
+      "props": [
+        "body",
+        "class",
+        "content",
+        "id",
+        "placement",
+        "text",
+        "tip",
+        "title"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<Tooltip>…</Tooltip>"
+    },
+    {
+      "name": "VStack",
+      "category": "Layout",
+      "description": "Vertical flex stack with configurable spacing and alignment",
+      "file": "VStack.kiw",
+      "props": [
+        "align",
+        "body",
+        "class",
+        "gap",
+        "id",
+        "justify"
+      ],
+      "styles": true,
+      "script": false,
+      "preview": "<VStack gap=\"md\">Stacked items</VStack>"
+    }
+  ]
+}

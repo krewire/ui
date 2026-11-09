@@ -18,7 +18,7 @@ kui owns the **shared presentation foundation**:
 | Area | What kui provides | Where |
 |---|---|---|
 | Components | 66 reusable `.kiw` single-file components (markup + scoped `<style>`, optionally `<script>`) | `components/*.kiw` |
-| Component catalog | Name, category and description of every component | `components.Registry`, `components.List()` |
+| Component catalog | Name, category, description, props, defaults, dependencies, preview of every component, and starter packs | `components/components.json` (schema: `components.schema.json`), `components.Registry`, `components.Resolve()` |
 | Distribution | The components as a standard `embed.FS`, and raw source by name | `components.FS`, `components.Get()` |
 | Design tokens & base styles | CSS custom properties (colour, surface, typography, spacing, radius, pop-border/shadow), resets, dark mode, layout primitives | `styles/krewire-ui.css`, `styles.CSS` |
 | Layout primitives | `Box`, `Container`, `Flex`, `Grid`, `HStack`, `Section`, `Stack`, `VStack` | `components/` |
@@ -79,23 +79,43 @@ in §7:
 
 ```go
 package components
-var FS embed.FS                         // every *.kiw component, at the FS root
-type ComponentMeta struct{ Name, Category, Description string }
+var FS embed.FS                         // every *.kiw component plus components.json, at the FS root
+const ManifestFile = "components.json"
+type ComponentMeta struct {             // one components.json entry
+	Name, Category, Description, File, Preview string
+	Props, Dependencies []string        // derived from the markup
+	Defaults map[string]string          // derived: class-helper fallbacks
+	Styles, Script bool                 // derived
+}
+type Pack struct{ Name, Description string; Components []string }
+type Manifest struct{ Schema string; Version int; Packs []Pack; Components []ComponentMeta }
 var Registry map[string]ComponentMeta   // key == ComponentMeta.Name == file name without .kiw
 func List() []string                    // sorted component names
 func Get(name string) ([]byte, error)   // "Button" or "Button.kiw"; error wraps fs.ErrNotExist
+func LoadManifest() (*Manifest, error)  // decode components.json
+func Packs() []Pack                     // starter packs, sorted by name
+func Lookup(name string) (ComponentMeta, bool)       // case-insensitive
+func Resolve(refs ...string) ([]string, error)       // names and "pack:<name>" plus transitive dependencies
 
 package styles
 var CSS string                          // contents of styles/krewire-ui.css
 ```
 
-Invariants (tested in `components/components_test.go` and
-`components/contract_test.go`):
+`components.json` is the single source of truth for the catalog; its format is
+`components/components.schema.json` (JSON Schema Draft-07). Name, category,
+description, preview and packs are authored; the other fields are derived from
+the markup by `go generate ./components`.
+
+Invariants (tested in `components/components_test.go`,
+`components/contract_test.go` and `components/manifest_test.go`):
 
 - Every embedded `.kiw` file has a `Registry` entry and every `Registry` entry
   has an embedded file.
 - `Registry` categories are one of: Layout, Atoms, Forms, Navigation, Feedback,
-  Overlays, Data Display, Document.
+  Overlays, Data Display, Document (the schema enum).
+- The derived fields match the markup (`TestManifestInSync`), every dependency
+  and pack member is a registered component, and the `minimal`, `base` and
+  `dashboard` packs exist.
 
 ## 5. The `.kiw` integration contract
 
@@ -247,7 +267,10 @@ and is never raised in a patch release.
 
 **Copy-and-own consumers.** Projects that copy `.kiw` files into their own
 `components/` directory own those copies; upstream changes reach them only when
-they copy again. Projects that rely on the built-in catalog through `kiw` pick
+they copy again. `kiw add ui/<Name>` records each copy in
+`components/.kui-lock.json` (kui version and SHA-256), refreshes only
+unmodified copies, and `kiw ui diff <Name>` compares a copy with upstream; see
+"Updating Customized Components" in README.md. Projects that rely on the built-in catalog through `kiw` pick
 up changes whenever their `github.com/krewire/ui` version changes.
 
 ## 8. Composition patterns and examples
