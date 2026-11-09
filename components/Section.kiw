@@ -18,28 +18,46 @@
 <style>
 .kiw-section {
   width: 100%;
-  padding: 3rem 0;
+  padding: 2.25rem 0;
   box-sizing: border-box;
 }
 .kiw-section-head {
   max-width: 48rem;
-  margin: 0 0 2rem;
+  margin: 0 0 1.25rem;
 }
 .kiw-section-title {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.45rem, 3.5vw, 2.35rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   margin: 0 0 0.5rem;
   color: var(--fg, #0B1F3B);
 }
 .kiw-section-desc {
-  font-size: 1rem;
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
   color: var(--muted, #57677d);
   line-height: 1.6;
   margin: 0;
 }
-.kiw-section-sm { padding: 1.5rem 0; }
-.kiw-section-md { padding: 3rem 0; }
-.kiw-section-lg { padding: 4.5rem 0; }
-.kiw-section-xl { padding: 6rem 0; }
+.kiw-section-sm { padding: 1.25rem 0; }
+.kiw-section-md { padding: 2.25rem 0; }
+.kiw-section-lg { padding: 3.25rem 0; }
+.kiw-section-xl { padding: 4.5rem 0; }
+
+@media (min-width: 768px) {
+  .kiw-section { padding: 3.5rem 0; }
+  .kiw-section-head { margin: 0 0 1.75rem; }
+  .kiw-section-sm { padding: 2rem 0; }
+  .kiw-section-md { padding: 3.5rem 0; }
+  .kiw-section-lg { padding: 5rem 0; }
+  .kiw-section-xl { padding: 6.5rem 0; }
+}
+
+@media (min-width: 1024px) {
+  .kiw-section { padding: 4.75rem 0; }
+  .kiw-section-head { margin: 0 0 2.25rem; }
+  .kiw-section-sm { padding: 2.5rem 0; }
+  .kiw-section-md { padding: 4.75rem 0; }
+  .kiw-section-lg { padding: 6.5rem 0; }
+  .kiw-section-xl { padding: 8rem 0; }
+}
 </style>

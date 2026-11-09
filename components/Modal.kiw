@@ -31,9 +31,14 @@
 .modal-dialog {
   border: none;
   background: transparent;
-  padding: 1rem;
-  max-width: min(90vw, 520px);
+  padding: 0.5rem;
+  max-width: min(calc(100vw - 1rem), 540px);
   width: 100%;
+}
+@media (min-width: 640px) {
+  .modal-dialog {
+    padding: 1.25rem;
+  }
 }
 .modal-dialog[open] {
   animation: kui-fade-in var(--kui-duration-normal, 200ms) var(--kui-ease-pop, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
@@ -69,7 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1rem;
   background: var(--bg-2, #f0ede5);
   border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
 }
@@ -99,18 +104,29 @@
   border-color: var(--error, #FF3B2E);
 }
 .modal-body {
-  padding: 1.25rem;
+  padding: 1rem;
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--fg, #0B1F3B);
 }
 .modal-footer {
-  padding: 0.85rem 1.25rem;
+  padding: 0.75rem 1rem;
   background: var(--bg-2, #f0ede5);
   border-top: 1.5px solid var(--border-subtle, rgba(11,31,59,.15));
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .modal-head {
+    padding: 1rem 1.35rem;
+  }
+  .modal-body {
+    padding: 1.35rem;
+  }
+  .modal-footer {
+    padding: 0.9rem 1.35rem;
+  }
 }
 </style>

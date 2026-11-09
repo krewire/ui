@@ -19,10 +19,22 @@
     padding-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .kiw-container {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .kiw-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .kiw-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 .kiw-container-sm { max-width: 640px; }

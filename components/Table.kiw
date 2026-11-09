@@ -29,6 +29,7 @@
 .kiw-table-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--radius, 10px);
   box-sizing: border-box;
 }
@@ -40,22 +41,43 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--fg, #0B1F3B);
   background: var(--bg, #FAF8F4);
 }
 .kiw-table th {
-  padding: 0.75rem 1rem;
+  padding: 0.55rem 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 0.05em;
   background: var(--bg-2, #f2ede4);
   border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  white-space: nowrap;
 }
 .kiw-table td {
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.75rem;
   border-bottom: 1px solid var(--border, #0B1F3B);
+}
+@media (min-width: 640px) {
+  .kiw-table {
+    font-size: 0.9rem;
+  }
+  .kiw-table th {
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+  }
+  .kiw-table td {
+    padding: 0.75rem 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .kiw-table th {
+    padding: 0.85rem 1.25rem;
+  }
+  .kiw-table td {
+    padding: 0.85rem 1.25rem;
+  }
 }
 .kiw-table tr:last-child td {
   border-bottom: none;

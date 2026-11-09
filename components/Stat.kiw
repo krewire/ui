@@ -25,7 +25,7 @@
 .stat-card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: 1rem 1.15rem;
   background: var(--bg, #FAF8F4);
   color: var(--fg, #0B1F3B);
   border-radius: var(--radius-lg, 14px);
@@ -33,6 +33,16 @@
   box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
   box-sizing: border-box;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+@media (min-width: 640px) {
+  .stat-card {
+    padding: 1.25rem 1.4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .stat-card {
+    padding: 1.4rem 1.6rem;
+  }
 }
 .stat-card:hover {
   transform: translate(-2px, -2px);

@@ -36,6 +36,18 @@ func TestStylesheetContainsCoreTokens(t *testing.T) {
 		".animate-in",
 		".animate-out",
 		"[data-state=\"open\"]",
+		"--ui-container-px-sm",
+		"--ui-container-px-md",
+		"--ui-container-px-lg",
+		"--ui-section-py-sm",
+		"--ui-section-py-md",
+		"--ui-section-py-lg",
+		".container-fluid",
+		".section-py",
+		".sm\\:p-4",
+		".md\\:py-6",
+		".lg\\:gap-8",
+		".xl\\:m-auto",
 	}
 
 	for _, token := range essentialTokens {

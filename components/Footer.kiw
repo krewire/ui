@@ -1,11 +1,11 @@
 {#if body}
 <footer class="bg-bg-2 dark:bg-bg-dark-2 {class}" style="border-top:var(--pop-border)" data-kiw-component="Footer">
-  <div class="container-site pt-12 pb-8">
+  <div class="container-site pt-8 pb-6 sm:pt-10 sm:pb-8 lg:pt-12 lg:pb-10">
     {body}
   </div>
 </footer>
 {:else if variant == "simple"}
-<footer class="bg-bg-2 dark:bg-bg-dark-2 py-6 text-xs text-muted dark:text-muted-dark {class}" style="border-top:1px solid var(--border)" data-kiw-component="Footer">
+<footer class="bg-bg-2 dark:bg-bg-dark-2 py-5 sm:py-6 text-xs text-muted dark:text-muted-dark {class}" style="border-top:1px solid var(--border)" data-kiw-component="Footer">
   <div class="container-site flex flex-wrap items-center justify-between gap-3">
     <span>{#if copyrightText}{copyrightText}{:else}© 2026 {#if brandName}{brandName}{:else}Team{/if}{/if}</span>
     {#if bottom}
@@ -17,8 +17,8 @@
 </footer>
 {:else if variant == "contributors"}
 <footer class="bg-bg-2 dark:bg-bg-dark-2 footer {class}" style="border-top:var(--pop-border)" data-kiw-component="Footer">
-  <div class="container-site pt-12 pb-8 footer-inner">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-8 footer-grid" style="border-bottom:var(--pop-border-thin)">
+  <div class="container-site pt-8 pb-6 sm:pt-10 sm:pb-8 lg:pt-12 lg:pb-10 footer-inner">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8 footer-grid" style="border-bottom:var(--pop-border-thin)">
       <!-- Brand col -->
       <div class="sm:col-span-2 md:col-span-1">
         {#if brand}
@@ -82,9 +82,9 @@
 </footer>
 {:else}
 <footer class="bg-bg-2 dark:bg-bg-dark-2 {class}" style="border-top:var(--pop-border)" data-kiw-component="Footer">
-  <div class="container-site pt-12 pb-8">
+  <div class="container-site pt-8 pb-6 sm:pt-10 sm:pb-8 lg:pt-12 lg:pb-10">
     {#if columns}
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-8" style="border-bottom:var(--pop-border-thin)">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8" style="border-bottom:var(--pop-border-thin)">
         {#if brand}
           <div class="sm:col-span-2 md:col-span-1">
             {brand}
@@ -107,7 +107,7 @@
       </div>
     {:else}
       <!-- Standard Footer grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-8" style="border-bottom:var(--pop-border-thin)">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8" style="border-bottom:var(--pop-border-thin)">
         <!-- Brand col -->
         <div class="sm:col-span-2 md:col-span-1">
           {#if brand}

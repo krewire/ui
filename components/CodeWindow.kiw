@@ -47,9 +47,19 @@ html[data-theme="dark"] .code-window {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   background: #112646;
   border-bottom: 2px solid var(--border, #0B1F3B);
+}
+@media (min-width: 640px) {
+  .code-window-bar {
+    padding: 10px 15px;
+  }
+}
+@media (min-width: 1024px) {
+  .code-window-bar {
+    padding: 12px 18px;
+  }
 }
 html[data-theme="dark"] .code-window-bar {
   background: #0B1F3B;
@@ -106,9 +116,19 @@ html[data-theme="dark"] .code-window-bar {
 }
 .code-window-pre {
   margin: 0;
-  padding: 16px 18px;
+  padding: 12px 14px;
   overflow-x: auto;
   line-height: 1.65;
+}
+@media (min-width: 640px) {
+  .code-window-pre {
+    padding: 15px 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .code-window-pre {
+    padding: 18px 24px;
+  }
 }
 .code-window-code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;

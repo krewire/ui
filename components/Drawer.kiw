@@ -149,10 +149,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1rem;
   background: var(--bg-2, #f0ede5);
   border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
   flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .drawer-head {
+    padding: 1rem 1.35rem;
+  }
 }
 
 .drawer-title {
@@ -187,14 +192,24 @@
   flex: 1 1 auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1rem;
+}
+@media (min-width: 640px) {
+  .drawer-body {
+    padding: 1.15rem 1.35rem;
+  }
 }
 
 .drawer-footer {
-  padding: 0.85rem 1.25rem;
+  padding: 0.75rem 1rem;
   background: var(--bg-2, #f0ede5);
   border-top: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
   flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .drawer-footer {
+    padding: 0.9rem 1.35rem;
+  }
 }
 
 /* Backdrop */

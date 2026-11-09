@@ -37,7 +37,7 @@
   flex-wrap: wrap;
   gap: 0.25rem;
   border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 .kiw-tab {
   appearance: none;
@@ -47,14 +47,34 @@
   cursor: pointer;
   font-family: inherit;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--muted, #57677d);
-  padding: 0.5rem 0.9rem;
+  padding: 0.4rem 0.65rem;
   border-radius: var(--radius, 10px) var(--radius, 10px) 0 0;
   margin-bottom: -2px;
   border-bottom: 2px solid transparent;
   transition: color 0.12s ease, background-color 0.12s ease;
   white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .kiw-tabs-list {
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+  .kiw-tab {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.95rem;
+  }
+}
+@media (min-width: 1024px) {
+  .kiw-tabs-list {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .kiw-tab {
+    font-size: 0.92rem;
+    padding: 0.55rem 1.15rem;
+  }
 }
 .kiw-tab:hover { color: var(--fg, #0B1F3B); background: var(--bg-2, #f2ede4); }
 .kiw-tab:focus-visible { outline: 2px solid var(--primary, #39D353); outline-offset: 2px; }
