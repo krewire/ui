@@ -22,17 +22,29 @@ Inspired by the **shadcn/ui** philosophy: you do not install an opaque `node_mod
 
 ## Getting Started
 
-### 1. Copy Components into Your Project
+### 1. Add Components to Your Project
 
-Place the desired `.kiw` component files into your project's `components/` directory:
+Install components with the `kiw` CLI. It copies the `.kiw` source that ships
+with your `kiw` build into `./components/`, together with any kui components it
+nests (for example `Navbar` brings `Brand`, `Hamburger`, `NavMenu`, …):
 
 ```bash
-# Example: copy Button, Navbar, Card, and Toast into your project
-cp path/to/krewire/ui/components/Button.kiw ./components/
-cp path/to/krewire/ui/components/Navbar.kiw ./components/
-cp path/to/krewire/ui/components/Card.kiw ./components/
-cp path/to/krewire/ui/components/Toast.kiw ./components/
+kiw ui list                    # browse the catalog, packs, and what you already have
+kiw ui info Card               # props, defaults, dependencies and a preview snippet
+kiw add ui/button ui/card      # one or more components (names are case-insensitive)
+kiw add ui:minimal             # a starter pack
 ```
+
+Starter packs:
+
+| Pack | Components |
+|---|---|
+| `minimal` | Button, Card, Input |
+| `base` | Container, Button, Card, Input |
+| `dashboard` | Table, Stat, Sidebar, Modal |
+
+Without `kiw`, copy the files by hand from a checkout of this repository
+(`cp path/to/ui/components/Button.kiw ./components/`).
 
 ### 2. Include the Design System Stylesheet
 
@@ -74,6 +86,56 @@ Child content becomes the component body (`{body}`); `<slot name="…">` or
 
 ---
 
+## Updating Customized Components
+
+Copied components are yours: edit them freely. `kiw` tracks what it copied so it
+can tell your edits apart from upstream changes:
+
+- Each install records the kui version and the SHA-256 of the copied file in
+  `components/.kui-lock.json`. Commit this file with your components.
+- `kiw ui list` shows the state of every installed component: `up to date`,
+  `modified` (you changed it), `update available` (kui changed it), or both.
+- `kiw ui diff <Name>` shows a unified diff from the upstream version to your
+  local copy (uses `git diff --no-index`).
+- `kiw add ui/<Name>` again updates a component **only if you have not modified
+  it**. A modified component is never overwritten silently; the command stops and
+  points you to `kiw ui diff`.
+
+Recommended update workflow for a customized component:
+
+1. `kiw ui diff Card` — review what you changed relative to upstream.
+2. Keep your changes small and local: prefer props, slots and CSS custom
+   properties over editing markup, so upstream updates stay easy to merge.
+3. To take the new upstream version, commit your copy, run
+   `kiw add ui/card --force`, then re-apply your edits with
+   `git diff` / `git checkout -p` against the commit you just made.
+4. To keep your version, do nothing: the lock entry keeps reporting
+   `modified` so the decision stays visible.
+
+Upgrading `kiw` (or the `github.com/krewire/ui` version a project builds with)
+is what brings new upstream component versions.
+
+---
+
+## Component Manifest
+
+`components/components.json` catalogs every component: name, category,
+description, `file`, `props` (lower-camel; `body` is the child content),
+class-helper `defaults`, nested-component `dependencies`, whether it ships
+`styles`/`script`, and a `preview` snippet. It also defines the starter
+`packs`. The format is described by
+[`components/components.schema.json`](components/components.schema.json)
+(JSON Schema Draft-07).
+
+The derived fields are computed from the markup; after editing a component run:
+
+```bash
+go generate ./components     # refresh components.json
+go test ./...                # TestManifestInSync fails if it is stale
+```
+
+---
+
 ## Go Module / Embed Usage
 
 For Go backend services or applications that want to embed components directly:
@@ -96,6 +158,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	// Catalog metadata and starter packs from components.json
+	meta := components.Registry["Button"] // props, defaults, dependencies, preview
+	deps, _ := components.Resolve("pack:minimal", "Navbar")
+	fmt.Println(meta.Preview, deps)
 
 	// Access canonical CSS stylesheet
 	css := styles.CSS
