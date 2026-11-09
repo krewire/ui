@@ -85,7 +85,7 @@
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">⚡</span>
                   <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Workspace</div>
+                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Dash</div>
                     <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.workspace_desc">Virtual workspaces &amp; AI agents</div>
                   </div>
                 </div>

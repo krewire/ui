@@ -37,7 +37,7 @@
       <!-- Repositories & Products col -->
       <div class="flex flex-col gap-2 footer-col">
         <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Products</strong>
-        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Workspace</a>
+        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Dash</a>
         <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Cloud</a>
         <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Auth</a>
         <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Panel</a>
@@ -154,7 +154,7 @@
           <!-- Products & Repos col -->
           <div class="flex flex-col gap-2">
             <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Products</strong>
-            <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Workspace</a>
+            <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Dash</a>
             <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Cloud</a>
             <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Auth</a>
             <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Panel</a>

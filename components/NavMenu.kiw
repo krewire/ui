@@ -28,14 +28,14 @@
             <!-- 4 Products Responsive Grid (1 col on mobile, 2 col on md, 4 col on lg) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
-              <!-- 1. Krewire Workspace -->
+              <!-- 1. Krewire Dash -->
               <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">⚡</span>
                   <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_ai">AI</span>
                 </div>
                 <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.workspace_title">
-                  Krewire Workspace
+                  Krewire Dash
                 </div>
                 <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mt-1 mb-3" data-i18n="nav.workspace_desc">
                   Virtual workspaces &amp; autonomous agents. Web terminal, sandboxed runtimes &amp; collaboration.
