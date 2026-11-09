@@ -1,6 +1,6 @@
-<span class="{{class "badge" .Variant "neutral" .Size "md" .Class}}">
+<span class="{{class "badge" .Variant "neutral" .Size "md" .Class}}" {#if id}id="{id}"{/if} data-kiw-component="Badge">
   {#if dot}<span class="badge-dot" aria-hidden="true"></span>{/if}
-  <span class="badge-text">{#if body}{body}{:else}{text}{/if}</span>
+  <span class="badge-text">{#if body}{body}{:else if text}{text}{:else}{label}{/if}</span>
 </span>
 
 <style>

@@ -1,4 +1,4 @@
-<div class="stat-card {class}" data-kiw-component="Stat">
+<div class="stat-card {class}" {#if id}id="{id}"{/if} data-kiw-component="Stat">
   <div class="stat-head">
     <span class="stat-label">{label}</span>
     {#if icon}<span class="stat-icon">{icon}</span>{/if}

@@ -1,4 +1,4 @@
-<div class="{{class "alert" .Variant "info" .Class}}" role="alert">
+<div class="{{class "alert" .Variant "info" .Class}}" role="alert" {#if id}id="{id}"{/if} data-kiw-component="Alert">
   <div class="alert-icon">
     {#if icon}
       {icon}
@@ -19,7 +19,7 @@
     {/if}
   </div>
   {#if dismissible}
-  <button type="button" class="alert-close" aria-label="Dismiss alert" onclick="this.closest('.alert').remove()">×</button>
+  <button type="button" class="alert-close" aria-label="Dismiss alert" onclick="const a=this.closest('.alert'); a.classList.add('animate-out', 'fade-out'); setTimeout(()=>a.remove(), 150);">×</button>
   {/if}
 </div>
 

@@ -1,17 +1,28 @@
-<div class="button-group {class}" data-kiw-component="ButtonGroup" role="group" {#if ariaLabel}aria-label="{ariaLabel}"{/if}>
+<div class="button-group {class}" {#if id}id="{id}"{/if} data-kiw-component="ButtonGroup" role="group" {#if ariaLabel}aria-label="{ariaLabel}"{/if}>
   {#if body}
     {body}
   {:else if items}
     {#each items as item}
-      <button
-        type="button"
-        class="btn btn-group-item {#if item.active}btn-active{/if}"
-        {#if item.onClick}onclick="{item.onClick}"{/if}
-        {#if item.disabled}disabled{/if}
-      >
-        {#if item.icon}<span class="btn-group-icon">{item.icon}</span>{/if}
-        <span class="btn-group-text">{item.label}</span>
-      </button>
+      {#if item.href}
+        <a
+          href="{item.href}"
+          class="btn btn-group-item {#if item.active}btn-active{/if}"
+          {#if item.target}target="{item.target}" rel="noopener"{/if}
+        >
+          {#if item.icon}<span class="btn-group-icon">{item.icon}</span>{/if}
+          <span class="btn-group-text">{item.label}</span>
+        </a>
+      {:else}
+        <button
+          type="button"
+          class="btn btn-group-item {#if item.active}btn-active{/if}"
+          {#if item.onClick}onclick="{item.onClick}"{/if}
+          {#if item.disabled}disabled{/if}
+        >
+          {#if item.icon}<span class="btn-group-icon">{item.icon}</span>{/if}
+          <span class="btn-group-text">{item.label}</span>
+        </button>
+      {/if}
     {/each}
   {/if}
 </div>

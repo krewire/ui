@@ -1,5 +1,5 @@
 <div class="terminal {class}"
-     style="border:var(--pop-border); box-shadow:var(--pop-shadow-sm)"
+     {#if style}style="{style}"{/if}
      {#if id}id="{id}"{/if}
      data-kiw-component="Terminal">
   {#if title}

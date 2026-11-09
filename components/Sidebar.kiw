@@ -1,4 +1,4 @@
-<aside class="site-sidebar" id="{#if id}{id}{:else}site-sidebar{/if}" aria-label="{#if label}{label}{:else}Sidebar{/if}">
+<aside class="site-sidebar {class}" id="{#if id}{id}{:else}site-sidebar{/if}" aria-label="{#if label}{label}{:else}Sidebar{/if}" data-kiw-component="Sidebar">
   {#if head}
     {head}
   {:else if header}

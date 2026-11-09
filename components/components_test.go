@@ -86,3 +86,25 @@ func TestListAndGet(t *testing.T) {
 		t.Errorf("expected error for non-existent component, got nil")
 	}
 }
+
+func TestComponentDataAttributes(t *testing.T) {
+	// Components that are expected to carry data-kiw-component for debugging, testing, and accessibility inspection
+	probed := []string{
+		"Button", "Card", "Alert", "Callout", "Section", "Container",
+		"Box", "Flex", "Grid", "HStack", "VStack", "Stack", "Modal",
+		"Drawer", "Dropdown", "ActionMenu", "Toast", "Banner", "Tag",
+		"Badge", "Input", "Select", "Textarea", "Checkbox", "Radio",
+		"Tabs", "Table", "Pagination", "Skeleton", "Stat", "Empty",
+	}
+
+	for _, name := range probed {
+		data, err := components.Get(name)
+		if err != nil {
+			t.Fatalf("Get(%s) failed: %v", name, err)
+		}
+		expectedAttr := `data-kiw-component="` + name + `"`
+		if !strings.Contains(string(data), expectedAttr) {
+			t.Errorf("expected %s.kiw to contain %s", name, expectedAttr)
+		}
+	}
+}

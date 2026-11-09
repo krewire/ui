@@ -1,3 +1,24 @@
+{#if variant == "switch" || asSwitch}
+<label class="toggle-switch-label {class}" {#if id}id="{id}-label"{/if} data-kiw-component="Toggle">
+  <input
+    type="checkbox"
+    role="switch"
+    {#if id}id="{id}"{/if}
+    {#if name}name="{name}"{/if}
+    {#if checked || pressed}checked{/if}
+    {#if disabled}disabled{/if}
+    {#if onChange}onchange="{onChange}"{/if}
+    class="toggle-switch-input"
+    aria-label="{#if label}{label}{:else}Toggle switch{/if}"
+  />
+  <span class="toggle-switch-track" aria-hidden="true">
+    <span class="toggle-switch-thumb"></span>
+  </span>
+  {#if label || text}
+  <span class="toggle-switch-text">{#if label}{label}{:else}{text}{/if}</span>
+  {/if}
+</label>
+{:else}
 <Button {id}
         {class}
         {variant}
@@ -14,6 +35,7 @@
     {#if text}<span class="toggle-text">{text}</span>{/if}
   {/if}
 </Button>
+{/if}
 
 <style>
 .toggle[aria-pressed="true"] .toggle-icon-inactive {
@@ -25,5 +47,69 @@
 .toggle[aria-pressed="true"] {
   background: var(--primary) !important;
   color: var(--primary-content) !important;
+}
+
+/* Switch variant */
+.toggle-switch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--fg, #0B1F3B);
+}
+.toggle-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-switch-track {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  background: var(--bg-2, #f2ede4);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border-radius: 999px;
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  transition: background-color 0.15s ease;
+}
+.toggle-switch-thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 1.15rem;
+  height: 1.15rem;
+  background: var(--fg, #0B1F3B);
+  border-radius: 50%;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.toggle-switch-input:checked + .toggle-switch-track {
+  background: var(--primary, #39D353);
+}
+.toggle-switch-input:checked + .toggle-switch-track .toggle-switch-thumb {
+  transform: translateX(1.2rem);
+  background: var(--primary-content, #0B1F3B);
+}
+.toggle-switch-input:disabled + .toggle-switch-track {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+html[data-theme="dark"] .toggle-switch-label,
+.dark .toggle-switch-label {
+  color: var(--fg-dark, #FAF8F4);
+}
+html[data-theme="dark"] .toggle-switch-track,
+.dark .toggle-switch-track {
+  background: var(--bg-dark-2, #0d223f);
+  border-color: var(--border-dark, #FAF8F4);
+  box-shadow: 2px 2px 0px var(--border-dark, #FAF8F4);
+}
+html[data-theme="dark"] .toggle-switch-thumb,
+.dark .toggle-switch-thumb {
+  background: var(--fg-dark, #FAF8F4);
 }
 </style>

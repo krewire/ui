@@ -1,10 +1,20 @@
+{#if href}
+<a href="{href}" class="{{class "tag" .Variant "default" .Size "md" .Class}} {#if selected}tag-selected{/if}" data-kiw-component="Tag" {#if id}id="{id}"{/if} {#if target}target="{target}" rel="noopener"{/if}>
+  {#if icon}<span class="tag-icon">{icon}</span>{/if}
+  <span class="tag-text">{#if text}{text}{:else if label}{label}{:else if body}{body}{/if}</span>
+  {#if removable}
+  <button type="button" class="tag-remove" aria-label="Remove tag" onclick="event.preventDefault(); this.closest('.tag').remove()">×</button>
+  {/if}
+</a>
+{:else}
 <span class="{{class "tag" .Variant "default" .Size "md" .Class}} {#if selected}tag-selected{/if}" data-kiw-component="Tag" {#if id}id="{id}"{/if}>
   {#if icon}<span class="tag-icon">{icon}</span>{/if}
-  <span class="tag-text">{#if text}{text}{:else if body}{body}{/if}</span>
+  <span class="tag-text">{#if text}{text}{:else if label}{label}{:else if body}{body}{/if}</span>
   {#if removable}
   <button type="button" class="tag-remove" aria-label="Remove tag" onclick="this.closest('.tag').remove()">×</button>
   {/if}
 </span>
+{/if}
 
 <style>
 .tag {

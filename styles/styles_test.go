@@ -30,6 +30,12 @@ func TestStylesheetContainsCoreTokens(t *testing.T) {
 		".card",
 		".badge",
 		".border-pop",
+		"--kui-duration-normal",
+		"kui-fade-in",
+		"kui-pop-in",
+		".animate-in",
+		".animate-out",
+		"[data-state=\"open\"]",
 	}
 
 	for _, token := range essentialTokens {

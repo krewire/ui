@@ -1,1 +1,39 @@
-{{assetLinks .AssetVersion}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#if title}
+<title>{title}</title>
+<meta property="og:title" content="{#if ogTitle}{ogTitle}{:else}{title}{/if}">
+<meta name="twitter:title" content="{#if ogTitle}{ogTitle}{:else}{title}{/if}">
+{/if}
+{#if description}
+<meta name="description" content="{description}">
+<meta property="og:description" content="{#if ogDescription}{ogDescription}{:else}{description}{/if}">
+<meta name="twitter:description" content="{#if ogDescription}{ogDescription}{:else}{description}{/if}">
+{/if}
+{#if canonical}
+<link rel="canonical" href="{canonical}">
+<meta property="og:url" content="{canonical}">
+{/if}
+{#if ogImage}
+<meta property="og:image" content="{ogImage}">
+<meta name="twitter:image" content="{ogImage}">
+<meta name="twitter:card" content="summary_large_image">
+{:else}
+<meta name="twitter:card" content="summary">
+{/if}
+{#if favicon}
+<link rel="icon" href="{favicon}">
+{/if}
+{#if themeColor}
+<meta name="theme-color" content="{themeColor}">
+{/if}
+{#if keywords}
+<meta name="keywords" content="{keywords}">
+{/if}
+{#if author}
+<meta name="author" content="{author}">
+{/if}
+{#if body}
+{body}
+{/if}
+{{if .AssetVersion}}{{assetLinks .AssetVersion}}{{end}}

@@ -2,7 +2,7 @@
       {#if id}id="{id}"{/if}
       tabindex="0"
       role="tooltip"
-      aria-label="{text}"
+      aria-label="{#if text}{text}{:else if tip}{tip}{:else if content}{content}{:else if title}{title}{/if}"
       data-kiw-component="Tooltip">{body}</span>
 
 <style>

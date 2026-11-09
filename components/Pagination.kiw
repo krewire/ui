@@ -1,4 +1,4 @@
-<nav class="pagination {class}" data-kiw-component="Pagination" aria-label="Pagination Navigation">
+<nav class="pagination {class}" {#if id}id="{id}"{/if} data-kiw-component="Pagination" aria-label="Pagination Navigation">
   {#if hasPrev || currentPage > 1}
     <a href="{#if prevUrl}{prevUrl}{:else}?page={currentPage - 1}{/if}" class="page-btn page-prev" aria-label="Previous Page">
       ← <span class="page-btn-text">Previous</span>

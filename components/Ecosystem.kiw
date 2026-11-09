@@ -12,6 +12,26 @@
 
     {#if body}
       {body}
+    {:else if items}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 md:gap-4 lg:gap-5">
+        {#each items as item}
+          <a href="{item.href}" target="_blank" rel="noopener"
+             class="eco-card flex flex-col p-5 rounded-xl no-underline transition-all duration-150 word-break-all bg-bg dark:bg-bg-dark"
+             style="border:var(--pop-border); box-shadow:var(--pop-shadow)">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              {#if item.badge}<span class="badge badge-primary text-2xs font-mono">{item.badge}</span>{/if}
+              <span class="eco-arrow text-base font-black text-muted dark:text-muted-dark transition-all duration-150">↗</span>
+            </div>
+            <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">{item.title}</h3>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3">{item.description}</p>
+            {#if item.repo}
+            <div class="mt-auto px-2 py-1 rounded-md font-mono text-xs font-bold text-muted dark:text-muted-dark bg-bg-2 dark:bg-bg-dark-2 w-fit" style="border:1.5px solid var(--border)">
+              <code>{item.repo}</code>
+            </div>
+            {/if}
+          </a>
+        {/each}
+      </div>
     {:else}
       <!-- Grid: 1 col on mobile → 2 col on sm → 3 col on lg -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 md:gap-4 lg:gap-5">

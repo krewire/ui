@@ -1,4 +1,4 @@
-<div class="empty-state {class}" data-kiw-component="Empty">
+<div class="empty-state {class}" {#if id}id="{id}"{/if} data-kiw-component="Empty">
   <div class="empty-icon-wrap">
     {#if icon}
       <span class="empty-icon">{icon}</span>

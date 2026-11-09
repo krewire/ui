@@ -153,14 +153,30 @@ html.dark .dropdown-divider, [data-theme="dark"] .dropdown-divider, .dark .dropd
   background: var(--border-subtle, rgba(250, 248, 244, 0.15));
 }
 
+.dropdown-content.closing,
+.dropdown-content[data-state="closed"] {
+  animation: dropdownOut 0.12s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
 @keyframes dropdownIn {
   from {
     opacity: 0;
-    transform: translateY(-4px) scale(0.98);
+    transform: translateY(-6px) scale(0.96);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dropdownOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
   }
 }
 </style>

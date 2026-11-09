@@ -1,4 +1,4 @@
-<dialog class="modal-dialog {class}" id="{id}">
+<dialog class="modal-dialog {class}" id="{id}" data-kiw-component="Modal">
   <div class="modal-box">
     {#if header}
       {header}
@@ -34,6 +34,23 @@
   padding: 1rem;
   max-width: min(90vw, 520px);
   width: 100%;
+}
+.modal-dialog[open] {
+  animation: kui-fade-in var(--kui-duration-normal, 200ms) var(--kui-ease-pop, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+.modal-dialog[open] .modal-box {
+  animation: kui-pop-in var(--kui-duration-normal, 200ms) var(--kui-ease-pop, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+.modal-dialog[open]::backdrop {
+  animation: kui-fade-in var(--kui-duration-normal, 200ms) ease-out forwards;
+}
+.modal-dialog.closing,
+.modal-dialog[data-state="closed"] {
+  animation: kui-fade-out var(--kui-duration-fast, 150ms) ease-in forwards;
+}
+.modal-dialog.closing .modal-box,
+.modal-dialog[data-state="closed"] .modal-box {
+  animation: kui-pop-out var(--kui-duration-fast, 150ms) ease-in forwards;
 }
 .modal-dialog::backdrop {
   background: rgba(11, 31, 59, 0.45);

@@ -1,13 +1,83 @@
-
-<div class="callout {#if type}{type}{:else}info{/if}">
-  {#if title}<strong>{title}</strong>{/if}
-  {#if body}<p>{body}</p>{/if}
-</div>
+<aside class="{{class "kiw-callout" .Variant "info" .Class}}"
+       {#if id}id="{id}"{/if}
+       role="{#if role}{role}{:else if variant == "error"}alert{:else}note{/if}"
+       data-kiw-component="Callout">
+  <div class="kiw-callout-icon" aria-hidden="true">
+    {#if icon}
+      {icon}
+    {:else if variant == "success"}
+      ✓
+    {:else if variant == "warning"}
+      ⚠
+    {:else if variant == "error"}
+      ✕
+    {:else}
+      ℹ
+    {/if}
+  </div>
+  <div class="kiw-callout-content">
+    {#if title}<h4 class="kiw-callout-title">{title}</h4>{/if}
+    <div class="kiw-callout-body">
+      {#if body}{body}{:else if message}{message}{/if}
+    </div>
+  </div>
+</aside>
 
 <style>
-.callout{padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-2);margin:16px 0}
-.callout strong{font-size:13px}
-.callout p{margin:6px 0 0;font-size:13px;color:color-mix(in srgb, var(--fg) 80%, var(--muted))}
-.callout.info{border-color:color-mix(in srgb, #0ea5e9 30%, var(--border))}
-.callout.warning{border-color:color-mix(in srgb, #f59e0b 30%, var(--border))}
+.kiw-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius, 10px);
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  background: var(--bg-2, #f2ede4);
+  margin: 1.25rem 0;
+  box-sizing: border-box;
+}
+.kiw-callout-icon {
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+.kiw-callout-content {
+  flex: 1;
+  min-width: 0;
+}
+.kiw-callout-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+  color: var(--fg, #0B1F3B);
+}
+.kiw-callout-body {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--fg, #0B1F3B);
+}
+.kiw-callout-body p {
+  margin: 0;
+}
+.kiw-callout-info { border-left: 5px solid var(--primary, #39D353); }
+.kiw-callout-success { border-left: 5px solid #22c55e; }
+.kiw-callout-warning { border-left: 5px solid #f59e0b; }
+.kiw-callout-error { border-left: 5px solid var(--error, #FF3B2E); }
+.kiw-callout-neutral { border-left: 5px solid var(--muted, #57677d); }
+
+html[data-theme="dark"] .kiw-callout,
+.dark .kiw-callout {
+  background: var(--bg-dark-2, #0d223f);
+  border-color: var(--border-dark, #FAF8F4);
+  box-shadow: 2px 2px 0px var(--border-dark, #FAF8F4);
+}
+html[data-theme="dark"] .kiw-callout-title,
+.dark .kiw-callout-title {
+  color: var(--fg-dark, #FAF8F4);
+}
+html[data-theme="dark"] .kiw-callout-body,
+.dark .kiw-callout-body {
+  color: var(--fg-dark, #FAF8F4);
+}
 </style>

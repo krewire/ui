@@ -665,6 +665,141 @@ button:disabled, input:disabled, textarea:disabled, select:disabled {
   line-height: var(--ui-leading-normal);
 }
 
+/* =========================================================================
+   14. ENTER / LEAVE ANIMATIONS & TRANSITIONS (shadcn-model)
+   ========================================================================= */
+:root {
+  --kui-duration-fast: 150ms;
+  --kui-duration-normal: 200ms;
+  --kui-duration-slow: 300ms;
+  --kui-ease-pop: cubic-bezier(0.16, 1, 0.3, 1);
+  --kui-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --kui-ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes kui-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes kui-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes kui-zoom-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kui-zoom-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.95); }
+}
+
+@keyframes kui-pop-in {
+  from { opacity: 0; transform: scale(0.92) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes kui-pop-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.95) translateY(4px); }
+}
+
+@keyframes kui-slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes kui-slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes kui-slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes kui-slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes kui-slide-in-top {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes kui-slide-out-top {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes kui-slide-in-bottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes kui-slide-out-bottom {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes kui-accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--kui-accordion-content-height, auto); opacity: 1; }
+}
+
+@keyframes kui-accordion-up {
+  from { height: var(--kui-accordion-content-height, auto); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+/* Animation Utilities */
+.animate-in {
+  animation-duration: var(--kui-duration-normal);
+  animation-timing-function: var(--kui-ease-pop);
+  animation-fill-mode: both;
+}
+
+.animate-out {
+  animation-duration: var(--kui-duration-fast);
+  animation-timing-function: var(--kui-ease-in);
+  animation-fill-mode: both;
+}
+
+.fade-in { animation-name: kui-fade-in; }
+.fade-out { animation-name: kui-fade-out; }
+.zoom-in-95 { animation-name: kui-zoom-in; }
+.zoom-out-95 { animation-name: kui-zoom-out; }
+.pop-in { animation-name: kui-pop-in; }
+.pop-out { animation-name: kui-pop-out; }
+.slide-in-from-right { animation-name: kui-slide-in-right; }
+.slide-out-to-right { animation-name: kui-slide-out-right; }
+.slide-in-from-left { animation-name: kui-slide-in-left; }
+.slide-out-to-left { animation-name: kui-slide-out-left; }
+.slide-in-from-top { animation-name: kui-slide-in-top; }
+.slide-out-to-top { animation-name: kui-slide-out-top; }
+.slide-in-from-bottom { animation-name: kui-slide-in-bottom; }
+.slide-out-to-bottom { animation-name: kui-slide-out-bottom; }
+
+/* Interactive State Selectors */
+[data-state="open"].animate-in,
+[data-motion="enter"] {
+  animation-duration: var(--kui-duration-normal);
+  animation-timing-function: var(--kui-ease-pop);
+  animation-fill-mode: both;
+}
+
+[data-state="closed"].animate-out,
+[data-motion="leave"] {
+  animation-duration: var(--kui-duration-fast);
+  animation-timing-function: var(--kui-ease-in);
+  animation-fill-mode: both;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

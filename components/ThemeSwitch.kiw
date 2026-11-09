@@ -1,9 +1,11 @@
 <button type="button"
-        class="theme-switch btn w-9 h-9 p-0 min-h-0 text-base flex items-center justify-center rounded-full"
+        class="theme-switch btn w-9 h-9 p-0 min-h-0 text-base flex items-center justify-center rounded-full {class}"
+        {#if id}id="{id}"{/if}
         data-theme-toggle
-        aria-label="Toggle theme">
-  <span class="sun sun-icon">☀</span>
-  <span class="moon moon-icon">☾</span>
+        aria-label="{#if label}{label}{:else}Toggle theme{/if}"
+        data-kiw-component="ThemeSwitch">
+  <span class="sun sun-icon" aria-hidden="true">☀</span>
+  <span class="moon moon-icon" aria-hidden="true">☾</span>
 </button>
 
 <style>

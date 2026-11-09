@@ -13,22 +13,15 @@
     {/if}
   </div>
   <pre class="code-window-pre"><code class="code-window-code">{#if body}{body}{:else if code}{code}{:else if showDefaultSample}<span class="c"># Terminal Shell</span>
-<span class="p">$ </span><span>echo "Hello, world!"</span>{:else}<span class="c">// Krewire — Modular Go Libraries for Every Workload</span>
+<span class="p">$ </span><span>echo "Hello, world!"</span>{:else}<span class="c">// Application Entry Point</span>
 <span class="k">package</span> main
 
 <span class="k">import</span> (
-    <span class="s">"github.com/krewire/krewire/pkg/web"</span>
+    <span class="s">"fmt"</span>
 )
 
 <span class="k">func</span> <span class="f">main</span>() {
-    app := web.New()
-    app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
-        <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
-            <span class="s">"status"</span>:   <span class="s">"running"</span>,
-            <span class="s">"platform"</span>: <span class="s">"Krewire"</span>,
-        })
-    })
-    app.Run(<span class="s">":8080"</span>)
+    fmt.Println(<span class="s">"Hello, World!"</span>)
 }{/if}</code></pre>
 </div>
 

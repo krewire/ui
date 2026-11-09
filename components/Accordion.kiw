@@ -77,6 +77,13 @@
   background: var(--bg, #FAF8F4);
   border-top: 1.5px solid var(--border-subtle, rgba(11, 31, 59, 0.15));
 }
+.accordion-item[open] .accordion-body {
+  animation: kui-accordion-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.accordion-item.closing .accordion-body,
+.accordion-item[data-state="closed"] .accordion-body {
+  animation: kui-accordion-up 0.15s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
 
 .accordion-content {
   font-size: 0.85rem;

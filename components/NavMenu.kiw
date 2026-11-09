@@ -111,7 +111,11 @@
       </details>
     {/if}
 
-    {#if links}
+    {#if items}
+      {#each items as item}
+        <a href="{item.url}" class="text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150 {#if item.active}text-primary bg-bg-2 dark:bg-bg-dark-2{/if}">{item.text}</a>
+      {/each}
+    {:else if links}
       {links}
     {:else if !hideLinks}
       <a href="/docs/getting-started" data-i18n="nav.get_started" class="text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150">Get Started</a>

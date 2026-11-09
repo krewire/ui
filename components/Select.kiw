@@ -1,4 +1,4 @@
-<div class="field-group {class}">
+<div class="field-group {class}" data-kiw-component="Select">
   {#if label}
   <label class="field-label" {#if id}for="{id}"{/if}>
     {label}
@@ -14,7 +14,13 @@
       class="field-input field-select {#if error}has-error{/if}"
       {#if help}aria-describedby="{id}-help"{/if}
     >
-      {body}
+      {#if options}
+        {#each options as opt}
+          <option value="{opt.value}" {#if opt.selected || opt.value == value}selected{/if} {#if opt.disabled}disabled{/if}>{opt.label}</option>
+        {/each}
+      {:else}
+        {body}
+      {/if}
     </select>
     <div class="select-arrow" aria-hidden="true">▼</div>
   </div>

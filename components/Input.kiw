@@ -1,4 +1,4 @@
-<div class="field-group {class}">
+<div class="field-group {class}" data-kiw-component="Input">
   {#if label}
   <label class="field-label" {#if id}for="{id}"{/if}>
     {label}

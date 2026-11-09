@@ -1,15 +1,45 @@
-
-<section class="section">
-  <div class="head">
-    <h2>{title}</h2>
-    <p>{desc}</p>
+<section class="kiw-section {#if variant}kiw-section-{variant}{/if} {#if size}kiw-section-{size}{/if} {class}"
+         {#if id}id="{id}"{/if}
+         data-kiw-component="Section">
+  {#if header}
+    {header}
+  {:else if title || subtitle || desc || badge}
+    <div class="kiw-section-head {#if align}text-{align}{/if}">
+      {#if badge}<span class="badge badge-primary mb-2.5">{badge}</span>{/if}
+      {#if title}<h2 class="kiw-section-title">{title}</h2>{/if}
+      {#if subtitle || desc}<p class="kiw-section-desc">{#if subtitle}{subtitle}{:else}{desc}{/if}</p>{/if}
+    </div>
+  {/if}
+  <div class="kiw-section-body">
+    {#if body}{body}{:else}{content}{/if}
   </div>
-  <div class="body">{content}</div>
 </section>
 
 <style>
-.section{padding:32px 0}
-.head{max-width:720px;margin:0 0 24px}
-.head h2{font-size:28px;letter-spacing:-.03em;margin:0 0 8px}
-.head p{color:var(--muted);margin:0}
+.kiw-section {
+  width: 100%;
+  padding: 3rem 0;
+  box-sizing: border-box;
+}
+.kiw-section-head {
+  max-width: 48rem;
+  margin: 0 0 2rem;
+}
+.kiw-section-title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+  color: var(--fg, #0B1F3B);
+}
+.kiw-section-desc {
+  font-size: 1rem;
+  color: var(--muted, #57677d);
+  line-height: 1.6;
+  margin: 0;
+}
+.kiw-section-sm { padding: 1.5rem 0; }
+.kiw-section-md { padding: 3rem 0; }
+.kiw-section-lg { padding: 4.5rem 0; }
+.kiw-section-xl { padding: 6rem 0; }
 </style>

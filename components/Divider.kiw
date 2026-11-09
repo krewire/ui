@@ -1,9 +1,10 @@
 <div class="kiw-divider {#if vertical}kiw-divider-vertical{:else}kiw-divider-horizontal{/if} {class}"
+     {#if id}id="{id}"{/if}
      role="separator"
      aria-orientation="{#if vertical}vertical{:else}horizontal{/if}"
      data-kiw-component="Divider">
-  {#if label}
-  <span class="kiw-divider-label">{label}</span>
+  {#if label || text}
+  <span class="kiw-divider-label">{#if label}{label}{:else}{text}{/if}</span>
   {/if}
 </div>
 

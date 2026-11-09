@@ -1,4 +1,4 @@
-<div class="field-group {class}">
+<div class="field-group {class}" data-kiw-component="Textarea">
   {#if label}
   <label class="field-label" {#if id}for="{id}"{/if}>
     {label}
@@ -14,7 +14,7 @@
     {#if disabled}disabled{/if}
     class="field-input field-textarea {#if error}has-error{/if}"
     {#if help}aria-describedby="{id}-help"{/if}
-  >{#if value}{value}{/if}</textarea>
+  >{#if value}{value}{:else if body}{body}{/if}</textarea>
   {#if help}
   <span class="field-help" {#if id}id="{id}-help"{/if}>{help}</span>
   {/if}

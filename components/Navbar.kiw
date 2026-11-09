@@ -19,6 +19,10 @@
         {#each navLinks as link}
           <a href="{link.url}" class="text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150">{link.text}</a>
         {/each}
+      {:else if items}
+        {#each items as link}
+          <a href="{link.url}" class="text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150">{link.text}</a>
+        {/each}
       {:else if showEcosystemMenu}
         <NavMenu showEcosystemMenu=true showProductsDropdown=true />
       {/if}
@@ -64,6 +68,10 @@
             {body}
           {:else if navLinks}
             {#each navLinks as link}
+              <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
+            {/each}
+          {:else if items}
+            {#each items as link}
               <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
             {/each}
           {:else if showEcosystemMenu}
@@ -144,8 +152,8 @@
 </header>
 
 <script>
-if (typeof window !== 'undefined' && !window.__krewireDropdownListenerInstalled) {
-  window.__krewireDropdownListenerInstalled = true;
+if (typeof window !== 'undefined' && !window.__kuiDropdownListenerInstalled) {
+  window.__kuiDropdownListenerInstalled = true;
   document.addEventListener('click', function(e) {
     var details = document.querySelectorAll('details.dropdown-container[open]');
     for (var i = 0; i < details.length; i++) {

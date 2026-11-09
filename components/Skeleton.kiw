@@ -1,4 +1,4 @@
-<div class="{{class "skeleton" .Variant "text" .Class}}" data-kiw-component="Skeleton" {#if width}style="width:{width};{#if height}height:{height};{/if}"{:else if height}style="height:{height};"{/if} aria-hidden="true"></div>
+<div class="{{class "skeleton" .Variant "text" .Class}}" {#if id}id="{id}"{/if} data-kiw-component="Skeleton" {#if width}style="width:{width};{#if height}height:{height};{/if}"{:else if height}style="height:{height};"{/if} aria-hidden="true"></div>
 
 <style>
 .skeleton {

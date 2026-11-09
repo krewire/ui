@@ -1,5 +1,5 @@
-<details class="action-menu {class}" data-kiw-component="ActionMenu">
-  <summary class="action-menu-trigger" aria-label="Action options">
+<details class="action-menu {class}" {#if id}id="{id}"{/if} data-kiw-component="ActionMenu">
+  <summary class="action-menu-trigger" aria-label="{#if ariaLabel}{ariaLabel}{:else}Action options{/if}">
     {#if trigger}
       {trigger}
     {:else}
@@ -20,6 +20,11 @@
         {#each items as item}
           {#if item.divider}
             <div class="action-menu-divider"></div>
+          {:else if item.onClick || item.onclick}
+            <button type="button" class="action-menu-item action-menu-action {#if item.error}item-error{/if}" onclick="{#if item.onClick}{item.onClick}{:else}{item.onclick}{/if}">
+              {#if item.icon}<span class="item-icon">{item.icon}</span>{/if}
+              <span class="item-label">{item.label}</span>
+            </button>
           {:else}
             <a href="{item.href}" class="action-menu-item {#if item.error}item-error{/if}" {#if item.target}target="{item.target}" rel="noopener"{/if}>
               {#if item.icon}<span class="item-icon">{item.icon}</span>{/if}
@@ -126,6 +131,15 @@
   height: 1px;
   background: var(--border-subtle, rgba(11, 31, 59, 0.15));
   margin: 0.25rem 0;
+}
+
+button.action-menu-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
 }
 
 html.dark .action-menu-btn, [data-theme="dark"] .action-menu-btn, .dark .action-menu-btn {

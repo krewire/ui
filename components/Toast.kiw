@@ -15,7 +15,7 @@
     <div class="toast-message">{#if message}{message}{:else if body}{body}{/if}</div>
   </div>
   {#if dismissible != false}
-  <button type="button" class="toast-close" aria-label="Close notification" onclick="this.closest('.toast').remove()">✕</button>
+  <button type="button" class="toast-close" aria-label="Close notification" onclick="const t=this.closest('.toast'); t.classList.add('toast-leaving'); setTimeout(()=>t.remove(), 200);">✕</button>
   {/if}
 </div>
 
@@ -133,6 +133,11 @@ html.dark .toast-close:hover, [data-theme="dark"] .toast-close:hover, .dark .toa
   border-color: var(--border, #FAF8F4);
 }
 
+.toast.toast-leaving,
+.toast[data-state="closed"] {
+  animation: toastSlideOut 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
 @keyframes toastSlideIn {
   from {
     transform: translateY(10px) scale(0.96);
@@ -141,6 +146,17 @@ html.dark .toast-close:hover, [data-theme="dark"] .toast-close:hover, .dark .toa
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(10px) scale(0.96);
+    opacity: 0;
   }
 }
 </style>
