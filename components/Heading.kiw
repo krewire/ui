@@ -1,18 +1,18 @@
-{#if level == "1"}
+{{if eq (printf "%v" .Level) "1"}}
 <h1 class="kiw-heading kiw-h1 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h1>
-{:else if level == "2"}
+{{else if eq (printf "%v" .Level) "2"}}
 <h2 class="kiw-heading kiw-h2 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h2>
-{:else if level == "3"}
+{{else if eq (printf "%v" .Level) "3"}}
 <h3 class="kiw-heading kiw-h3 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h3>
-{:else if level == "4"}
+{{else if eq (printf "%v" .Level) "4"}}
 <h4 class="kiw-heading kiw-h4 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h4>
-{:else if level == "5"}
+{{else if eq (printf "%v" .Level) "5"}}
 <h5 class="kiw-heading kiw-h5 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h5>
-{:else if level == "6"}
+{{else if eq (printf "%v" .Level) "6"}}
 <h6 class="kiw-heading kiw-h6 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h6>
-{:else}
+{{else}}
 <h2 class="kiw-heading kiw-h2 {class}" {#if id}id="{id}"{/if} data-kiw-component="Heading">{#if body}{body}{:else}{text}{/if}</h2>
-{/if}
+{{end}}
 
 <style>
 .kiw-heading {
