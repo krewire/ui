@@ -1,6 +1,8 @@
 // Package components embeds the Krewire UI (kui) .kiw component catalog.
 package components
 
+//go:generate go run ./internal/manifestgen
+
 import (
 	"embed"
 	"fmt"

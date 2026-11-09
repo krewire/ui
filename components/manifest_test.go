@@ -10,7 +10,20 @@ import (
 	"testing"
 
 	"github.com/krewire/ui/components"
+	"github.com/krewire/ui/components/internal/analyze"
 )
+
+// TestManifestInSync fails when a component's derived manifest fields no
+// longer match its markup. Fix with: go generate ./components
+func TestManifestInSync(t *testing.T) {
+	eachComponent(t, func(name, src string) {
+		got := components.Registry[name]
+		want := analyze.Derive(got, src)
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("%s: components.json is stale (run go generate ./components)\n got: %+v\nwant: %+v", name, got, want)
+		}
+	})
+}
 
 type schemaDoc struct {
 	Required    []string `json:"required"`
