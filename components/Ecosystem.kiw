@@ -171,18 +171,18 @@
           </div>
         </a>
 
-        <!-- 9. panel (Enterprise Platform) -->
-        <a href="https://panel.krewire.com" target="_blank" rel="noopener"
+        <!-- 9. forge (Enterprise Platform) -->
+        <a href="https://forge.krewire.com" target="_blank" rel="noopener"
            class="eco-card flex flex-col p-5 rounded-xl no-underline transition-all duration-150 bg-bg dark:bg-bg-dark"
            style="border:var(--pop-border); box-shadow:var(--pop-shadow)">
           <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="badge badge-primary text-2xs font-mono" data-i18n="ecosystem.panel_badge">Server Admin</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="ecosystem.forge_badge">Builder</span>
             <span class="eco-arrow text-base font-black text-muted dark:text-muted-dark transition-all duration-150">↗</span>
           </div>
-          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">panel</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="ecosystem.panel_desc">Self-hosted server &amp; admin control panel for bare-metal VPS, vHosts, systemd daemons, databases, and firewall.</p>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">forge</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="ecosystem.forge_desc">Declarative web, form, resource, and admin panel builder for Go and .kiw.</p>
           <div class="mt-auto px-2 py-1 rounded-md font-mono text-xs font-bold text-muted dark:text-muted-dark bg-bg-2 dark:bg-bg-dark-2 w-fit" style="border:1.5px solid var(--border)">
-            <code>panel.krewire.com</code>
+            <code>forge.krewire.com</code>
           </div>
         </a>
 

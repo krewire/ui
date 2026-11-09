@@ -40,7 +40,7 @@
         <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Dash</a>
         <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Cloud</a>
         <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Auth</a>
-        <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Panel</a>
+        <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Forge</a>
         <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mt-2 mb-1" data-i18n="footer.col_repos">Open Source Repos</strong>
         <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">krewire (core monorepo)</a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">krew (AI agent)</a>
@@ -157,7 +157,7 @@
             <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Dash</a>
             <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Cloud</a>
             <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Auth</a>
-            <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Panel</a>
+            <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Forge</a>
             <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mt-2 mb-1" data-i18n="footer.ecosystem_title">Open Source Repos</strong>
             <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">krewire (core monorepo)</a>
             <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">krew (AI agent)</a>

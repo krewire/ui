@@ -114,15 +114,15 @@
                 <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_id">ID</span>
               </a>
 
-              <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+              <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
                 <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🎛</span>
+                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛠</span>
                   <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.panel_title">Krewire Panel</div>
-                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.panel_desc">Bare-metal server control panel</div>
+                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.forge_title">Krewire Forge</div>
+                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.forge_desc">Web, form &amp; panel builder</div>
                   </div>
                 </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_host">Host</span>
+                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_forge">Forge</span>
               </a>
             </div>
 

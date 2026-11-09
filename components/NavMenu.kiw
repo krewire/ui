@@ -73,19 +73,19 @@
                 <span class="text-[11px] font-bold text-primary flex items-center gap-1">auth.krewire.com ↗</span>
               </a>
 
-              <!-- 4. Krewire Panel -->
-              <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+              <!-- 4. Krewire Forge -->
+              <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🎛</span>
-                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_host">Host</span>
+                  <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🛠</span>
+                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_forge">Forge</span>
                 </div>
-                <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.panel_title">
-                  Krewire Panel
+                <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.forge_title">
+                  Krewire Forge
                 </div>
-                <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mt-1 mb-3" data-i18n="nav.panel_desc">
-                  Self-hosted server &amp; admin control panel for bare-metal/VPS, systemd daemons, DBs &amp; SSL.
+                <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mt-1 mb-3" data-i18n="nav.forge_desc">
+                  Declarative web, form, resource, and admin panel builder for Go and .kiw.
                 </p>
-                <span class="text-[11px] font-bold text-primary flex items-center gap-1">panel.krewire.com ↗</span>
+                <span class="text-[11px] font-bold text-primary flex items-center gap-1">forge.krewire.com ↗</span>
               </a>
 
             </div>

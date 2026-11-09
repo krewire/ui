@@ -2,7 +2,7 @@
 
 This document defines what `github.com/krewire/ui` (kui) is responsible for, what
 it deliberately does not do, and the contract between kui and the `.kiw`
-toolchain that renders its components. It is the reference for products (Panel,
+toolchain that renders its components. It is the reference for products (Forge,
 Dash, the landing sites) and for the core toolchain in `github.com/krewire/krewire`.
 
 Statements about the core toolchain describe `github.com/krewire/krewire` as of
@@ -50,7 +50,7 @@ kui does **not**:
 ## 3. Layering
 
 ```
- products (panel, dash, krewire.com, krewire.github.io, cloud landing)
+ products (forge, dash, krewire.com, krewire.github.io, cloud landing)
    │  .kiw pages/layouts/components            │  optional Go import
    ▼                                           ▼
  core toolchain (github.com/krewire/krewire)   github.com/krewire/ui  (kui)
@@ -70,7 +70,7 @@ How each sibling repository consumes kui today:
 |---|---|
 | `krewire` | `pkg/ui/components` re-exports `components.FS`; `pkg/web/ssg/load.go` loads every embedded `.kiw` as a built-in component. |
 | `dash`, `cloud` (landing), `krewire.com`, `krewire.github.io` | Use kui components as `.kiw` tags (`<Navbar>`, `<Footer>`, `<VStack>`, `<Button>`, …) rendered by `kiw`; no direct Go import. |
-| `panel` | Does not consume kui yet. |
+| `forge` | Does not consume kui yet. |
 
 ## 4. Go API surface
 
@@ -239,7 +239,7 @@ krewire.com). Policy going forward:
 
 **Current state.** The module path is `github.com/krewire/ui`; `go.mod`
 declares `go 1.27.1`; the repository has **no release tags yet**, so consumers
-resolve it by pseudo-version. Consumers in the ecosystem (`krewire`, `panel`,
+resolve it by pseudo-version. Consumers in the ecosystem (`krewire`, `forge`,
 `dash`) also declare `go 1.27.1`.
 
 **Versioning.** Releases follow Semantic Versioning with Go module tags
