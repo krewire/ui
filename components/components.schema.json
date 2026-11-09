@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://krewire.com/schemas/kui-components.json",
+  "title": "Krewire UI (kui) component manifest",
+  "description": "Catalog of the .kiw components shipped by github.com/krewire/ui: metadata, derived props and dependencies, preview markup, and curated starter packs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "packs", "components"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or URL of this schema, for editor validation."
+    },
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Manifest format version."
+    },
+    "packs": {
+      "type": "array",
+      "description": "Curated starter packs installed with `kiw add ui:<pack>`.",
+      "items": { "$ref": "#/definitions/pack" }
+    },
+    "components": {
+      "type": "array",
+      "description": "One entry per components/<Name>.kiw file, sorted by name.",
+      "items": { "$ref": "#/definitions/component" }
+    }
+  },
+  "definitions": {
+    "componentName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$",
+      "description": "PascalCase component name; equals the file name without .kiw."
+    },
+    "pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description", "components"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Pack identifier used on the command line."
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/componentName" }
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "category", "description", "file", "styles", "script", "preview"],
+      "properties": {
+        "name": { "$ref": "#/definitions/componentName" },
+        "category": {
+          "type": "string",
+          "enum": ["Layout", "Atoms", "Forms", "Navigation", "Feedback", "Overlays", "Data Display", "Document"],
+          "description": "Catalog category."
+        },
+        "description": { "type": "string", "minLength": 1, "description": "One-line summary." },
+        "file": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Za-z0-9]*\\.kiw$",
+          "description": "Derived: file name inside the components directory."
+        },
+        "props": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*$" },
+          "description": "Derived: props and slots read by the markup, lower-camel. \"body\" is the child content of a paired tag."
+        },
+        "defaults": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Derived: class-helper fallback values, e.g. {\"variant\": \"primary\"}."
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/componentName" },
+          "description": "Derived: other kui components nested by the markup; installed together."
+        },
+        "styles": { "type": "boolean", "description": "Derived: ships a scoped <style> block." },
+        "script": { "type": "boolean", "description": "Derived: ships an inline <script> block." },
+        "preview": { "type": "string", "minLength": 1, "description": "Minimal usage example in .kiw markup." }
+      }
+    }
+  }
+}
