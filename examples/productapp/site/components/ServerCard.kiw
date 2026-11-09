@@ -1,0 +1,15 @@
+<div class="server-card" data-kiw-component="ServerCard">
+  <Card title={name} subtitle={region}>
+    <HStack gap="sm" align="center">
+      <Badge variant="success" dot=true>{status}</Badge>
+      <Text as="span" size="sm" color="muted">{uptime}</Text>
+    </HStack>
+    <div slot="footer">
+      <Button variant="outline" size="sm" href={href}>Open server</Button>
+    </div>
+  </Card>
+</div>
+
+<style>
+.server-card { max-width: 22rem; }
+</style>

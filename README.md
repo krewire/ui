@@ -44,12 +44,14 @@ Include the canonical stylesheet containing design tokens, base resets, and layo
 
 ### 3. Use in `.kiw` Pages
 
+Child content becomes the component body (`{body}`); `<slot name="…">` or
+`<div slot="…">` passes a named slot. See
+[ARCHITECTURE.md](ARCHITECTURE.md#53-props-body-and-slots) for the full contract.
+
 ```html
-<Navbar brand="My App" current="/">
-  <slot name="menu">
-    <a href="/docs" class="nav-link">Documentation</a>
-    <a href="/pricing" class="nav-link">Pricing</a>
-  </slot>
+<Navbar brandName="My App">
+  <a href="/docs" class="nav-link">Documentation</a>
+  <a href="/pricing" class="nav-link">Pricing</a>
   <slot name="actions">
     <Button variant="primary" size="sm">Get Started</Button>
   </slot>
@@ -58,7 +60,7 @@ Include the canonical stylesheet containing design tokens, base resets, and layo
 <Container>
   <VStack gap="lg" align="center">
     <Heading level="1">Modern Go Web Applications</Heading>
-    <Text size="lg" muted="true">Zero-dependency, composable UI for Go.</Text>
+    <Text size="lg" color="muted">Zero-dependency, composable UI for Go.</Text>
 
     <HStack gap="md">
       <Button variant="primary">Deploy Now</Button>
@@ -100,6 +102,23 @@ func main() {
 	fmt.Printf("Loaded Button (%d bytes), CSS (%d bytes)\n", len(buttonKiw), len(css))
 }
 ```
+
+kui depends only on the Go standard library; importing it does not pull in the
+`kiw` CLI or `github.com/krewire/krewire`.
+
+---
+
+## Architecture, Contract & Examples
+
+- [ARCHITECTURE.md](ARCHITECTURE.md): responsibilities and non-goals, the `.kiw`
+  integration contract (props, body, slots, renderer requirements), the
+  boundary with product code, and compatibility/versioning expectations.
+- [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md): visual language and token values.
+- Runnable Go examples: `components/example_test.go`, `styles/example_test.go`
+  (`go test ./...` checks their output).
+- [`examples/productapp`](examples/productapp): a product application that
+  consumes kui on its own, with a `.kiw` site composing kui primitives and a
+  product-owned `ServerCard` component.
 
 ---
 

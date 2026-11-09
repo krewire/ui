@@ -1,0 +1,20 @@
+---
+title: "Servers"
+---
+
+<Container>
+  <VStack gap="lg">
+    <Heading level="1">Servers</Heading>
+    <Text color="muted">Product screen composed from kui primitives and one product-owned component.</Text>
+
+    <HStack gap="md">
+      <Stat label="Running" value="12" change="+2" trend="up" subtitle="Past 24 hours" />
+      <Stat label="Stopped" value="3" />
+    </HStack>
+
+    <HStack gap="md" align="start">
+      <ServerCard name="api-01" region="ap-southeast-1" status="running" uptime="14 days" href="/servers/api-01" />
+      <ServerCard name="worker-02" region="eu-central-1" status="running" uptime="3 days" href="/servers/worker-02" />
+    </HStack>
+  </VStack>
+</Container>

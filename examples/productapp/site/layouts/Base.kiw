@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <link rel="stylesheet" href="/styles/krewire-ui.css">
+</head>
+<body>
+  <Navbar brandName="Acme Panel" hideGitHub=true>
+    <a href="/servers" class="nav-link">Servers</a>
+    <a href="/billing" class="nav-link">Billing</a>
+    <div slot="actions">
+      <Button variant="primary" size="sm" href="/servers/new">New server</Button>
+    </div>
+  </Navbar>
+  <main id="main">{content}</main>
+  <Footer variant="simple" brandName="Acme Inc." />
+</body>
+</html>
