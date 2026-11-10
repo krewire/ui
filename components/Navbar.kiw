@@ -13,6 +13,9 @@
 
     <!-- Main / Desktop navigation slot -->
     <div class="ml-auto hidden md:flex items-center gap-1 nav-menu">
+      {#if showEcosystemMenu}
+        <NavMenu showEcosystemMenu=true showProductsDropdown=true />
+      {/if}
       {#if body}
         {body}
       {:else if navLinks}
@@ -23,8 +26,6 @@
         {#each items as link}
           <a href="{link.url}" class="text-sm font-bold text-fg dark:text-fg-dark px-3 py-1.5 rounded-md hover:bg-bg-2 dark:hover:bg-bg-dark-2 hover:text-primary transition-all duration-150">{link.text}</a>
         {/each}
-      {:else if showEcosystemMenu}
-        <NavMenu showEcosystemMenu=true showProductsDropdown=true />
       {/if}
     </div>
 
@@ -64,85 +65,89 @@
             {drawer}
           {:else if drawerBody}
             {drawerBody}
-          {:else if body}
-            {body}
-          {:else if navLinks}
-            {#each navLinks as link}
-              <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
-            {/each}
-          {:else if items}
-            {#each items as link}
-              <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
-            {/each}
-          {:else if showEcosystemMenu}
-            <div class="px-3 py-1.5 text-2xs font-black uppercase tracking-wider text-muted dark:text-muted-dark flex items-center justify-between border-b border-border-subtle mb-1">
-              <span data-i18n="nav.ecosystem">Krewire Ecosystem</span>
-              <span class="text-primary font-mono text-[10px]">4 Platforms</span>
-            </div>
+          {:else}
+            {#if showEcosystemMenu}
+              <div class="px-3 py-1.5 text-2xs font-black uppercase tracking-wider text-muted dark:text-muted-dark flex items-center justify-between border-b border-border-subtle mb-1">
+                <span data-i18n="nav.ecosystem">Krewire Ecosystem</span>
+                <span class="text-primary font-mono text-[10px]">4 Platforms</span>
+              </div>
 
-            <div class="flex flex-col gap-1.5 mb-2">
-              <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">⚡</span>
-                  <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Dash</div>
-                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.workspace_desc">Virtual workspaces &amp; AI agents</div>
+              <div class="flex flex-col gap-1.5 mb-2">
+                <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">⚡</span>
+                    <div class="min-w-0">
+                      <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Dash</div>
+                      <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.workspace_desc">Virtual workspaces &amp; AI agents</div>
+                    </div>
                   </div>
-                </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_ai">AI</span>
-              </a>
+                  <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_ai">AI</span>
+                </a>
 
-              <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">◈</span>
-                  <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.cloud_title">Krewire Cloud</div>
-                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.cloud_desc">Hybrid PaaS control plane</div>
+                <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">◈</span>
+                    <div class="min-w-0">
+                      <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.cloud_title">Krewire Cloud</div>
+                      <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.cloud_desc">Hybrid PaaS control plane</div>
+                    </div>
                   </div>
-                </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_paas">PaaS</span>
-              </a>
+                  <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_paas">PaaS</span>
+                </a>
 
-              <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛡</span>
-                  <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.auth_title">Krewire Auth</div>
-                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.auth_desc">SSO, MFA &amp; OIDC identity</div>
+                <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛡</span>
+                    <div class="min-w-0">
+                      <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.auth_title">Krewire Auth</div>
+                      <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.auth_desc">SSO, MFA &amp; OIDC identity</div>
+                    </div>
                   </div>
-                </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_id">ID</span>
-              </a>
+                  <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_id">ID</span>
+                </a>
 
-              <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛠</span>
-                  <div class="min-w-0">
-                    <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.forge_title">Krewire Forge</div>
-                    <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.forge_desc">Web, form &amp; panel builder</div>
+                <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛠</span>
+                    <div class="min-w-0">
+                      <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.forge_title">Krewire Forge</div>
+                      <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.forge_desc">Web, form &amp; panel builder</div>
+                    </div>
                   </div>
-                </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_forge">Forge</span>
+                  <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_forge">Forge</span>
+                </a>
+              </div>
+
+              <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
+            {/if}
+
+            {#if body}
+              {body}
+            {:else if navLinks}
+              {#each navLinks as link}
+                <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
+              {/each}
+            {:else if items}
+              {#each items as link}
+                <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
+              {/each}
+            {:else if showEcosystemMenu}
+              <a href="/docs/getting-started" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+                <span class="text-primary w-4 font-black">›</span> <span data-i18n="nav.get_started">Get Started</span>
               </a>
-            </div>
-
-            <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
-
-            <a href="/docs/getting-started" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
-              <span class="text-primary w-4 font-black">›</span> <span data-i18n="nav.get_started">Get Started</span>
-            </a>
-            <a href="/docs/getting-started/dsl" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
-              <span class="text-primary w-4 font-black">◈</span> <span data-i18n="nav.dsl">Component DSL</span>
-            </a>
-            <a href="/docs" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
-              <span class="text-primary w-4 font-black">≡</span> <span data-i18n="nav.docs">Documentation</span>
-            </a>
-            <a href="/#ecosystem" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
-              <span class="text-primary w-4 font-black">⬢</span> <span data-i18n="nav.ecosystem">Ecosystem</span>
-            </a>
-            <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
-              <span class="text-primary w-4 font-black">★</span> <span>GitHub Repository ↗</span>
-            </a>
+              <a href="/docs/getting-started/dsl" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+                <span class="text-primary w-4 font-black">◈</span> <span data-i18n="nav.dsl">Component DSL</span>
+              </a>
+              <a href="/docs" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+                <span class="text-primary w-4 font-black">≡</span> <span data-i18n="nav.docs">Documentation</span>
+              </a>
+              <a href="/#ecosystem" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+                <span class="text-primary w-4 font-black">⬢</span> <span data-i18n="nav.ecosystem">Ecosystem</span>
+              </a>
+              <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+                <span class="text-primary w-4 font-black">★</span> <span>GitHub Repository ↗</span>
+              </a>
+            {/if}
           {/if}
         </div>
       </div>
