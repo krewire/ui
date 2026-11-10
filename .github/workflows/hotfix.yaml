@@ -1,0 +1,118 @@
+name: Hotfix Pipeline (Fast-Track)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Krewire UI Pop-Brutalist Library Emergency Hotfix Pipeline (ADR-R7P3K)
+# Fast-track pipeline for critical component bugs, layout breaks, and fixes
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Branch to apply hotfix onto (e.g. main, lts/v0.2)'
+        required: true
+        default: 'main'
+      base_version:
+        description: 'Current base version to patch (e.g. 0.2.0)'
+        required: true
+        default: '0.2.0'
+      issue_ref:
+        description: 'GitHub Issue Reference (e.g. #14)'
+        required: true
+  push:
+    branches:
+      - 'hotfix/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hotfix-ui-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-and-bump:
+    name: Validate Hotfix & Compute Patch Version
+    runs-on: ubuntu-latest
+    outputs:
+      hotfix_version: ${{ steps.calc.outputs.version }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute Hotfix Version
+        id: calc
+        run: |
+          BASE="${{ inputs.base_version }}"
+          if [ -z "$BASE" ]; then BASE="0.2.0"; fi
+          MAJOR=$(echo "$BASE" | cut -d. -f1 | tr -d 'v')
+          MINOR=$(echo "$BASE" | cut -d. -f2)
+          PATCH=$(echo "$BASE" | cut -d. -f3 | cut -d- -f1)
+          NEW_PATCH=$((PATCH + 1))
+          HOTFIX_VER="v${MAJOR}.${MINOR}.${NEW_PATCH}"
+          echo "Computed Hotfix Version: ${HOTFIX_VER}"
+          echo "version=${HOTFIX_VER}" >> $GITHUB_OUTPUT
+
+  quality-gate:
+    name: Mandatory Quality Gates
+    needs: [validate-and-bump]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+
+      - name: Verify Formatting (gofmt)
+        run: |
+          DIFF=$(gofmt -l .)
+          if [ -n "$DIFF" ]; then
+            echo "::error::Files not formatted with gofmt:"
+            echo "$DIFF"
+            exit 1
+          fi
+
+      - name: Static Analysis (go vet)
+        run: go vet ./...
+
+      - name: Run Test Suite
+        run: go test -v ./...
+
+  package-and-publish:
+    name: Fast-Track Hotfix Package & Publish
+    needs: [validate-and-bump, quality-gate]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Package Hotfix Bundle
+        run: |
+          VERSION="${{ needs.validate-and-bump.outputs.hotfix_version }}"
+          mkdir -p dist
+          BUNDLE_NAME="krewire-ui-${VERSION}.tar.gz"
+          tar --exclude='.git' --exclude='.github' -czf "dist/${BUNDLE_NAME}" components styles README.md LICENSE DESIGN_SYSTEM.md
+          cd dist && sha256sum "${BUNDLE_NAME}" > "${BUNDLE_NAME}.sha256"
+          cat *.sha256 > SHA256SUMS.txt
+
+      - name: Create Emergency GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.validate-and-bump.outputs.hotfix_version }}
+          name: Krewire UI Hotfix ${{ needs.validate-and-bump.outputs.hotfix_version }}
+          prerelease: false
+          draft: false
+          files: dist/*
+          body: |
+            ### 🚨 Krewire UI Emergency Hotfix Release: `${{ needs.validate-and-bump.outputs.hotfix_version }}`
+            
+            - **Reference**: `${{ inputs.issue_ref }}`
+            - **Target Branch**: `${{ inputs.target_branch || github.ref }}`
+            - **Quality Gate**: Passed all tests, manifest sync, and contract checks.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
