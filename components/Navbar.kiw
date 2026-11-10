@@ -1,5 +1,5 @@
-<header class="sticky top-0 z-50 bg-bg dark:bg-bg-dark border-b border-pop w-full navbar relative" style="border-bottom:var(--pop-border)">
-  <div class="container-site flex items-center justify-between gap-3 py-2.5 sm:py-3 lg:py-3.5">
+<header class="sticky top-0 z-50 bg-bg dark:bg-bg-dark w-full navbar relative" style="border: none !important; border-top: none !important; border-left: none !important; border-right: none !important; border-bottom: var(--pop-border, 2.5px solid var(--border)) !important;">
+  <div class="container-site flex items-center justify-between gap-3 py-3.5">
     <div class="flex items-center gap-3 min-w-0">
       {#if showSidebarToggle}
       <Hamburger ID="site-sidebar-toggle" Label="Open navigation" Controls="site-sidebar" DataDrawerToggle="site-sidebar" Class="lg:hidden sidebar-toggle shrink-0" />
@@ -189,3 +189,41 @@ if (typeof window !== 'undefined' && !window.__kuiDropdownListenerInstalled) {
   });
 }
 </script>
+
+<style>
+/* Navbar border and consistent vertical padding */
+.navbar,
+header.navbar {
+  border: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: var(--pop-border, 2.5px solid var(--border, #0B1F3B)) !important;
+}
+
+:root[data-theme="dark"] .navbar,
+html[data-theme="dark"] .navbar,
+.dark .navbar {
+  border-bottom: var(--pop-border, 2.5px solid var(--border, #FAF8F4)) !important;
+}
+
+.navbar .container-site {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+}
+
+/* Large screen / desktop nav menu display */
+.nav-menu {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-menu,
+  div.nav-menu,
+  nav.nav-menu,
+  .navbar .nav-menu {
+    display: flex !important;
+    align-items: center;
+  }
+}
+</style>

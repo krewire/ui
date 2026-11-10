@@ -832,7 +832,7 @@
         "NavMenu",
         "ThemeSwitch"
       ],
-      "styles": false,
+      "styles": true,
       "script": true,
       "preview": "<Navbar brandName=\"My App\">Links</Navbar>"
     },

@@ -196,4 +196,19 @@ html[data-theme="dark"] .dropdown-product-card,
   transform: translateY(-2px);
   box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
 }
+
+/* Large screen / desktop nav menu display */
+.nav-menu {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-menu,
+  div.nav-menu,
+  nav.nav-menu,
+  .navbar .nav-menu {
+    display: flex !important;
+    align-items: center;
+  }
+}
 </style>
