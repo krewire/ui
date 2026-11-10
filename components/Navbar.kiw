@@ -14,7 +14,11 @@
     <!-- Main / Desktop navigation slot -->
     <div class="ml-auto hidden md:flex items-center gap-1 nav-menu">
       {#if showEcosystemMenu}
-        <NavMenu showEcosystemMenu=true showProductsDropdown=true />
+        {#if body}
+          <NavMenu showEcosystemMenu=true showProductsDropdown=true hideLinks=true />
+        {:else}
+          <NavMenu showEcosystemMenu=true showProductsDropdown=true />
+        {/if}
       {/if}
       {#if body}
         {body}
@@ -32,13 +36,15 @@
     <div class="flex items-center gap-2 shrink-0">
       {#if actions}
         {actions}
+      {:else if actionHref}
+        <a href="{actionHref}" class="btn btn-primary text-xs px-3.5 py-1.5 min-h-0 font-bold shadow-[1.5px_1.5px_0px_var(--border)]">{#if actionLabel}{actionLabel}{:else}Action →{/if}</a>
       {/if}
       {#if showLangToggle}
       <LangSwitch />
       {/if}
       {#if !hideGitHub && gitHubURL}
       <a href="{gitHubURL}" target="_blank" rel="noopener"
-         class="hidden lg:inline-flex items-center gap-1.5 btn btn-primary text-xs px-4 py-2 min-h-0">
+         class="hidden lg:inline-flex items-center gap-1.5 btn btn-primary text-xs px-3.5 py-1.5 min-h-0 shadow-[1.5px_1.5px_0px_var(--border)]">
         <span>★</span><span>GitHub</span>
       </a>
       {/if}
@@ -61,6 +67,12 @@
 
       <div class="drawer-body">
         <div class="flex flex-col gap-1.5 mobile-nav-items">
+          {#if actionHref}
+            <div class="px-1 pt-1 pb-2">
+              <a href="{actionHref}" class="btn btn-primary w-full justify-center min-h-[42px] text-sm font-bold shadow-[2px_2px_0px_var(--border)]">{#if actionLabel}{actionLabel}{:else}Action →{/if}</a>
+            </div>
+            <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
+          {/if}
           {#if drawer}
             {drawer}
           {:else if drawerBody}
@@ -132,16 +144,16 @@
                 <a href="{link.url}" class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">{link.text}</a>
               {/each}
             {:else if showEcosystemMenu}
-              <a href="/docs/getting-started" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+              <a href="https://krewire.com/docs/getting-started" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
                 <span class="text-primary w-4 font-black">›</span> <span data-i18n="nav.get_started">Get Started</span>
               </a>
-              <a href="/docs/getting-started/dsl" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+              <a href="https://krewire.com/docs/getting-started/dsl" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
                 <span class="text-primary w-4 font-black">◈</span> <span data-i18n="nav.dsl">Component DSL</span>
               </a>
-              <a href="/docs" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+              <a href="https://krewire.com/docs" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
                 <span class="text-primary w-4 font-black">≡</span> <span data-i18n="nav.docs">Documentation</span>
               </a>
-              <a href="/#ecosystem" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
+              <a href="https://krewire.com/#ecosystem" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">
                 <span class="text-primary w-4 font-black">⬢</span> <span data-i18n="nav.ecosystem">Ecosystem</span>
               </a>
               <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg font-extrabold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all">

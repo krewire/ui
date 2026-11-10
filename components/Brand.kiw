@@ -16,7 +16,7 @@
         </svg>
       {/if}
     </span>
-    <span class="brand-name text-base font-black tracking-tighter">{#if name}{name}{:else if title}{title}{:else}App{/if}</span>
+    <span class="brand-name text-base font-black tracking-tighter">{#if name}{name}{:else if title}{title}{:else}Krewire{/if}</span>
     {#if !hideBadge && (badge || version)}
       <span class="brand-badge badge badge-secondary font-mono text-2xs" {#if badgeI18n}data-i18n="{badgeI18n}"{/if}>{#if badge}{badge}{:else}{version}{/if}</span>
     {/if}
