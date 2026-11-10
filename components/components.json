@@ -804,6 +804,8 @@
       "description": "Top navigation bar with brand, menu links, slots, and responsive drawer",
       "file": "Navbar.kiw",
       "props": [
+        "actionHref",
+        "actionLabel",
         "actions",
         "body",
         "brand",
