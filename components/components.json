@@ -469,6 +469,7 @@
         "align",
         "body",
         "class",
+        "icon",
         "items",
         "label",
         "trigger"

@@ -80,7 +80,12 @@
           {:else}
             {#if showEcosystemMenu}
               <div class="px-3 py-1.5 text-2xs font-black uppercase tracking-wider text-muted dark:text-muted-dark flex items-center justify-between border-b border-border-subtle mb-1">
-                <span data-i18n="nav.ecosystem">Krewire Ecosystem</span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="text-primary shrink-0" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 2.5A1 1 0 0 1 2.5 1.5h3A1 1 0 0 1 6.5 2.5v3A1 1 0 0 1 5.5 6.5h-3A1 1 0 0 1 1.5 5.5v-3zm0 8A1 1 0 0 1 2.5 9.5h3A1 1 0 0 1 6.5 10.5v3A1 1 0 0 1 5.5 14.5h-3A1 1 0 0 1 1.5 13.5v-3zm8-8A1 1 0 0 1 10.5 1.5h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-3zm0 8a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-3z"/>
+                  </svg>
+                  <span data-i18n="nav.ecosystem">Krewire Ecosystem</span>
+                </span>
                 <span class="text-primary font-mono text-[10px]">4 Platforms</span>
               </div>
 
