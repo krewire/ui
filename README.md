@@ -2,7 +2,7 @@
 
 Composable, zero-dependency `.kiw` design system, layout & UI components for the Krewire ecosystem.
 
-Inspired by the **shadcn/ui** philosophy: you do not install an opaque `node_modules` directory or inherit a rigid black-box framework. Instead, you **own your components**. You copy `.kiw` component files directly into your project's `components/` directory, adapting the markup, logic, and styling to fit your exact product requirements.
+Inspired by the **shadcn/ui** philosophy: components stay transparent and forkable, but distribution is **package-based by default**. You import `github.com/krewire/ui` as a standard Go module (with embedded `.kiw` templates) and only copy a component's source into your project's `components/` directory when you explicitly choose to fork it via `kiw ui vendor` / `kiw ui eject`.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/krewire/ui.svg)](https://pkg.go.dev/github.com/krewire/ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -12,7 +12,8 @@ Inspired by the **shadcn/ui** philosophy: you do not install an opaque `node_mod
 ## Why Krewire UI?
 
 - **Zero Runtime Bloat**: 100% Pure Go and `.kiw` component templates with zero npm, node, or webpack dependencies.
-- **Copy & Own (shadcn Model)**: Components live in your project's `./components` directory. No upstream lock-in or breaking library upgrades.
+- **Package-Based by Default**: Import `github.com/krewire/ui` once as a Go module; components and embedded `.kiw` templates resolve through `go.mod`/`go.sum` with no pseudo-`node_modules`.
+- **Explicit Vendor/Eject Escape Hatch**: Fork individual components into `./components` with `kiw ui vendor <Name>` / `kiw ui eject <Name>` only when you need local ownership.
 - **Signature Pop-Brutalist Aesthetic**: Built-in neo-brutalist pop shadows, crisp outlines, vibrant accents, and high-contrast surface tokens.
 - **Unified Design Tokens**: Comprehensive typography scale, 4px/8px grid spacing, surface hierarchy, and dark mode tokens.
 - **WCAG Accessibility**: Full support for native HTML primitives (`<details>`, `<dialog>`, semantic tags), ARIA landmarks, focus rings, and reduced motion.
@@ -22,17 +23,37 @@ Inspired by the **shadcn/ui** philosophy: you do not install an opaque `node_mod
 
 ## Getting Started
 
-### 1. Add Components to Your Project
+### 1. Add the Component Package (Recommended)
 
-Install components with the `kiw` CLI. It copies the `.kiw` source that ships
-with your `kiw` build into `./components/`, together with any kui components it
-nests (for example `Navbar` brings `Brand`, `Hamburger`, `NavMenu`, …):
+Import Krewire UI as a standard Go module. Components and their embedded `.kiw`
+templates resolve through `go.mod`/`go.sum` without copying source into your tree:
+
+```bash
+kiw add github.com/krewire/ui
+# or: kiw add @krewire/ui
+```
+
+Then use components in `.kiw` templates:
+
+```html
+<script>
+  import { Button, Card, Navbar } from '@krewire/ui';
+</script>
+```
+
+### 2. Browse and Vendor Individual Components (Optional Escape Hatch)
+
+Copy a component's source into `./components/` only when you want to fork it
+locally. `kiw` tracks installs in `components/.kui-lock.json`:
 
 ```bash
 kiw ui list                    # browse the catalog, packs, and what you already have
 kiw ui info Card               # props, defaults, dependencies and a preview snippet
-kiw add ui/button ui/card      # one or more components (names are case-insensitive)
-kiw add ui:minimal             # a starter pack
+kiw add ui/button ui/card      # copy one or more components (names are case-insensitive)
+kiw add ui:minimal             # copy a starter pack
+kiw ui vendor Card             # explicit fork into ./components
+kiw ui eject Card              # alias for vendor
+kiw ui diff Card               # compare your local copy with upstream
 ```
 
 Starter packs:
@@ -46,7 +67,7 @@ Starter packs:
 Without `kiw`, copy the files by hand from a checkout of this repository
 (`cp path/to/ui/components/Button.kiw ./components/`).
 
-### 2. Include the Design System Stylesheet
+### 3. Include the Design System Stylesheet
 
 Include the canonical stylesheet containing design tokens, base resets, and layout primitives in your page layout:
 
@@ -54,7 +75,7 @@ Include the canonical stylesheet containing design tokens, base resets, and layo
 <link rel="stylesheet" href="/styles/krewire-ui.css">
 ```
 
-### 3. Use in `.kiw` Pages
+### 4. Use in `.kiw` Pages
 
 Child content becomes the component body (`{body}`); `<slot name="…">` or
 `<div slot="…">` passes a named slot. See
