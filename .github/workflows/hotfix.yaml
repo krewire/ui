@@ -21,7 +21,9 @@ on:
         required: true
   push:
     branches:
+      - 'hotfix'
       - 'hotfix/**'
+      - 'hotfix-*'
 
 permissions:
   contents: write
@@ -45,13 +47,21 @@ jobs:
       - name: Compute Hotfix Version
         id: calc
         run: |
+          git fetch --tags || true
           BASE="${{ inputs.base_version }}"
-          if [ -z "$BASE" ]; then BASE="0.2.0"; fi
+          if [ -z "$BASE" ]; then
+            LAST_TAG="$(git describe --tags --abbrev=0 2>/dev/null || echo '0.2.0')"
+            BASE="$(echo "$LAST_TAG" | sed -E 's/-.*//' | tr -d 'v')"
+          fi
           MAJOR=$(echo "$BASE" | cut -d. -f1 | tr -d 'v')
           MINOR=$(echo "$BASE" | cut -d. -f2)
           PATCH=$(echo "$BASE" | cut -d. -f3 | cut -d- -f1)
           NEW_PATCH=$((PATCH + 1))
           HOTFIX_VER="v${MAJOR}.${MINOR}.${NEW_PATCH}"
+          while git rev-parse -q --verify "refs/tags/${HOTFIX_VER}" >/dev/null; do
+            NEW_PATCH=$((NEW_PATCH + 1))
+            HOTFIX_VER="v${MAJOR}.${MINOR}.${NEW_PATCH}"
+          done
           echo "Computed Hotfix Version: ${HOTFIX_VER}"
           echo "version=${HOTFIX_VER}" >> $GITHUB_OUTPUT
 
