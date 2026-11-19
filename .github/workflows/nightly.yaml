@@ -1,0 +1,146 @@
+name: Nightly Pipeline
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Krewire UI Pop-Brutalist Component Library Nightly Build Pipeline (ADR-R7P3K)
+# Automated daily bundle of canonical UI components and style tokens
+# Triggered daily on schedule from branch 'main' or via manual dispatch
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  schedule:
+    - cron: '0 2 * * *'                      # Nightly build at 02:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run packaging without publishing release assets'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-ui-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  classify:
+    name: Prepare Nightly Metadata
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      track: nightly
+      is_prerelease: "true"
+    steps:
+      - name: Generate Version Tag
+        id: meta
+        run: |
+          DATE_TAG="$(date -u +%Y%m%d)"
+          VER="v0.2.0-nightly.${DATE_TAG}"
+          echo "version=${VER}" >> "$GITHUB_OUTPUT"
+          echo "Generated UI Nightly Version: ${VER}"
+
+  quality-gate:
+    name: Mandatory Quality Gates
+    needs: [classify]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          check-latest: true
+
+      - name: Verify Formatting (gofmt)
+        run: |
+          DIFF=$(gofmt -l .)
+          if [ -n "$DIFF" ]; then
+            echo "::error::Files not formatted with gofmt:"
+            echo "$DIFF"
+            exit 1
+          fi
+
+      - name: Static Analysis (go vet)
+        run: go vet ./...
+
+      - name: Run Test Suite & Contract Checks
+        run: go test -v ./...
+
+  package-artifacts:
+    name: Bundle UI Component Assets (Nightly)
+    needs: [classify, quality-gate]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create Distribution Bundle
+        run: |
+          VERSION="${{ needs.classify.outputs.version }}"
+          mkdir -p dist
+          BUNDLE_NAME="krewire-ui-${VERSION}.tar.gz"
+          
+          tar --exclude='.git' \
+              --exclude='.github' \
+              -czf "dist/${BUNDLE_NAME}" \
+              components styles README.md LICENSE DESIGN_SYSTEM.md
+              
+          cd dist
+          sha256sum "${BUNDLE_NAME}" > "${BUNDLE_NAME}.sha256"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-bundle
+          path: dist/*
+          retention-days: 5
+
+  publish:
+    name: Publish Nightly Release Assets
+    needs: [classify, quality-gate, package-artifacts]
+    runs-on: ubuntu-latest
+    if: inputs.dry_run != true
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download UI Bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: ui-bundle
+          path: release-assets
+
+      - name: Consolidate Checksums
+        run: |
+          cd release-assets
+          cat *.sha256 > SHA256SUMS.txt || true
+          ls -la
+
+      - name: Create or Update Nightly Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.classify.outputs.version }}
+          name: Krewire UI Pop-Brutalist Library ${{ needs.classify.outputs.version }} (nightly)
+          prerelease: true
+          draft: false
+          files: |
+            release-assets/*
+          body: |
+            ### Krewire UI Component Library Nightly Release
+            
+            - **Version**: `${{ needs.classify.outputs.version }}`
+            - **Track**: `nightly`
+            - **Commit**: `${{ github.sha }}`
+            - **Build Date**: `$(date -u +"%Y-%m-%d %H:%M:%S UTC")`
+            - **Zero npm / node Dependencies**: 100% Pure Go `.kiw` Native Components
+            
+            #### Checksums (SHA-256)
+            ```
+            $(cat release-assets/SHA256SUMS.txt)
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
