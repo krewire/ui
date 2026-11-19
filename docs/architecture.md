@@ -20,7 +20,7 @@ kui owns the **shared presentation foundation**:
 | Components | 66 reusable `.kiw` single-file components (markup + scoped `<style>`, optionally `<script>`) | `components/*.kiw` |
 | Component catalog | Name, category, description, props, defaults, dependencies, preview of every component, and starter packs | `components/components.json` (schema: `components.schema.json`), `components.Registry`, `components.Resolve()` |
 | Distribution | The components as a standard `embed.FS`, and raw source by name | `components.FS`, `components.Get()` |
-| Design tokens & base styles | CSS custom properties (colour, surface, typography, spacing, radius, pop-border/shadow), resets, dark mode, layout primitives | `styles/krewire-ui.css`, `styles.CSS` |
+| Design tokens & base styles | CSS custom properties (colour, surface, typography, spacing, radius, pop-border/shadow), resets, dark mode, layout primitives | `styles/krewire.css`, `styles.CSS` |
 | Layout primitives | `Box`, `Container`, `Flex`, `Grid`, `HStack`, `Section`, `Stack`, `VStack` | `components/` |
 | Accessibility baseline | Semantic elements, focus rings, ARIA attributes, reduced motion | components and stylesheet; see `DESIGN_SYSTEM.md` |
 | Design specification | Visual language and token values | `DESIGN_SYSTEM.md` |
@@ -98,7 +98,7 @@ func Lookup(name string) (ComponentMeta, bool)       // case-insensitive
 func Resolve(refs ...string) ([]string, error)       // names and "pack:<name>" plus transitive dependencies
 
 package styles
-var CSS string                          // contents of styles/krewire-ui.css
+var CSS string                          // contents of styles/krewire.css
 ```
 
 `components.json` is the single source of truth for the catalog; its format is
@@ -256,7 +256,7 @@ major version.
 | Component names | Renaming or removing a `.kiw` file |
 | Props and slots | Removing or renaming a prop/slot, changing its default, changing a variant name |
 | Rendered hooks | Removing or renaming a CSS class or `data-*` attribute that products target |
-| Design tokens | Removing or renaming a CSS custom property in `styles/krewire-ui.css` |
+| Design tokens | Removing or renaming a CSS custom property in `styles/krewire.css` |
 | Renderer requirements (§5.4) | Requiring a new template helper or DSL construct |
 
 Adding components, props, slots, variants or tokens is non-breaking. Visual

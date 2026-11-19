@@ -96,19 +96,14 @@ func (c *Catalog) Names() map[string]Source {
 	return out
 }
 
-// NewHandler serves the kui stylesheet and the resolved component catalog.
+// NewHandler serves the krewire stylesheet and the resolved component catalog.
 //
 //	GET /styles/krewire.css      the canonical krewire stylesheet
-//	GET /styles/krewire-ui.css   backward compatible alias
 //	GET /components              JSON list of {name, source}
 //	GET /components/{name}.kiw   resolved component source
 func NewHandler(c *Catalog) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /styles/krewire.css", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/css; charset=utf-8")
-		_, _ = w.Write([]byte(styles.CSS))
-	})
-	mux.HandleFunc("GET /styles/krewire-ui.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		_, _ = w.Write([]byte(styles.CSS))
 	})

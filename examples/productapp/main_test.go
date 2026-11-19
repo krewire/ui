@@ -48,12 +48,6 @@ func TestServesStylesheet(t *testing.T) {
 	if !strings.Contains(body, "--primary") {
 		t.Error("stylesheet does not contain the --primary token")
 	}
-
-	// Backward-compatible alias
-	resAlias, _ := get(t, srv.URL+"/styles/krewire-ui.css")
-	if resAlias.StatusCode != http.StatusOK {
-		t.Fatalf("alias status = %d", resAlias.StatusCode)
-	}
 }
 
 func TestResolvePrefersProductComponents(t *testing.T) {

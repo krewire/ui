@@ -72,7 +72,7 @@ Without `kiw`, copy the files by hand from a checkout of this repository
 Include the canonical stylesheet containing design tokens, base resets, and layout primitives in your page layout:
 
 ```html
-<link rel="stylesheet" href="/styles/krewire-ui.css">
+<link rel="stylesheet" href="/styles/krewire.css">
 ```
 
 ### 4. Use in `.kiw` Pages
@@ -212,7 +212,7 @@ kui depends only on the Go standard library; importing it does not pull in the
 
 ## Design System Tokens
 
-Krewire UI defines a standardized set of CSS custom properties in `styles/krewire-ui.css`:
+Krewire UI defines a standardized set of CSS custom properties in `styles/krewire.css`:
 
 ### Color Palette & Surfaces
 - Primary: `--primary` (`#39D353`), `--primary-content` (`#0B1F3B`), `--primary-hover`, `--primary-subtle`
