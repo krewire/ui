@@ -48,6 +48,18 @@ func TestStylesheetContainsCoreTokens(t *testing.T) {
 		".md\\:py-6",
 		".lg\\:gap-8",
 		".xl\\:m-auto",
+		".btn",
+		".btn-primary",
+		".btn-sso",
+		".table-wrapper",
+		".kiw-table",
+		".alert",
+		".alert-error",
+		".metric-card",
+		".top-bar",
+		".brand-badge",
+		"--surface",
+		"--accent-cyan",
 	}
 
 	for _, token := range essentialTokens {
