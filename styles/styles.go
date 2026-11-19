@@ -4,8 +4,8 @@ import (
 	_ "embed"
 )
 
-// CSS contains the canonical Krewire UI stylesheet with design tokens,
-// CSS variables, base resets, and responsive layout primitives.
+// CSS contains the canonical Krewire unified stylesheet bundle with design tokens,
+// CSS variables, base resets, atomic controls, and responsive layout primitives.
 //
-//go:embed krewire-ui.css
+//go:embed krewire.css
 var CSS string

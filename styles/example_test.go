@@ -10,16 +10,16 @@ import (
 )
 
 // Serve the canonical stylesheet from a product's HTTP server so pages can
-// include it with <link rel="stylesheet" href="/styles/krewire-ui.css">.
+// include it with <link rel="stylesheet" href="/styles/krewire.css">.
 func ExampleCSS() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /styles/krewire-ui.css", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /styles/krewire.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		fmt.Fprint(w, styles.CSS)
 	})
 
 	rec := httptest.NewRecorder()
-	mux.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "/styles/krewire-ui.css", nil))
+	mux.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "/styles/krewire.css", nil))
 
 	fmt.Println(rec.Code)
 	fmt.Println(rec.Header().Get("Content-Type"))

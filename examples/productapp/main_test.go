@@ -36,7 +36,9 @@ func get(t *testing.T, url string) (*http.Response, string) {
 
 func TestServesStylesheet(t *testing.T) {
 	srv := newTestServer(t)
-	res, body := get(t, srv.URL+"/styles/krewire-ui.css")
+
+	// Canonical krewire.css bundle
+	res, body := get(t, srv.URL+"/styles/krewire.css")
 	if res.StatusCode != http.StatusOK {
 		t.Fatalf("status = %d", res.StatusCode)
 	}
@@ -45,6 +47,12 @@ func TestServesStylesheet(t *testing.T) {
 	}
 	if !strings.Contains(body, "--primary") {
 		t.Error("stylesheet does not contain the --primary token")
+	}
+
+	// Backward-compatible alias
+	resAlias, _ := get(t, srv.URL+"/styles/krewire-ui.css")
+	if resAlias.StatusCode != http.StatusOK {
+		t.Fatalf("alias status = %d", resAlias.StatusCode)
 	}
 }
 

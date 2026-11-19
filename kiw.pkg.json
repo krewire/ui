@@ -74,6 +74,6 @@
     "Tooltip": "./components/Tooltip.kiw",
     "VStack": "./components/VStack.kiw"
   },
-  "styles": "./styles/krewire-ui.css",
+  "styles": "./styles/krewire.css",
   "dependencies": {}
 }
