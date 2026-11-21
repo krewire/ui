@@ -2,12 +2,12 @@
   <div class="container-site flex items-center justify-between gap-3 py-3.5">
     <div class="flex items-center gap-3 min-w-0">
       {#if showSidebarToggle}
-      <Hamburger ID="site-sidebar-toggle" Label="Open navigation" Controls="site-sidebar" DataDrawerToggle="site-sidebar" Class="lg:hidden sidebar-toggle shrink-0" />
+      <Hamburger id="site-sidebar-toggle" label="Open navigation" controls="site-sidebar" data-drawer-toggle="site-sidebar" class="lg:hidden sidebar-toggle shrink-0" />
       {/if}
       {#if brand}
         {brand}
       {:else}
-        <Brand Name={brandName} Href={brandHref} Icon={brandIcon} {version} Badge={brandBadge} BadgeI18n={brandBadgeI18n} />
+        <Brand name={brandName} href={brandHref} icon={brandIcon} {version} badge={brandBadge} badge-i18n={brandBadgeI18n} />
       {/if}
     </div>
 
@@ -15,9 +15,9 @@
     <div class="ml-auto hidden md:flex items-center gap-1 nav-menu">
       {#if showEcosystemMenu}
         {#if body}
-          <NavMenu showEcosystemMenu=true showProductsDropdown=true hideLinks=true />
+          <NavMenu show-ecosystem-menu=true show-products-dropdown=true hide-links=true />
         {:else}
-          <NavMenu showEcosystemMenu=true showProductsDropdown=true />
+          <NavMenu show-ecosystem-menu=true show-products-dropdown=true />
         {/if}
       {/if}
       {#if body}
@@ -49,7 +49,7 @@
       </a>
       {/if}
       <ThemeSwitch />
-      <Hamburger ID="nav-toggler" Label="Toggle menu" Controls="nav-mobile-menu" DataDrawerToggle="nav-mobile-menu" Class="md:hidden shrink-0" />
+      <Hamburger id="nav-toggler" label="Toggle menu" controls="nav-mobile-menu" data-drawer-toggle="nav-mobile-menu" class="md:hidden shrink-0" />
     </div>
   </div>
 

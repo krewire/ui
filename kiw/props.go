@@ -13,12 +13,13 @@ var initialisms = map[string]bool{"id": true, "url": true, "uri": true, "api": t
 // visible to the component template, implementing the lenient prop-casing
 // convention:
 //
-//   - the name as written: variant, Variant
+//   - the name as written: variant, Variant, property-name
 //   - first letter upper and lower: Variant <-> variant, so {variant} and
 //     .Variant read the same prop
 //   - kebab-case and snake_case also as camelCase and PascalCase:
 //     aria-label -> ariaLabel, AriaLabel
-//   - common initialisms in capitals: id -> ID, url -> URL
+//     property-name -> propertyName, PropertyName
+//   - common initialisms in capitals: id -> ID, url -> URL, github-url -> gitHubURL
 //
 // The name as written is always first. Earlier keys win when two props alias
 // each other, so an explicit Variant= is never overwritten by variant=.
@@ -47,6 +48,60 @@ func PropAliases(name string) []string {
 	add(lowerFirstRune(base))
 	if initialisms[strings.ToLower(base)] {
 		add(strings.ToUpper(base))
+	}
+
+	// Initialisms and brand names for multi-part names (e.g. github-url -> gitHubURL, githubURL)
+	if strings.ContainsAny(name, "-_") {
+		parts := strings.FieldsFunc(name, func(r rune) bool { return r == '-' || r == '_' })
+		hasInitialism := false
+		for i := 0; i < len(parts); i++ {
+			pLower := strings.ToLower(parts[i])
+			if initialisms[pLower] || pLower == "github" {
+				hasInitialism = true
+				break
+			}
+		}
+		if hasInitialism {
+			var initCamel, initPascal []string
+			for i, p := range parts {
+				pLower := strings.ToLower(p)
+				var capPart string
+				if initialisms[pLower] {
+					capPart = strings.ToUpper(p)
+				} else if pLower == "github" {
+					if i == 0 {
+						capPart = "gitHub"
+					} else {
+						capPart = "GitHub"
+					}
+				} else {
+					capPart = upperFirst(p)
+				}
+				if i == 0 {
+					if pLower == "github" {
+						initCamel = append(initCamel, "gitHub")
+						initPascal = append(initPascal, "GitHub")
+					} else {
+						initCamel = append(initCamel, lowerFirstRune(capPart))
+						initPascal = append(initPascal, upperFirst(capPart))
+					}
+				} else {
+					initCamel = append(initCamel, capPart)
+					initPascal = append(initPascal, capPart)
+				}
+			}
+			add(strings.Join(initPascal, ""))
+			add(strings.Join(initCamel, ""))
+			if strings.Contains(strings.ToLower(name), "github") && strings.Contains(strings.ToLower(name), "url") {
+				add("gitHubURL")
+				add("githubURL")
+				add("GitHubURL")
+			}
+			if strings.Contains(strings.ToLower(name), "hide") && strings.Contains(strings.ToLower(name), "github") {
+				add("hideGitHub")
+				add("HideGitHub")
+			}
+		}
 	}
 	return out
 }
