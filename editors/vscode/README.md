@@ -36,6 +36,6 @@ ln -s "$PWD" ~/.vscode/extensions/krewire.kiw-0.1.0
 import), IntelliJ (TextMate bundles) and GitHub Linguist-style highlighters can
 load it directly. `samples/Sample.kiw` exercises every construct.
 
-The grammar is checked by `go test ./tools/kiw/editors/...`: the JSON must
+The grammar is checked by `go test ./editors/...`: the JSON must
 parse, every `match`/`begin`/`end` regex must compile, and the sample must lint
 clean with `kiw.Lint`.

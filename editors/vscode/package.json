@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "publisher": "krewire",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/krewire/krewire", "directory": "tools/kiw/editors/vscode" },
+  "repository": { "type": "git", "url": "https://github.com/krewire/ui", "directory": "editors/vscode" },
   "engines": { "vscode": "^1.80.0" },
   "categories": ["Programming Languages"],
   "contributes": {
