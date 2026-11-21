@@ -88,6 +88,11 @@ func mustRegistry() map[string]ComponentMeta {
 	return reg
 }
 
+// Version returns the component catalog format version string.
+func Version() string {
+	return "0.2.0"
+}
+
 // Packs returns the curated starter packs, sorted by name.
 func Packs() []Pack {
 	m, err := LoadManifest()

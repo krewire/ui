@@ -201,6 +201,12 @@ func parseYAMLValue(s string) any {
 		(strings.HasPrefix(s, `'`) && strings.HasSuffix(s, `'`)) {
 		return unquote(s)
 	}
+	if strings.HasPrefix(s, "[") && strings.HasSuffix(s, "]") {
+		return parseFlowSequence(s)
+	}
+	if strings.HasPrefix(s, "{") && strings.HasSuffix(s, "}") {
+		return parseFlowMapping(s)
+	}
 	if n, err := strconv.Atoi(s); err == nil {
 		return n
 	}
@@ -208,6 +214,85 @@ func parseYAMLValue(s string) any {
 		return f
 	}
 	return s
+}
+
+func parseFlowSequence(s string) []any {
+	s = strings.TrimSpace(s)
+	if len(s) < 2 || s[0] != '[' || s[len(s)-1] != ']' {
+		return nil
+	}
+	inner := strings.TrimSpace(s[1 : len(s)-1])
+	if inner == "" {
+		return []any{}
+	}
+	parts := splitFlowItems(inner)
+	res := make([]any, 0, len(parts))
+	for _, p := range parts {
+		res = append(res, parseYAMLValue(strings.TrimSpace(p)))
+	}
+	return res
+}
+
+func parseFlowMapping(s string) map[string]any {
+	s = strings.TrimSpace(s)
+	if len(s) < 2 || s[0] != '{' || s[len(s)-1] != '}' {
+		return nil
+	}
+	inner := strings.TrimSpace(s[1 : len(s)-1])
+	if inner == "" {
+		return map[string]any{}
+	}
+	parts := splitFlowItems(inner)
+	res := make(map[string]any, len(parts))
+	for _, p := range parts {
+		colon := strings.IndexByte(p, ':')
+		if colon > 0 {
+			k := strings.TrimSpace(p[:colon])
+			v := strings.TrimSpace(p[colon+1:])
+			res[unquote(k)] = parseYAMLValue(v)
+		}
+	}
+	return res
+}
+
+func splitFlowItems(s string) []string {
+	var parts []string
+	bracketDepth := 0
+	braceDepth := 0
+	inQuotes := false
+	quoteChar := byte(0)
+	start := 0
+
+	for i := 0; i < len(s); i++ {
+		b := s[i]
+		if inQuotes {
+			if b == quoteChar && (i == 0 || s[i-1] != '\\') {
+				inQuotes = false
+			}
+			continue
+		}
+		if b == '"' || b == '\'' {
+			inQuotes = true
+			quoteChar = b
+			continue
+		}
+		if b == '[' {
+			bracketDepth++
+		} else if b == ']' {
+			bracketDepth--
+		} else if b == '{' {
+			braceDepth++
+		} else if b == '}' {
+			braceDepth--
+		} else if b == ',' && bracketDepth == 0 && braceDepth == 0 {
+			parts = append(parts, strings.TrimSpace(s[start:i]))
+			start = i + 1
+		}
+	}
+	if start < len(s) {
+		parts = append(parts, strings.TrimSpace(s[start:]))
+	}
+	return parts
 }
 
 func unquote(s string) string {

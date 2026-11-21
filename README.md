@@ -2,7 +2,7 @@
 
 Composable, zero-dependency `.kiw` design system, layout & UI components for the Krewire ecosystem.
 
-Inspired by the **shadcn/ui** philosophy: components stay transparent and forkable, but distribution is **package-based by default**. You import `github.com/krewire/ui` as a standard Go module (with embedded `.kiw` templates) and only copy a component's source into your project's `components/` directory when you explicitly choose to fork it via `kiw ui vendor` / `kiw ui eject`.
+Inspired by the **shadcn/ui** philosophy: components stay transparent and forkable, but distribution is **package-based by default**. You import `github.com/krewire/ui` as a standard Go module (with embedded `.kiw` templates) and only copy a component's source into your project's `components/` directory when you explicitly choose to fork it via `krew ui vendor` / `krew ui eject`.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/krewire/ui.svg)](https://pkg.go.dev/github.com/krewire/ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -13,7 +13,7 @@ Inspired by the **shadcn/ui** philosophy: components stay transparent and forkab
 
 - **Zero Runtime Bloat**: 100% Pure Go and `.kiw` component templates with zero npm, node, or webpack dependencies.
 - **Package-Based by Default**: Import `github.com/krewire/ui` once as a Go module; components and embedded `.kiw` templates resolve through `go.mod`/`go.sum` with no pseudo-`node_modules`.
-- **Explicit Vendor/Eject Escape Hatch**: Fork individual components into `./components` with `kiw ui vendor <Name>` / `kiw ui eject <Name>` only when you need local ownership.
+- **Explicit Vendor/Eject Escape Hatch**: Fork individual components into `./components` with `krew ui vendor <Name>` / `krew ui eject <Name>` only when you need local ownership.
 - **Signature Pop-Brutalist Aesthetic**: Built-in neo-brutalist pop shadows, crisp outlines, vibrant accents, and high-contrast surface tokens.
 - **Unified Design Tokens**: Comprehensive typography scale, 4px/8px grid spacing, surface hierarchy, and dark mode tokens.
 - **WCAG Accessibility**: Full support for native HTML primitives (`<details>`, `<dialog>`, semantic tags), ARIA landmarks, focus rings, and reduced motion.
@@ -29,8 +29,8 @@ Import Krewire UI as a standard Go module. Components and their embedded `.kiw`
 templates resolve through `go.mod`/`go.sum` without copying source into your tree:
 
 ```bash
-kiw add github.com/krewire/ui
-# or: kiw add @krewire/ui
+krew add github.com/krewire/ui
+# or: krew add @krewire/ui
 ```
 
 Then use components in `.kiw` templates:
@@ -44,16 +44,16 @@ Then use components in `.kiw` templates:
 ### 2. Browse and Vendor Individual Components (Optional Escape Hatch)
 
 Copy a component's source into `./components/` only when you want to fork it
-locally. `kiw` tracks installs in `components/.kui-lock.json`:
+locally. `krew` tracks installs in `components/.kui-lock.json`:
 
 ```bash
-kiw ui list                    # browse the catalog, packs, and what you already have
-kiw ui info Card               # props, defaults, dependencies and a preview snippet
-kiw add ui/button ui/card      # copy one or more components (names are case-insensitive)
-kiw add ui:minimal             # copy a starter pack
-kiw ui vendor Card             # explicit fork into ./components
-kiw ui eject Card              # alias for vendor
-kiw ui diff Card               # compare your local copy with upstream
+krew ui list                    # browse the catalog, packs, and what you already have
+krew ui info Card               # props, defaults, dependencies and a preview snippet
+krew add ui/button ui/card      # copy one or more components (names are case-insensitive)
+krew add ui:minimal             # copy a starter pack
+krew ui vendor Card             # explicit fork into ./components
+krew ui eject Card              # alias for vendor
+krew ui diff Card               # compare your local copy with upstream
 ```
 
 Starter packs:
@@ -64,7 +64,7 @@ Starter packs:
 | `base` | Container, Button, Card, Input |
 | `dashboard` | Table, Stat, Sidebar, Modal |
 
-Without `kiw`, copy the files by hand from a checkout of this repository
+Without `krew`, copy the files by hand from a checkout of this repository
 (`cp path/to/ui/components/Button.kiw ./components/`).
 
 ### 3. Include the Design System Stylesheet
@@ -109,31 +109,31 @@ Child content becomes the component body (`{body}`); `<slot name="…">` or
 
 ## Updating Customized Components
 
-Copied components are yours: edit them freely. `kiw` tracks what it copied so it
+Copied components are yours: edit them freely. `krew` tracks what it copied so it
 can tell your edits apart from upstream changes:
 
 - Each install records the kui version and the SHA-256 of the copied file in
   `components/.kui-lock.json`. Commit this file with your components.
-- `kiw ui list` shows the state of every installed component: `up to date`,
+- `krew ui list` shows the state of every installed component: `up to date`,
   `modified` (you changed it), `update available` (kui changed it), or both.
-- `kiw ui diff <Name>` shows a unified diff from the upstream version to your
+- `krew ui diff <Name>` shows a unified diff from the upstream version to your
   local copy (uses `git diff --no-index`).
-- `kiw add ui/<Name>` again updates a component **only if you have not modified
+- `krew add ui/<Name>` again updates a component **only if you have not modified
   it**. A modified component is never overwritten silently; the command stops and
-  points you to `kiw ui diff`.
+  points you to `krew ui diff`.
 
 Recommended update workflow for a customized component:
 
-1. `kiw ui diff Card` — review what you changed relative to upstream.
+1. `krew ui diff Card` — review what you changed relative to upstream.
 2. Keep your changes small and local: prefer props, slots and CSS custom
    properties over editing markup, so upstream updates stay easy to merge.
 3. To take the new upstream version, commit your copy, run
-   `kiw add ui/card --force`, then re-apply your edits with
+   `krew add ui/card --force`, then re-apply your edits with
    `git diff` / `git checkout -p` against the commit you just made.
 4. To keep your version, do nothing: the lock entry keeps reporting
    `modified` so the decision stays visible.
 
-Upgrading `kiw` (or the `github.com/krewire/ui` version a project builds with)
+Upgrading `krew` (or the `github.com/krewire/ui` version a project builds with)
 is what brings new upstream component versions.
 
 ---
@@ -192,7 +192,7 @@ func main() {
 ```
 
 kui depends only on the Go standard library; importing it does not pull in the
-`kiw` CLI or `github.com/krewire/krewire`.
+`krew` CLI or `github.com/krewire/krewire`.
 
 ---
 
