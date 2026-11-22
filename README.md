@@ -326,6 +326,25 @@ Krewire UI defines a standardized set of CSS custom properties in `styles/krewir
 
 ---
 
+## Architecture & Package Subsystems
+
+The repository is organized into distinct, modular subsystem boundaries following the 6-Layer Pyramid Architecture:
+
+- **`github.com/krewire/ui`**: Primary public facade providing ergonomic access to `AppBuilder`, `Layout`, `Theme`, `Palette`, and `Registry`.
+- **`github.com/krewire/ui/components`**: Shipped `.kiw` component catalog, embedded filesystem (`components.FS`), and catalog discovery.
+- **`github.com/krewire/ui/node`**: High-performance virtual DOM / render tree and semantic HTML node abstraction (Leaf subsystem).
+- **`github.com/krewire/ui/widget`**: Standalone, composable pure-HTML UI widgets (Button, Badge, Card, Alert, Table, Modal).
+- **`github.com/krewire/ui/form`**: Accessible form model, typed inputs, CSRF bindings, and validation.
+- **`github.com/krewire/ui/panel`**: Dashboard layout composition, metric cards, and collapsible panels.
+- **`github.com/krewire/ui/styles`**: Embedded Pop-Brutalist CSS tokens and theme variables (Leaf subsystem).
+- **`github.com/krewire/ui/kiw`**: Go-native component compiler, template desugaring, and diagnostics.
+- **`github.com/krewire/ui/dsl`**: Domain-specific language contracts and template bindings.
+- **`github.com/krewire/ui/editors`**: Language server and editor integration protocols.
+
+Subsystem dependency boundaries and leaf invariants are strictly enforced via `architecture_test.go`.
+
+---
+
 ## License
 
 MIT License — free for personal, commercial, and enterprise use.
