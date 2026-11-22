@@ -351,7 +351,7 @@ Subsystem dependency boundaries and leaf invariants are strictly enforced via `a
 - [Architecture & Modular Subsystems](docs/architecture.md) — 6-Layer pyramid integration, Model C distribution, and layering invariants.
 - [Design System & Tokens](docs/design-system.md) — Typography scales, 4px/8px grid spacing, high-contrast surfaces, and color tokens.
 - [Getting Started Guide](docs/getting-started.md) — Package-based imports, template usage, and component vendoring.
-- [Contributing Guidelines](docs/contributing.md) — Component authoring standards, accessibility criteria, and quality gates.
+- [Contributing Guidelines](CONTRIBUTING.md) — Component authoring standards, accessibility criteria, and quality gates.
 
 ---
 
