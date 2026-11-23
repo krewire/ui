@@ -11,7 +11,7 @@ Welcome to the internal engineering documentation for **`github.com/krewire/ui`*
 
 ## Core Features
 
-- **Pure Go & .kiw Templates**: 100% CGO-free, zero npm/Node.js runtime bloat.
+- **Pure Go & .kiw Templates**: 100% CGO-free, standalone runtime with Tailwind CSS.
 - **Model C Package Distribution**: Distributed as importable Go packages (`github.com/krewire/ui/components`, `github.com/krewire/ui/styles`) with an optional vendor/eject escape hatch.
 - **Accessible & Semantic**: Native HTML primitives, ARIA attributes, keyboard navigation, and high-contrast color tokens.
 - **Acyclic Leaf Subsystems**: `node`, `widget`, `form`, `styles`, and `kiw` are isolated leaf packages verified by `architecture_test.go`.

@@ -25,7 +25,7 @@
 // 1. Leaf Subsystem Independence: Leaf packages (node, form, widget, styles, kiw)
 // must never import the root ui facade or higher-level consumers.
 //
-// 2. Zero npm / Node.js Runtime: All rendering, compilation, and styling is
+// 2. Pure Go Runtime: All rendering, compilation, and styling is
 // 100% pure Go (CGO_ENABLED=0).
 //
 // 3. Ergonomic Facade Stability: The root package provides stable, backward-compatible

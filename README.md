@@ -11,7 +11,7 @@ Inspired by the **shadcn/ui** philosophy: components stay transparent and forkab
 
 ## Why Krewire UI?
 
-- **Zero Runtime Bloat**: 100% Pure Go and `.kiw` component templates with zero npm, node, or webpack dependencies.
+- **Pure Go & Tailwind CSS**: 100% Pure Go and `.kiw` component templates with seamless Tailwind CSS utility styling.
 - **Package-Based by Default**: Import `github.com/krewire/ui` once as a Go module; components and embedded `.kiw` templates resolve through `go.mod`/`go.sum` with no pseudo-`node_modules`.
 - **Explicit Vendor/Eject Escape Hatch**: Fork individual components into `./components` with `krew ui vendor <Name>` / `krew ui eject <Name>` only when you need local ownership.
 - **Signature Pop-Brutalist Aesthetic**: Built-in neo-brutalist pop shadows, crisp outlines, vibrant accents, and high-contrast surface tokens.

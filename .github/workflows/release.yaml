@@ -197,7 +197,7 @@ jobs:
             - **Version**: `${{ needs.classify.outputs.version }}`
             - **Track**: `${{ needs.classify.outputs.track }}`
             - **Commit**: `${{ github.sha }}`
-            - **Zero npm / node Dependencies**: 100% Pure Go `.kiw` Native Components
+            - **Pure Go**: 100% Pure Go `.kiw` Native Components
             
             #### Checksums (SHA-256)
             ```

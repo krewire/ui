@@ -136,7 +136,7 @@ jobs:
             - **Track**: `nightly`
             - **Commit**: `${{ github.sha }}`
             - **Build Date**: `$(date -u +"%Y-%m-%d %H:%M:%S UTC")`
-            - **Zero npm / node Dependencies**: 100% Pure Go `.kiw` Native Components
+            - **Pure Go**: 100% Pure Go `.kiw` Native Components
             
             #### Checksums (SHA-256)
             ```
