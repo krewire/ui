@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/krewire/ui"
+	ui "github.com/krewire/ui/core"
 	"github.com/krewire/ui/node"
 )
 

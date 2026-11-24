@@ -125,11 +125,11 @@ func TestModuleHasNoExternalDependencies(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	gomod, err := os.ReadFile(filepath.Join(root, "go.mod"))
+	gomod, err := os.ReadFile(filepath.Join(root, "components", "go.mod"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.HasPrefix(string(gomod), "module github.com/krewire/ui\n") {
+	if !strings.HasPrefix(string(gomod), "module github.com/krewire/ui/components\n") {
 		t.Fatalf("unexpected go.mod at %s", root)
 	}
 	for _, line := range strings.Split(string(gomod), "\n") {

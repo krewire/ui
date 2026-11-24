@@ -1,7 +1,14 @@
 go 1.27.3
 
 use (
-	.
+	./components
+	./core
+	./dsl
+	./editors
+	./form
+	./kiw
+	./node
+	./panel
 	./styles
 	./widget
 )
