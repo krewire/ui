@@ -14,3 +14,7 @@ Thumbs.db
 .env.local
 .env.*.local
 !.env.example
+
+# Go workspace
+go.work
+go.work.sum
