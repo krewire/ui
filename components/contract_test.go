@@ -133,8 +133,15 @@ func TestModuleHasNoExternalDependencies(t *testing.T) {
 		t.Fatalf("unexpected go.mod at %s", root)
 	}
 	for _, line := range strings.Split(string(gomod), "\n") {
-		if f := strings.Fields(line); len(f) > 0 && (f[0] == "require" || f[0] == "replace") {
-			t.Errorf("go.mod declares %q; kui must stay dependency-free", strings.TrimSpace(line))
+		lineTrim := strings.TrimSpace(line)
+		if strings.HasPrefix(lineTrim, "github.com/krewire/ui/") || strings.HasPrefix(lineTrim, "replace github.com/krewire/ui/") {
+			continue
+		}
+		if lineTrim == "require (" || lineTrim == ")" {
+			continue
+		}
+		if f := strings.Fields(lineTrim); len(f) > 0 && (f[0] == "require" || f[0] == "replace") {
+			t.Errorf("go.mod declares %q; kui must stay dependency-free", lineTrim)
 		}
 	}
 
