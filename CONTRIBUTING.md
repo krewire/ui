@@ -1,27 +1,20 @@
 # Contributing to Krewire UI
 
-Guidelines for contributing to the Krewire Pop-Brutalist UI framework and `.kiw` component library.
+Guidelines for contributing components, styles, and primitives to **Krewire UI** (`github.com/krewire/ui`).
 
-## Architectural Boundaries
+> All code, comments, docstrings, commit messages, and documentation are strictly in **English**.
 
-- **Leaf Packages**: `node`, `widget`, `form`, `styles`, and `kiw` must never import the root `ui` facade.
-- **Pure Go**: Always compile with `CGO_ENABLED=0`. Zero Node.js or npm dependencies in core or component packages.
-- **Model C Invariant**: Components are distributed as importable Go packages. Never require manual copying of files for basic framework usage.
+## Invariants
 
-## Component Design Standards
+1. **Pure Go & Zero CGO**: All modules must compile with `CGO_ENABLED=0`.
+2. **Modular Architecture**: Code belongs to its respective module (`core/`, `components/`, `styles/`, etc.).
+3. **Accessibility**: Components must support native HTML semantics, ARIA landmarks, and high contrast.
 
-1. Use semantic HTML tags (`<button>`, `<dialog>`, `<details>`, `<nav>`).
-2. Provide ARIA labels and focus rings for accessibility.
-3. Support light and dark mode tokens seamlessly.
-4. Keep component templates self-contained and declarative.
-
-## Verification Checklist
-
-Before opening a pull request or committing changes:
+## Quality Gates
 
 ```bash
 gofmt -l .
 go vet ./...
-go test -v ./...
+go test ./...
 CGO_ENABLED=0 go build ./...
 ```
