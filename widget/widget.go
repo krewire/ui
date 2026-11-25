@@ -10,13 +10,22 @@ type Widget interface {
 	Render() template.HTML
 }
 
-// HTML converts a raw HTML string into a Widget.
-type HTML string
+// TrustedHTML represents developer-vetted, trusted raw HTML markup that is rendered directly
+// without escaping. Never pass user input, unvalidated parameters, or model-generated content
+// directly to TrustedHTML. For user-authored content, use SanitizeHTML instead.
+type TrustedHTML string
 
-// Render returns the HTML content.
-func (h HTML) Render() template.HTML {
+// Render returns the trusted HTML content directly.
+func (h TrustedHTML) Render() template.HTML {
 	return template.HTML(h)
 }
+
+// UnsafeHTML is an alias for TrustedHTML to make raw markup trust transitions conspicuous.
+type UnsafeHTML = TrustedHTML
+
+// HTML is an alias for TrustedHTML retained for backward compatibility.
+// Deprecated: Use TrustedHTML for explicitly trusted markup or SanitizeHTML for user-authored HTML.
+type HTML = TrustedHTML
 
 // safeURLSchemes are the URL schemes permitted in a rendered href. Executable
 // schemes such as javascript:, vbscript:, and data: are refused so an

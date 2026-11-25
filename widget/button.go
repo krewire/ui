@@ -2,6 +2,10 @@ package widget
 
 import "html/template"
 
+// TrustedScript represents an explicitly vetted, compile-time or policy-approved JavaScript expression.
+// Untrusted dynamic strings or user inputs must never be cast to TrustedScript.
+type TrustedScript string
+
 // Button represents a clickable button or anchor.
 type Button struct {
 	Text     string
@@ -11,7 +15,9 @@ type Button struct {
 	Icon     string
 	Type     string // button, submit, reset
 	Disabled bool
-	OnClick  string
+	OnClick  TrustedScript
+	Action   string // data-action attribute for delegated event handling
+	Payload  string // data-action-payload attribute
 	Class    string
 }
 
@@ -82,11 +88,27 @@ func (b *Button) Disable() *Button {
 	return b
 }
 
-// WithClickHandler sets an inline onclick handler. The value is attribute-escaped
-// on render; inline handlers cannot be sanitized as thoroughly as a script the
-// caller controls, so prefer a delegated listener where possible.
+// WithTrustedClickHandler sets an inline onclick handler requiring an explicit TrustedScript.
+// Inline handlers cannot be sanitized as thoroughly as external scripts; ensure proper CSP is configured.
+func (b *Button) WithTrustedClickHandler(script TrustedScript) *Button {
+	b.OnClick = script
+	return b
+}
+
+// WithClickHandler is deprecated in favor of WithAction for delegated handling or WithTrustedClickHandler.
+// Deprecated: Untrusted strings must never be passed to inline event handlers. Use WithTrustedClickHandler(TrustedScript(code)) or WithAction(actionName).
 func (b *Button) WithClickHandler(handler string) *Button {
-	b.OnClick = handler
+	b.OnClick = TrustedScript(handler)
+	return b
+}
+
+// WithAction binds an event handler using data-action attributes for external or delegated
+// event listeners, completely avoiding inline JavaScript execution sinks.
+func (b *Button) WithAction(action string, payload ...string) *Button {
+	b.Action = action
+	if len(payload) > 0 {
+		b.Payload = payload[0]
+	}
 	return b
 }
 
@@ -122,7 +144,14 @@ func (b *Button) Render() template.HTML {
 	}
 	clk := ""
 	if b.OnClick != "" {
-		clk = ` onclick="` + template.HTMLEscapeString(b.OnClick) + `"`
+		clk = ` onclick="` + template.HTMLEscapeString(string(b.OnClick)) + `"`
+	}
+	act := ""
+	if b.Action != "" {
+		act = ` data-action="` + template.HTMLEscapeString(b.Action) + `"`
+		if b.Payload != "" {
+			act += ` data-action-payload="` + template.HTMLEscapeString(b.Payload) + `"`
+		}
 	}
 
 	btnType := b.Type
@@ -130,5 +159,5 @@ func (b *Button) Render() template.HTML {
 		btnType = "button"
 	}
 
-	return template.HTML(`<button type="` + template.HTMLEscapeString(btnType) + `" class="` + template.HTMLEscapeString(cls) + `"` + clk + dis + `>` + content + `</button>`)
+	return template.HTML(`<button type="` + template.HTMLEscapeString(btnType) + `" class="` + template.HTMLEscapeString(cls) + `"` + clk + act + dis + `>` + content + `</button>`)
 }

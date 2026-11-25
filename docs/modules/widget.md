@@ -29,7 +29,7 @@ Styling uses `--ui-*` CSS custom properties and `ui-*` class prefixes (`tokens.g
 - Layout constraints (`bounds.go`): Heading levels clamped to `1..6` (default `2`), `Grid` columns clamped to `2..4` (default `2`).
 
 ### Component Builders
-- `Button` (`NewButton(text string)`): `Primary()`, `Secondary()`, `Error()`, `Small()`, `Large()`, `Link(url string)`, `WithIcon(icon string)`, `Submit()`, `Disable()`, `WithClickHandler(handler string)`, `WithClass(class string)`.
+- `Button` (`NewButton(text string)`): `Primary()`, `Secondary()`, `Error()`, `Small()`, `Large()`, `Link(url string)`, `WithIcon(icon string)`, `Submit()`, `Disable()`, `WithAction(action, payload...)` (preferred delegated event binding), `WithTrustedClickHandler(script TrustedScript)`, `WithClass(class string)`.
 - `Badge` (`NewBadge(text string)`): `Primary()`, `Secondary()`, `Success()`, `Warning()`, `Error()`, `WithIcon(icon string)`.
 - `Alert` (`NewAlert(message string)`): `Success()`, `Warning()`, `Error()` (pairs variants with semantic icons).
 - `Card` (`NewCard(title string)`): `WithDesc`, `WithBody`, `WithFooter`, `WithActions`.
@@ -37,6 +37,13 @@ Styling uses `--ui-*` CSS custom properties and `ui-*` class prefixes (`tokens.g
 - `Table` (`NewTable(headers ...string)`): `AddRow(cells ...template.HTML)`, `AddTextRow(cells ...string)`.
 - `Stack` (`VStack(widgets ...Widget)`, `HStack(widgets ...Widget)`): `WithGap(gap string)`.
 - `Grid` (`NewGrid(columns int, widgets ...Widget)`), `Heading` (`NewHeading(level int, content string)`), `Text` (`NewText(content string)` with `Strong()`, `Subtle()`), `Divider` (`NewDivider(label ...string)`).
+
+### Security & Safe-by-Construction Trust Boundaries
+- `TrustedHTML` / `UnsafeHTML`: Conspicuous type for vetted raw HTML markup. Never pass user input or model-generated text directly to raw HTML sinks.
+- `SanitizeHTML(input string) template.HTML`: Standard-library HTML sanitizer with a strict tag/attribute allow-list, stripping script tags, styles, SVGs, and inline event handlers (`on*`).
+- `SafeURL(raw string) string`: Sanitizes `href` and `src` links, replacing executable schemes (`javascript:`, `data:`, `vbscript:`) with `"#"` and entity-encoding attributes.
+- `TrustedScript`: Explicit type required for inline script execution, replacing arbitrary string-based event handlers. Prefer delegated events via `WithAction` (`data-action`).
+
 
 ## Realistic Usage Examples
 
