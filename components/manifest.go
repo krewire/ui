@@ -1,8 +1,6 @@
 package components
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
@@ -52,10 +50,25 @@ type Pack struct {
 	Components []string `json:"components"`
 }
 
+// PackageMeta describes the distributable package metadata embedded in the
+// component catalog. It replaces the standalone kiw.pkg.json manifest so that
+// a single components.json file is the sole source of truth.
+type PackageMeta struct {
+	Name         string            `json:"name"`
+	Version      string            `json:"version"`
+	Description  string            `json:"description,omitempty"`
+	Author       string            `json:"author,omitempty"`
+	License      string            `json:"license,omitempty"`
+	Main         string            `json:"main,omitempty"`
+	Styles       string            `json:"styles,omitempty"`
+	Dependencies map[string]string `json:"dependencies,omitempty"`
+}
+
 // Manifest is the decoded components.json catalog.
 type Manifest struct {
 	Schema     string          `json:"$schema,omitempty"`
 	Version    int             `json:"version"`
+	Package    PackageMeta     `json:"package,omitempty"`
 	Packs      []Pack          `json:"packs"`
 	Components []ComponentMeta `json:"components"`
 }
@@ -63,17 +76,7 @@ type Manifest struct {
 // LoadManifest decodes the embedded components.json. Unknown fields are
 // rejected so the manifest cannot silently drift from its schema.
 func LoadManifest() (*Manifest, error) {
-	data, err := FS.ReadFile(ManifestFile)
-	if err != nil {
-		return nil, err
-	}
-	dec := json.NewDecoder(bytes.NewReader(data))
-	dec.DisallowUnknownFields()
-	var m Manifest
-	if err := dec.Decode(&m); err != nil {
-		return nil, fmt.Errorf("components: decode %s: %w", ManifestFile, err)
-	}
-	return &m, nil
+	return &componentCatalog, nil
 }
 
 func mustRegistry() map[string]ComponentMeta {

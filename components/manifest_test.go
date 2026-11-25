@@ -48,17 +48,6 @@ type schemaDoc struct {
 
 func loadSchema(t *testing.T) schemaDoc {
 	t.Helper()
-	data, err := components.FS.ReadFile(components.ManifestFile)
-	if err != nil {
-		t.Fatal(err)
-	}
-	var raw map[string]any
-	if err := json.Unmarshal(data, &raw); err != nil {
-		t.Fatal(err)
-	}
-	if raw["$schema"] != "./components.schema.json" {
-		t.Errorf("components.json $schema = %v, want ./components.schema.json", raw["$schema"])
-	}
 	schemaBytes, err := os.ReadFile("components.schema.json") // tests run in components/
 	if err != nil {
 		t.Fatal(err)

@@ -18,7 +18,7 @@ kui owns the **shared presentation foundation**:
 | Area | What kui provides | Where |
 |---|---|---|
 | Components | 66 reusable `.kiw` single-file components (markup + scoped `<style>`, optionally `<script>`) | `components/*.kiw` |
-| Component catalog | Name, category, description, props, defaults, dependencies, preview of every component, and starter packs | `components/components.json` (schema: `components.schema.json`), `components.Registry`, `components.Resolve()` |
+| Component catalog | Name, category, description, props, defaults, dependencies, preview of every component, and starter packs | `components/metadata.go` (authored metadata) + embedded `*.kiw` (derived), `components.Registry`, `components.Resolve()` |
 | Distribution | The components as a standard `embed.FS`, and raw source by name | `components.FS`, `components.Get()` |
 | Design tokens & base styles | CSS custom properties (colour, surface, typography, spacing, radius, pop-border/shadow), resets, dark mode, layout primitives | `styles/krewire.css`, `styles.CSS` |
 | Layout primitives | `Box`, `Container`, `Flex`, `Grid`, `HStack`, `Section`, `Stack`, `VStack` | `components/` |
@@ -78,8 +78,8 @@ in §7:
 
 ```go
 package components
-var FS embed.FS                         // every *.kiw component plus components.json, at the FS root
-const ManifestFile = "components.json"
+var FS embed.FS                         // every *.kiw component, at the FS root
+const ManifestFile = "components.json" // legacy name; catalog is now derived from embedded *.kiw + metadata.go
 type ComponentMeta struct {             // one components.json entry
 	Name, Category, Description, File, Preview string
 	Props, Dependencies []string        // derived from the markup
@@ -100,7 +100,7 @@ package styles
 var CSS string                          // contents of styles/krewire.css
 ```
 
-`components.json` is the single source of truth for the catalog; its format is
+`metadata.go` plus the embedded `*.kiw` sources are the source of truth for the catalog; its format was
 `components/components.schema.json` (JSON Schema Draft-07). Name, category,
 description, preview and packs are authored; the other fields are derived from
 the markup by `go generate ./components`.

@@ -10,14 +10,13 @@ import (
 	"strings"
 )
 
-// FS embeds all built-in .kiw reusable and atomic UI components and the
-// components.json manifest that catalogs them.
+// FS embeds all built-in .kiw reusable and atomic UI components.
 //
-//go:embed *.kiw components.json
+//go:embed *.kiw
 var FS embed.FS
 
-// Registry maps each component name to its metadata. It is decoded from the
-// embedded components.json manifest, which is the single source of truth.
+// Registry maps each component name to its metadata, derived from the
+// embedded .kiw sources and the authored metadata in metadata.go.
 var Registry = mustRegistry()
 
 // List returns a sorted slice of all available component names.

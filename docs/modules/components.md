@@ -2,22 +2,22 @@
 
 ## Purpose & Design Role
 
-`components` ships the canonical Krewire UI (kui) catalog of reusable `.kiw` single-file components as an embeddable Go module. Rather than forcing applications to copy-paste template files into their repository, `components` embeds all `*.kiw` component sources alongside a machine-verified `components.json` manifest.
+`components` ships the canonical Krewire UI (kui) catalog of reusable `.kiw` single-file components as an embeddable Go module. Rather than forcing applications to copy-paste template files into their repository, `components` embeds all `*.kiw` component sources; their catalog metadata lives in `metadata.go`.
 
 Downstream consumers—including `core` (`ui.ComponentsFS`), static-site generators (`web/ssg`), and the `krew` CLI (`krew ui vendor` / `krew add ui:<pack>`)—read component sources and dependency metadata directly from this package.
 
 ## Architectural Position
 
 - **Layer**: Layer 2 (Modular Domain Libraries & Design System).
-- **Distribution Model**: Model C package distribution (`go:embed *.kiw components.json`).
+- **Distribution Model**: Model C package distribution (`go:embed *.kiw`).
 - **Dependencies**: Go standard library only (`embed`, `encoding/json`, `fmt`, `sort`, `strings`). Zero external `require` directives in `components/go.mod`.
 - **Dependents**: `github.com/krewire/ui/core` re-exports `components.FS` as `ui.ComponentsFS`; `web/ssg` loads built-in `.kiw` tags from it.
 
 ## Core Concepts & APIs
 
 ### Embedded Filesystem & Registry
-- `FS` (`embed.FS`): Embeds every `*.kiw` file at the filesystem root together with `components.json`.
-- `ManifestFile` (`"components.json"`): The embedded catalog file, validated against `components.schema.json` (JSON Schema Draft-07).
+- `FS` (`embed.FS`): Embeds every `*.kiw` file at the filesystem root.
+- `metadata.go`: Authored component metadata (category, description, preview) plus derived facts.
 - `Registry` (`map[string]ComponentMeta`): Package-level map initialized at startup from `components.json` (panics via `mustRegistry()` if the embedded manifest is malformed).
 - `Version() string`: Returns the component catalog format version (`"0.2.0"`).
 
