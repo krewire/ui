@@ -37,7 +37,7 @@ This copies `Card.kiw` into your local `components/` directory while tracking up
 
 ## 3. Include Design System Stylesheet
 
-Include the Pop-Brutalist CSS tokens in your HTML head or layout:
+Include the clean, modern CSS tokens in your HTML head or layout:
 
 ```html
 <link rel="stylesheet" href="/styles/krewire.css">

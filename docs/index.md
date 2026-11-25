@@ -5,7 +5,7 @@ Welcome to the internal engineering documentation for **`github.com/krewire/ui`*
 ## Documentation Index
 
 - [Architecture & Modular Subsystems](architecture.md): 6-Layer pyramid integration, Model C package distribution, subsystem boundaries (`node`, `widget`, `form`, `styles`, `panel`, `kiw`), and layering invariants.
-- [Design System & Tokens](design-system.md): Pop-Brutalist design tokens, typography scales, spacing grids, high-contrast surfaces, and dark mode palettes.
+- [Design System & Tokens](design-system.md): clean, modern design tokens, typography scales, spacing grids, high-contrast surfaces, and dark mode palettes.
 - [Getting Started](getting-started.md): Installation, package-based imports, vendoring components (`krew ui vendor`), layouts, and page integration.
 - [Module Reference](modules/index.md): Comprehensive technical reference for all 10 Go modules in `github.com/krewire/ui`.
 - [Contributing Guide](../CONTRIBUTING.md): Quality gates, adding components, tests, and contribution standards.
@@ -22,7 +22,7 @@ Welcome to the internal engineering documentation for **`github.com/krewire/ui`*
 - [`widget`](modules/widget.md) (`github.com/krewire/ui/widget`): Fluent HTML `Widget` builders (`Button`, `Badge`, `Card`, `Alert`, `Modal`, `Table`, `Grid`, `Stack`).
 - [`form`](modules/form.md) (`github.com/krewire/ui/form`): Programmatic `Form` builder, `http.Request` binding, validation, and accessible field rendering.
 - [`panel`](modules/panel.md) (`github.com/krewire/ui/panel`): Administrative `Panel`, KPI `Stat`, and `Dashboard` widgets.
-- [`styles`](modules/styles.md) (`github.com/krewire/ui/styles`): Embedded canonical Pop-Brutalist stylesheet (`styles.CSS`).
+- [`styles`](modules/styles.md) (`github.com/krewire/ui/styles`): Embedded canonical clean, modern stylesheet (`styles.CSS`).
 
 ## Core Features
 

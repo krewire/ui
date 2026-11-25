@@ -14,7 +14,7 @@ Inspired by the **shadcn/ui** philosophy: components stay transparent and forkab
 Krewire UI is organized into **10 independent Go modules**:
 
 - **`core` (`github.com/krewire/ui/core`)**: Theme management, component registry, app builder, and layout tokens.
-- **`components` (`github.com/krewire/ui/components`)**: 66 Pop-Brutalist `.kiw` templates embedded via standard library `embed.FS`.
+- **`components` (`github.com/krewire/ui/components`)**: 66 clean, modern `.kiw` templates embedded via standard library `embed.FS`.
 - **`styles` (`github.com/krewire/ui/styles`)**: Scoped CSS tokens and stylesheets (`krewire.css`).
 - **`dsl` (`github.com/krewire/ui/dsl`)**: Domain Specific Language parser for `.kiw` templates.
 - **`kiw` (`github.com/krewire/ui/kiw`)**: Template compiler and tag lexer.
@@ -31,7 +31,7 @@ Krewire UI is organized into **10 independent Go modules**:
 - **Pure Go & Tailwind CSS**: 100% Pure Go and `.kiw` component templates with seamless Tailwind CSS utility styling.
 - **Package-Based by Default**: Import modules directly via Go workspaces; no node_modules required for standard Go apps.
 - **Explicit Vendor/Eject Escape Hatch**: Fork individual components into `./components` with `krew ui vendor <Name>` only when local custom modifications are needed.
-- **Signature Pop-Brutalist Aesthetic**: Neo-brutalist pop shadows, crisp outlines, vibrant accents, and high-contrast surface tokens.
+- **Signature clean, modern Aesthetic**: crisp outlines, vibrant accents, and high-contrast surface tokens.
 - **Go Embed Native**: Import component templates directly into single static binaries via `embed.FS`.
 
 ---

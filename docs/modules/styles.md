@@ -2,7 +2,7 @@
 
 ## Purpose & Design Role
 
-`styles` is the canonical CSS design-system distribution module for Krewire UI. It embeds `krewire.css`—containing the Pop-Brutalist design tokens, CSS custom properties (`--ui-*`), typography and spacing scales, elevation/pop-shadow tokens, dark-mode variables, base resets, atomic control styles, and responsive layout primitives—into a single Go string constant.
+`styles` is the canonical CSS design-system distribution module for Krewire UI. It embeds `krewire.css`—containing the clean, modern design tokens, CSS custom properties (`--ui-*`), typography and spacing scales, elevation/pop-shadow tokens, dark-mode variables, base resets, atomic control styles, and responsive layout primitives—into a single Go string constant.
 
 Shipping the stylesheet as an embedded Go package means applications and static-site generators can serve or inline the exact canonical CSS at runtime with zero external asset pipelines or Node.js build steps.
 

@@ -35,7 +35,7 @@
 
 ### Theme & Palette System (`theme.go`, `palette.go`, `theme_toggle.go`)
 - `Palette`: Defines semantic `Color` tokens (`Primary`, `PrimaryContent`, `Secondary`, `SecondaryContent`, `Accent`, `Base1`, `Base2`, `NeutralContent`, etc.) with `CSSVars(defaults Palette) string`.
-- `DefaultLightPalette` / `DefaultDarkPalette`: Canonical light and dark Pop-Brutalist color palettes.
+- `DefaultLightPalette` / `DefaultDarkPalette`: Canonical light and dark clean, modern color palettes.
 - `Theme`: Manages light/dark `Palette`s, `StorageKey` (defaults to `"krewire-theme"`), and `Default` (`"auto"`, `"light"`, `"dark"`).
   - `DefaultTheme() *Theme`, `WithStorageKey`, `WithDefault`
   - `Style() template.CSS`: Emits `:root`, `:root[data-theme="dark"]`, and `@media (prefers-color-scheme: dark)` CSS custom properties.

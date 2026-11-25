@@ -10,7 +10,7 @@ Nine of the ten modules are self-contained leaf or near-leaf packages with zero 
 - [`core`](core.md) (`github.com/krewire/ui/core`, package `ui`) — Umbrella facade providing `App`, `Layout`, `Theme`, `Palette`, `Registry`, declarative `LayoutFromConfig`, and CSS helpers.
 
 ### Template Engine & Component Catalog
-- [`components`](components.md) (`github.com/krewire/ui/components`) — Embedded catalog of 66+ Pop-Brutalist `.kiw` single-file components (`FS`, `Registry`, `Resolve`, starter `Packs`).
+- [`components`](components.md) (`github.com/krewire/ui/components`) — Embedded catalog of 66+ clean, modern `.kiw` single-file components (`FS`, `Registry`, `Resolve`, starter `Packs`).
 - [`kiw`](kiw.md) (`github.com/krewire/ui/kiw`) — Canonical `.kiw` parser, Svelte-style template desugarer (`{#if}`, `{#each}`, `{#snippet}`, `<slot>`), linter, diagnostic explainer, and `.kpkg` packager.
 - [`dsl`](dsl.md) (`github.com/krewire/ui/dsl`) — Backward-compatible forwarding alias for `github.com/krewire/ui/kiw`.
 - [`editors`](editors.md) (`github.com/krewire/ui/editors`) — TextMate grammar (`text.html.kiw`), VS Code extension manifest, language configuration, and grammar validation tests.
@@ -22,7 +22,7 @@ Nine of the ten modules are self-contained leaf or near-leaf packages with zero 
 - [`panel`](panel.md) (`github.com/krewire/ui/panel`) — Higher-level administrative `Panel`, KPI `Stat`, and `Dashboard` widgets built on `widget.Widget`.
 
 ### Design System & Tokens
-- [`styles`](styles.md) (`github.com/krewire/ui/styles`) — Embedded canonical Pop-Brutalist stylesheet (`krewire.css` via `styles.CSS`) with `--ui-*` CSS custom properties, typography/spacing scales, dark mode, and layout utilities.
+- [`styles`](styles.md) (`github.com/krewire/ui/styles`) — Embedded canonical clean, modern stylesheet (`krewire.css` via `styles.CSS`) with `--ui-*` CSS custom properties, typography/spacing scales, dark mode, and layout utilities.
 
 ## Dependency & Layering Rules
 
