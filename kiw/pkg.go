@@ -69,6 +69,36 @@ func SavePackageManifest(path string, m *PackageManifest) error {
 	return nil
 }
 
+// GeneratePackageManifest writes a kiw.pkg.json manifest for the UI component
+// library rooted at uiRoot (the directory containing components/ and styles/).
+// The component list is derived from the .kiw files in components/, so the
+// manifest is a generated artifact rather than a hand-maintained source file.
+func GeneratePackageManifest(uiRoot string) error {
+	componentsDir := filepath.Join(uiRoot, "components")
+	files, err := filepath.Glob(filepath.Join(componentsDir, "*.kiw"))
+	if err != nil {
+		return fmt.Errorf("pkg: glob components: %w", err)
+	}
+	comps := make(map[string]string, len(files))
+	for _, f := range files {
+		name := strings.TrimSuffix(filepath.Base(f), ".kiw")
+		comps[name] = "./components/" + filepath.Base(f)
+	}
+	m := &PackageManifest{
+		Schema:       "https://krewire.com/schemas/kiw.pkg.schema.json",
+		Name:         "@krewire/ui",
+		Version:      "0.2.0",
+		Description:  "Krewire clean, modern design system component library and UI kit",
+		Author:       "Krewire Team",
+		License:      "MIT",
+		Main:         "./components",
+		Components:   comps,
+		Styles:       "./styles/krewire.css",
+		Dependencies: map[string]string{},
+	}
+	return SavePackageManifest(filepath.Join(uiRoot, PackageManifestFile), m)
+}
+
 // ValidatePackageManifest enforces validity constraints on a component package manifest.
 func ValidatePackageManifest(m *PackageManifest) error {
 	if m == nil {

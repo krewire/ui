@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/krewire/ui/components"
+	"github.com/krewire/ui/kiw"
 )
 
 // packageManifest reflects the structure of kiw.pkg.json.
@@ -26,6 +27,13 @@ type packageManifest struct {
 
 func TestPackageManifestCompleteness(t *testing.T) {
 	pkgPath := filepath.Join("..", "kiw.pkg.json")
+	// kiw.pkg.json is a generated artifact; regenerate it if absent so the
+	// package manifest stays in sync with the component catalog.
+	if _, err := os.Stat(pkgPath); os.IsNotExist(err) {
+		if err := kiw.GeneratePackageManifest(".."); err != nil {
+			t.Fatalf("failed to generate kiw.pkg.json: %v", err)
+		}
+	}
 	data, err := os.ReadFile(pkgPath)
 	if err != nil {
 		t.Fatalf("failed to read kiw.pkg.json: %v", err)

@@ -16,3 +16,4 @@ Thumbs.db
 !.env.example
 
 # Go workspace
+kiw.pkg.json
