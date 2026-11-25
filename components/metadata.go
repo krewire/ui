@@ -1,4 +1,4 @@
-// Code generated from components.json. DO NOT EDIT by hand.
+// Authored + derived component catalog metadata. Generated from the embedded .kiw sources.
 package components
 
 var componentCatalog = Manifest{

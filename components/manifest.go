@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// ManifestFile is the name of the embedded component manifest. Its structure
-// is described by components.schema.json (JSON Schema Draft-07).
+// ManifestFile is retained for compatibility with older tooling; the catalog
+// is now derived from embedded .kiw sources and metadata.go.
 const ManifestFile = "components.json"
 
 // ComponentMeta is the catalog entry of one .kiw component.
@@ -50,9 +50,8 @@ type Pack struct {
 	Components []string `json:"components"`
 }
 
-// PackageMeta describes the distributable package metadata embedded in the
-// component catalog. It replaces the standalone kiw.pkg.json manifest so that
-// a single components.json file is the sole source of truth.
+// PackageMeta describes the distributable package metadata for a standalone
+// .kiw component package. It is populated from authored metadata when needed.
 type PackageMeta struct {
 	Name         string            `json:"name"`
 	Version      string            `json:"version"`
@@ -64,7 +63,7 @@ type PackageMeta struct {
 	Dependencies map[string]string `json:"dependencies,omitempty"`
 }
 
-// Manifest is the decoded components.json catalog.
+// Manifest is the in-memory component catalog derived from embedded .kiw sources.
 type Manifest struct {
 	Schema     string          `json:"$schema,omitempty"`
 	Version    int             `json:"version"`
@@ -73,8 +72,8 @@ type Manifest struct {
 	Components []ComponentMeta `json:"components"`
 }
 
-// LoadManifest decodes the embedded components.json. Unknown fields are
-// rejected so the manifest cannot silently drift from its schema.
+// LoadManifest builds the component catalog from embedded .kiw sources and
+// authored metadata. No external manifest file is required.
 func LoadManifest() (*Manifest, error) {
 	return &componentCatalog, nil
 }
