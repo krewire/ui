@@ -30,7 +30,7 @@ kui owns the **shared presentation foundation**:
 kui does **not**:
 
 - **Parse or render `.kiw`.** Parsing and rendering belong to the core toolchain
-  (`pkg/kiw`, `pkg/web/ssg`). kui ships template source; it never executes it.
+  (`ui/kiw`, `web/ssg`). kui ships template source; it never executes it.
 - **Orchestrate builds or ship a CLI.** The standalone `kui` binary was removed
   (commit `a5fb95c`); building, serving and deploying are `kiw`'s job.
 - **Depend on any other module.** `go.mod` has no `require` lines and the Go
@@ -40,9 +40,9 @@ kui does **not**:
   tenancy, billing, permissions or workflow state. Product screens, navigation
   policies and workflows live in the product repositories (see §6).
 - **Provide a typed Go component API.** The programmatic Go UI layer (typed
-  renderers, themes, `App` builder) is `github.com/krewire/krewire/pkg/ui`.
+  renderers, themes, `App` builder) is `github.com/krewire/ui`.
   kui is the `.kiw` presentation catalog that layer delegates to
-  (`pkg/ui/components/components.go`: `var FS = uicomponents.FS`).
+  (`ui/components/components.go`: `var FS = uicomponents.FS`).
 - **Bundle JavaScript frameworks or a Node toolchain.** Interactive behaviour
   prefers native elements (`<details>`, `<dialog>`); any script is small
   vanilla JS.
@@ -54,9 +54,9 @@ kui does **not**:
    │  .kiw pages/layouts/components            │  optional Go import
    ▼                                           ▼
  core toolchain (github.com/krewire/krewire)   github.com/krewire/ui  (kui)
-   kiw CLI ─► pkg/web/ssg ─► pkg/kiw            components  styles
+   kiw CLI ─► web/ssg ─► ui/kiw            components  styles
                    │                              ▲
-                   └── pkg/ui ── pkg/ui/components┘   (embed.FS delegation)
+                   └── ui ── ui/components┘   (embed.FS delegation)
 ```
 
 Dependencies point one way: the toolchain imports kui to obtain the built-in
@@ -68,7 +68,7 @@ How each sibling repository consumes kui today:
 
 | Consumer | How |
 |---|---|
-| `krewire` | `pkg/ui/components` re-exports `components.FS`; `pkg/web/ssg/load.go` loads every embedded `.kiw` as a built-in component. |
+| `krewire` | `ui/components` re-exports `components.FS`; `web/ssg/load.go` loads every embedded `.kiw` as a built-in component. |
 | `dash`, `cloud` (landing), `krewire.com`, `krewire.github.io` | Use kui components as `.kiw` tags (`<Navbar>`, `<Footer>`, `<VStack>`, `<Button>`, …) rendered by `kiw`; no direct Go import. |
 
 ## 4. Go API surface
@@ -129,8 +129,8 @@ Invariants (tested in `components/components_test.go`,
 
 ### 5.2 Template language used by kui components
 
-kui components are written in the `.kiw` template syntax that `pkg/kiw`
-desugars to Go `html/template` (`pkg/kiw/kiw.go`, `pkg/kiw/desugar.go`):
+kui components are written in the `.kiw` template syntax that `ui/kiw`
+desugars to Go `html/template` (`ui/kiw/kiw.go`, `ui/kiw/desugar.go`):
 
 | Construct | Meaning |
 |---|---|
@@ -148,7 +148,7 @@ listed in §5.4. This is enforced by `TestComponentsUseOnlyContractHelpers`.
 
 - **Props** are the attributes on the component tag. The renderer passes them in
   a map and registers each key with both an upper- and lower-case first letter
-  (`pkg/web/ssg/render.go`, `dict`/`componentDict`), so `Variant="primary"` and
+  (`web/ssg/render.go`, `dict`/`componentDict`), so `Variant="primary"` and
   `variant="primary"` are equivalent and a component may read `{variant}` or
   `.Variant`.
 - **Value types.** `"true"`, `"false"` and numeric-looking strings (`"1"`,
@@ -161,7 +161,7 @@ listed in §5.4. This is enforced by `TestComponentsUseOnlyContractHelpers`.
   components.
 - **Named slots.** `<div slot="name">…</div>` (also `<section>` or `<template>`)
   and `<slot name="name">…</slot>` inside a component tag become the prop
-  `Name`, read with `{name}`. The slot extractor in `pkg/kiw` ends a
+  `Name`, read with `{name}`. The slot extractor in `ui/kiw` ends a
   `div`/`section`/`template` slot at the first closing `div`/`section`/`template`
   tag, so content inside such a slot must not itself contain those elements; use
   `<slot name="…">` when it does.
@@ -177,28 +177,28 @@ A renderer that wants to render kui components must provide:
    - `class` — class composition: `{{class "btn" .Variant "primary" .Size "md" .Class}}`
      emits the base class, then `base-<value or default>` for each
      (value, default) pair, then trailing raw tokens
-     (reference implementation: `ClassHelper` in `pkg/web/ssg/class.go`).
+     (reference implementation: `ClassHelper` in `web/ssg/class.go`).
    - `assetLinks` — emits the site's stylesheet/script tags; used only by
      `Head.kiw`.
    - `component` and `dict` — component invocation; the desugared form of
      every nested tag.
 3. Override precedence: a project's own `components/<Name>.kiw` replaces the kui
-   component of the same name (`pkg/web/ssg/load.go` loads kui first, then the
+   component of the same name (`web/ssg/load.go` loads kui first, then the
    project directory).
 4. Style handling: each component's `<style>` is emitted only when the component
    is used, scoped under `[data-kiw-component="Name"]`; rules on `:root`,
-   `@keyframes` and `@font-face` stay global (`pkg/web/ssg/css.go`). The
+   `@keyframes` and `@font-face` stay global (`web/ssg/css.go`). The
    renderer adds `data-kiw-component="Name"` to the component's first element
-   when the markup does not already carry it (`pkg/web/ssg/scope.go`).
+   when the markup does not already carry it (`web/ssg/scope.go`).
 
 The minimum toolchain packages for rendering are therefore
-`github.com/krewire/krewire/pkg/kiw` (parser) and
-`github.com/krewire/krewire/pkg/web/ssg` (renderer). A product that does not
+`github.com/krewire/ui/kiw` (parser) and
+`github.com/krewire/krewire/web/ssg` (renderer). A product that does not
 render `.kiw` itself (for example, it only serves `styles.CSS` or ships the
 component sources) needs neither.
 
-**Known gap.** `pkg/kiw` extracts inline `<script>` blocks out of the markup,
-and the `pkg/web/ssg` component loader keeps only the markup and styles. The
+**Known gap.** `ui/kiw` extracts inline `<script>` blocks out of the markup,
+and the `web/ssg` component loader keeps only the markup and styles. The
 inline scripts in `CodeWindow.kiw` and `Terminal.kiw` are therefore not emitted
 by that loader; those components must stay usable without them.
 
@@ -219,7 +219,7 @@ state in `localStorage`, or opens sockets). The following components carry
 | `Footer` | The `contributors` variant and the default variant (any other value, e.g. `full`) without `columns` list Krewire products and repositories; copyright defaults to "Krewire Contributors" | `variant="simple"` with `brandName`, `columns`, or a body |
 | `Ecosystem` | Hard-coded list of Krewire repositories | `header` slot and a body |
 | `SideMenu` | Default table of contents of the Krewire docs | pass a body |
-| `CodeWindow` | Sample code importing `github.com/krewire/krewire/pkg/web` | pass your own code |
+| `CodeWindow` | Sample code importing `github.com/krewire/krewire/web` | pass your own code |
 
 These are brand defaults, not business logic, and every one can be overridden
 through props or slots. They stay in kui for now because Krewire's own sites use
@@ -285,4 +285,4 @@ up changes whenever their `github.com/krewire/ui` version changes.
 
 All examples run under `go test ./...`. The example site in
 `examples/productapp/site` is a regular `.kiw` site; it was checked to render
-with `pkg/web/ssg` at the toolchain commit named at the top of this document.
+with `web/ssg` at the toolchain commit named at the top of this document.
