@@ -22,7 +22,6 @@ import (
 
 	"github.com/krewire/ui/components"
 	"github.com/krewire/ui/components/internal/analyze"
-	"github.com/krewire/ui/kiw"
 )
 
 func main() {
@@ -75,15 +74,6 @@ func run(dir string, check bool) error {
 	if err := enc.Encode(m); err != nil {
 		return err
 	}
-	absDir, err := filepath.Abs(dir)
-	if err != nil {
-		return err
-	}
-	uiRoot := filepath.Dir(absDir)
-	if err := kiw.GeneratePackageManifest(uiRoot); err != nil {
-		return err
-	}
-
 	if bytes.Equal(buf.Bytes(), old) {
 		return nil
 	}
