@@ -15,7 +15,7 @@ import (
 )
 
 // PackageManifestFile is the canonical manifest filename for a standalone .kiw component package.
-const PackageManifestFile = "kiw.pkg.json"
+const PackageManifestFile = "components.json"
 
 // PackageExtension is the standard file extension for distributed .kiw component packages.
 const PackageExtension = ".kpkg"
@@ -38,12 +38,74 @@ type PackageManifest struct {
 	Dependencies map[string]string `json:"dependencies,omitempty"` // Dependent packages and version ranges
 }
 
-// LoadPackageManifest decodes a kiw.pkg.json manifest from path.
+// LoadPackageManifest decodes a components.json package manifest from path.
+// componentsPackageFile mirrors the components.json shape used as the single
+// manifest for both the component catalog and package distribution.
+type componentsPackageFile struct {
+	Schema     string `json:"$schema,omitempty"`
+	Version    int    `json:"version"`
+	Package    struct {
+		Name         string            `json:"name"`
+		Version      string            `json:"version"`
+		Description  string            `json:"description,omitempty"`
+		Author       string            `json:"author,omitempty"`
+		License      string            `json:"license,omitempty"`
+		Main         string            `json:"main,omitempty"`
+		Styles       string            `json:"styles,omitempty"`
+		Dependencies map[string]string `json:"dependencies,omitempty"`
+	} `json:"package"`
+	Components []struct {
+		Name string `json:"name"`
+		File string `json:"file"`
+	} `json:"components"`
+}
+
 func LoadPackageManifest(path string) (*PackageManifest, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, fmt.Errorf("pkg: read %s: %w", path, err)
+		// Backward compatibility: try the legacy kiw.pkg.json name.
+		if filepath.Base(path) == PackageManifestFile {
+			legacy := filepath.Join(filepath.Dir(path), "kiw.pkg.json")
+			if ldata, lerr := os.ReadFile(legacy); lerr == nil {
+				data, err = ldata, nil
+				path = legacy
+			}
+		}
+		if err != nil {
+			return nil, fmt.Errorf("pkg: read %s: %w", path, err)
+		}
 	}
+	// Try components.json shape first.
+	var cf componentsPackageFile
+	if err := json.Unmarshal(data, &cf); err == nil && cf.Package.Name != "" {
+		m := &PackageManifest{
+			Schema:       cf.Schema,
+			Name:         cf.Package.Name,
+			Version:      cf.Package.Version,
+			Description:  cf.Package.Description,
+			Author:       cf.Package.Author,
+			License:      cf.Package.License,
+			Main:         cf.Package.Main,
+			Components:   map[string]string{},
+			Styles:       cf.Package.Styles,
+			Dependencies: cf.Package.Dependencies,
+		}
+		for _, c := range cf.Components {
+			if c.Name == "" {
+				continue
+			}
+			file := c.File
+			if file == "" {
+				file = "./components/" + c.Name + ".kiw"
+			}
+			m.Components[c.Name] = file
+		}
+		if err := ValidatePackageManifest(m); err != nil {
+			return nil, err
+		}
+		return m, nil
+	}
+	// Fallback: legacy PackageManifest JSON.
 	var m PackageManifest
 	if err := json.Unmarshal(data, &m); err != nil {
 		return nil, fmt.Errorf("pkg: decode %s: %w", path, err)
@@ -59,7 +121,26 @@ func SavePackageManifest(path string, m *PackageManifest) error {
 	if err := ValidatePackageManifest(m); err != nil {
 		return err
 	}
-	data, err := json.MarshalIndent(m, "", "  ")
+	// Write the unified components.json shape so a single manifest file serves
+	// both the component catalog and package distribution.
+	cf := componentsPackageFile{}
+	cf.Schema = "https://krewire.com/schemas/components.schema.json"
+	cf.Version = 1
+	cf.Package.Name = m.Name
+	cf.Package.Version = m.Version
+	cf.Package.Description = m.Description
+	cf.Package.Author = m.Author
+	cf.Package.License = m.License
+	cf.Package.Main = m.Main
+	cf.Package.Styles = m.Styles
+	cf.Package.Dependencies = m.Dependencies
+	for name, pth := range m.Components {
+		cf.Components = append(cf.Components, struct {
+			Name string `json:"name"`
+			File string `json:"file"`
+		}{Name: name, File: filepath.Base(pth)})
+	}
+	data, err := json.MarshalIndent(cf, "", "  ")
 	if err != nil {
 		return fmt.Errorf("pkg: encode manifest: %w", err)
 	}

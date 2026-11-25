@@ -38,7 +38,7 @@ Because `kiw` is a pure-Go leaf package, static-site generators (`web/ssg`), UI 
 - `Explain(file, name, src string, funcs map[string]any, err error) error`: Maps `text/template` or `html/template` parse/exec errors back to a `*Diagnostic` positioned in the original `.kiw` source with actionable hints.
 
 ### Standalone Component Packages (`pkg.go`)
-- Constants: `PackageManifestFile` (`"kiw.pkg.json"`), `PackageExtension` (`".kpkg"`), `DefaultPackageDir` (`".krewire/pkg"`).
+- Constants: `PackageManifestFile` (`"components.json"`), `PackageExtension` (`".kpkg"`), `DefaultPackageDir` (`".krewire/pkg"`).
 - `PackageManifest`: Defines `Name`, `Version`, `Components` (map of component name to relative `.kiw` path), `Styles`, `Scripts`, and `Dependencies`.
 - `LoadPackageManifest`, `SavePackageManifest`, `ValidatePackageManifest` (enforces `SafePath` relative-path bounds), and `PackPackage(dir, outPath string)` (produces a `.kpkg` tar.gz archive and SHA-256 hex digest).
 
