@@ -114,8 +114,8 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.24'
-          check-latest: true
+          go-version: '1.27.3'
+          cache: false
 
       - name: Verify Formatting (gofmt)
         run: |
@@ -126,11 +126,18 @@ jobs:
             exit 1
           fi
 
+      - name: Module Manifest Verification
+        run: |
+          for mod in components core dsl editors form kiw node panel styles widget; do
+            echo "▶ Verifying module manifests in ${mod}..."
+            (cd "${mod}" && go mod verify)
+          done
+
       - name: Static Analysis (go vet)
-        run: go vet ./...
+        run: go vet ./components/... ./core/... ./dsl/... ./editors/... ./form/... ./kiw/... ./node/... ./panel/... ./styles/... ./widget/...
 
       - name: Run Test Suite & Contract Checks
-        run: go test -v ./...
+        run: go test -v ./components/... ./core/... ./dsl/... ./editors/... ./form/... ./kiw/... ./node/... ./panel/... ./styles/... ./widget/...
 
   package-artifacts:
     name: Bundle UI Component Assets
