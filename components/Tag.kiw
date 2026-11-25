@@ -22,8 +22,8 @@
   align-items: center;
   gap: 0.35rem;
   border-radius: var(--radius-sm, 6px);
-  border: 1.5px solid var(--border, #0B1F3B);
-  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  border: 1.5px solid var(--border, #1c1917);
+  box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   font-family: inherit;
   font-weight: 700;
   line-height: 1;
@@ -33,8 +33,8 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 .tag:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 2.5px 2.5px 0px var(--border, #0B1F3B);
+  transform: translateY(-1px);
+  box-shadow: 2.5px 2.5px 0px var(--border, #1c1917);
 }
 
 .tag-sm { padding: 0.2rem 0.5rem; font-size: 0.72rem; }
@@ -43,15 +43,15 @@
 
 .tag-default {
   background: var(--bg-2, #f2ede4);
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .tag-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .tag-secondary {
   background: var(--secondary, #00D1C1);
-  color: var(--secondary-content, #0B1F3B);
+  color: var(--secondary-content, #1c1917);
 }
 .tag-accent {
   background: var(--accent, #FF3B2E);
@@ -59,9 +59,9 @@
 }
 
 .tag-selected {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
-  box-shadow: 2px 2px 0px var(--border, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.04));
 }
 
 .tag-remove {
@@ -84,11 +84,11 @@
 }
 
 html.dark .tag, [data-theme="dark"] .tag, .dark .tag {
-  border-color: var(--border, #FAF8F4);
-  box-shadow: 1.5px 1.5px 0px #39D353;
+  border-color: var(--border, #fafaf9);
+  box-shadow: 1.5px 1.5px 0px #10b981;
 }
 html.dark .tag-default, [data-theme="dark"] .tag-default, .dark .tag-default {
   background: var(--bg-2, #112646);
-  color: var(--fg, #FAF8F4);
+  color: var(--fg, #fafaf9);
 }
 </style>

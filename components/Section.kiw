@@ -30,7 +30,7 @@
   font-weight: 900;
   letter-spacing: -0.03em;
   margin: 0 0 0.5rem;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .kiw-section-desc {
   font-size: clamp(0.92rem, 1.5vw, 1.05rem);

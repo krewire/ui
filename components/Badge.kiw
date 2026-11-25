@@ -11,8 +11,8 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 800;
   border-radius: 999px;
-  border: 1.5px solid var(--border, #0B1F3B);
-  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  border: 1.5px solid var(--border, #1c1917);
+  box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   line-height: 1;
   white-space: nowrap;
   letter-spacing: 0.02em;
@@ -22,27 +22,27 @@
 
 .badge-neutral {
   background: var(--bg-2, #f0ede5);
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .badge-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .badge-secondary {
   background: var(--secondary, #00D1C1);
-  color: var(--secondary-content, #0B1F3B);
+  color: var(--secondary-content, #1c1917);
 }
 .badge-accent {
   background: var(--accent, #FF3B2E);
   color: #ffffff;
 }
 .badge-success {
-  background: var(--success, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--success, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .badge-warning {
   background: var(--warning, #ffb703);
-  color: #0B1F3B;
+  color: #1c1917;
 }
 .badge-error {
   background: var(--error, #FF3B2E);

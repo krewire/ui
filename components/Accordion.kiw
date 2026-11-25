@@ -29,14 +29,14 @@
 
 .accordion-item {
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  background: var(--bg, #FAF8F4);
-  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  background: var(--bg, #fafaf9);
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   overflow: hidden;
   transition: box-shadow 0.12s ease;
 }
 .accordion-item[open] {
-  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05));
 }
 
 .accordion-header {
@@ -46,7 +46,7 @@
   padding: 0.85rem 1.15rem;
   font-size: 0.92rem;
   font-weight: 800;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
   cursor: pointer;
   user-select: none;
   list-style: none;
@@ -59,7 +59,7 @@
 }
 .accordion-header:hover {
   background: rgba(57, 211, 83, 0.15);
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 
 .accordion-chevron {
@@ -74,7 +74,7 @@
 
 .accordion-body {
   padding: 1rem 1.15rem;
-  background: var(--bg, #FAF8F4);
+  background: var(--bg, #fafaf9);
   border-top: 1.5px solid var(--border-subtle, rgba(11, 31, 59, 0.15));
 }
 .accordion-item[open] .accordion-body {
@@ -92,22 +92,22 @@
 }
 
 html.dark .accordion-item, [data-theme="dark"] .accordion-item, .dark .accordion-item {
-  background: var(--bg, #0B1F3B);
-  border-color: var(--border, #FAF8F4);
-  box-shadow: 2px 2px 0px #39D353;
+  background: var(--bg, #1c1917);
+  border-color: var(--border, #fafaf9);
+  box-shadow: 2px 2px 0px #10b981;
 }
 html.dark .accordion-item[open], [data-theme="dark"] .accordion-item[open], .dark .accordion-item[open] {
-  box-shadow: 4px 4px 0px #39D353;
+  box-shadow: 4px 4px 0px #10b981;
 }
 html.dark .accordion-header, [data-theme="dark"] .accordion-header, .dark .accordion-header {
   background: var(--bg-2, #112646);
-  color: var(--fg, #FAF8F4);
+  color: var(--fg, #fafaf9);
 }
 html.dark .accordion-header:hover, [data-theme="dark"] .accordion-header:hover, .dark .accordion-header:hover {
   background: rgba(57, 211, 83, 0.2);
 }
 html.dark .accordion-body, [data-theme="dark"] .accordion-body, .dark .accordion-body {
-  background: var(--bg, #0B1F3B);
+  background: var(--bg, #1c1917);
   border-top-color: var(--border-subtle, rgba(250, 248, 244, 0.15));
 }
 html.dark .accordion-content, [data-theme="dark"] .accordion-content, .dark .accordion-content {

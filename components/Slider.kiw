@@ -48,7 +48,7 @@
 .slider-label {
   font-size: 0.85rem;
   font-weight: 800;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 
 .slider-badge {
@@ -57,9 +57,9 @@
   font-weight: 800;
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
-  border: 1px solid var(--border, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
+  border: 1px solid var(--border, #1c1917);
 }
 
 .slider-track-wrap {
@@ -75,7 +75,7 @@
   height: 0.65rem;
   background: var(--bg-2, #f2ede4);
   border-radius: 999px;
-  border: 1.5px solid var(--border, #0B1F3B);
+  border: 1.5px solid var(--border, #1c1917);
   outline: none;
   cursor: pointer;
 }
@@ -86,9 +86,9 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  background: var(--primary, #39D353);
-  border: 2px solid var(--border, #0B1F3B);
-  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  background: var(--primary, #10b981);
+  border: 1px solid var(--border, #e7e5e4);
+  box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   cursor: pointer;
   transition: transform 0.1s ease;
 }
@@ -100,21 +100,21 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  background: var(--primary, #39D353);
-  border: 2px solid var(--border, #0B1F3B);
-  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  background: var(--primary, #10b981);
+  border: 1px solid var(--border, #e7e5e4);
+  box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   cursor: pointer;
 }
 
 html.dark .slider-label, [data-theme="dark"] .slider-label, .dark .slider-label {
-  color: var(--fg, #FAF8F4);
+  color: var(--fg, #fafaf9);
 }
 html.dark .slider-input, [data-theme="dark"] .slider-input, .dark .slider-input {
   background: var(--bg-2, #112646);
-  border-color: var(--border, #FAF8F4);
+  border-color: var(--border, #fafaf9);
 }
 html.dark .slider-input::-webkit-slider-thumb, [data-theme="dark"] .slider-input::-webkit-slider-thumb, .dark .slider-input::-webkit-slider-thumb {
-  border-color: var(--border, #FAF8F4);
-  box-shadow: 1.5px 1.5px 0px #39D353;
+  border-color: var(--border, #fafaf9);
+  box-shadow: 1.5px 1.5px 0px #10b981;
 }
 </style>

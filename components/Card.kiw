@@ -69,10 +69,10 @@
   --card-px: 1.125rem;
   --card-py: 1rem;
   --card-gap: 0.65rem;
-  background: var(--bg, #FAF8F4);
-  border: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+  background: var(--bg, #fafaf9);
+  border: var(--pop-border, 1px solid var(--border, #e7e5e4));
   border-radius: var(--radius, 14px);
-  box-shadow: var(--pop-shadow, 4px 4px 0px var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05));
   padding: var(--card-py) var(--card-px);
   display: flex;
   flex-direction: column;
@@ -95,8 +95,8 @@
   }
 }
 .card:hover {
-  transform: translate(-1.5px, -1.5px);
-  box-shadow: var(--pop-shadow-lg, 6px 6px 0px var(--border, #0B1F3B));
+  transform: translateY(-1px);
+  box-shadow: var(--pop-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03));
 }
 .card-clickable {
   text-decoration: none;
@@ -105,18 +105,18 @@
 }
 .card-featured {
   background: var(--bg-2, #f0ede5);
-  border-color: var(--primary, #39D353);
-  box-shadow: 5px 5px 0px var(--border, #0B1F3B);
+  border-color: var(--primary, #10b981);
+  box-shadow: 5px 5px 0px var(--border, #1c1917);
 }
 .card-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
-  border-color: var(--border, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
+  border-color: var(--border, #1c1917);
 }
 .card-subtle {
-  background: var(--bg, #FAF8F4);
-  border: 1.5px solid var(--border, #0B1F3B);
-  box-shadow: 2px 2px 0px var(--border, #0B1F3B);
+  background: var(--bg, #fafaf9);
+  border: 1.5px solid var(--border, #1c1917);
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.04));
 }
 
 .card-head {
@@ -149,7 +149,7 @@
   font-weight: 700;
   padding: 0.2rem 0.55rem;
   background: var(--bg-2, #f0ede5);
-  border: 1.5px solid var(--border, #0B1F3B);
+  border: 1.5px solid var(--border, #1c1917);
   border-radius: 999px;
   align-self: flex-start;
 }
@@ -163,7 +163,7 @@
   border-top-left-radius: calc(var(--radius, 14px) - 2.5px);
   border-top-right-radius: calc(var(--radius, 14px) - 2.5px);
   overflow: hidden;
-  border-bottom: var(--pop-border, 2.5px solid var(--border, #0B1F3B));
+  border-bottom: var(--pop-border, 1px solid var(--border, #e7e5e4));
 }
 .card-media img {
   width: 100%;
@@ -180,13 +180,13 @@
 html[data-theme="dark"] .card,
 .dark .card {
   background: var(--bg-dark, #071426);
-  border-color: var(--border-dark, #FAF8F4);
-  box-shadow: 4px 4px 0px var(--border-dark, #FAF8F4);
-  color: var(--fg-dark, #FAF8F4);
+  border-color: var(--border-dark, #fafaf9);
+  box-shadow: 4px 4px 0px var(--border-dark, #fafaf9);
+  color: var(--fg-dark, #fafaf9);
 }
 html[data-theme="dark"] .card-featured,
 .dark .card-featured {
   background: var(--bg-dark-2, #0d223f);
-  border-color: var(--primary, #39D353);
+  border-color: var(--primary, #10b981);
 }
 </style>

@@ -26,7 +26,7 @@
   width: 100%;
   padding: 0.65rem 1rem;
   box-sizing: border-box;
-  border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
   font-size: 0.85rem;
   line-height: 1.4;
   position: relative;
@@ -98,12 +98,12 @@
 
 /* Variants */
 .banner-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .banner-secondary {
   background: var(--secondary, #00D1C1);
-  color: var(--secondary-content, #0B1F3B);
+  color: var(--secondary-content, #1c1917);
 }
 .banner-accent {
   background: var(--accent, #FF3B2E);
@@ -111,12 +111,12 @@
 }
 .banner-muted {
   background: var(--bg-2, #f2ede4);
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 
 html.dark .banner-muted, [data-theme="dark"] .banner-muted, .dark .banner-muted {
   background: var(--bg-2, #112646);
-  color: var(--fg, #FAF8F4);
-  border-bottom-color: var(--border, #FAF8F4);
+  color: var(--fg, #fafaf9);
+  border-bottom-color: var(--border, #fafaf9);
 }
 </style>

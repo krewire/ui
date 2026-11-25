@@ -34,16 +34,16 @@
   box-sizing: border-box;
 }
 .kiw-table-wrapper.is-bordered {
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  box-shadow: var(--pop-sm, 2px 2px 0px var(--border, #0B1F3B));
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 }
 .kiw-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.85rem;
-  color: var(--fg, #0B1F3B);
-  background: var(--bg, #FAF8F4);
+  color: var(--fg, #1c1917);
+  background: var(--bg, #fafaf9);
 }
 .kiw-table th {
   padding: 0.55rem 0.75rem;
@@ -52,12 +52,12 @@
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   background: var(--bg-2, #f2ede4);
-  border-bottom: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
   white-space: nowrap;
 }
 .kiw-table td {
   padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid var(--border, #0B1F3B);
+  border-bottom: 1px solid var(--border, #1c1917);
 }
 @media (min-width: 640px) {
   .kiw-table {

@@ -36,14 +36,14 @@
   border-radius: calc(var(--radius, 10px) * 0.4);
 }
 a.kiw-breadcrumb-item:hover {
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
   background: var(--bg-2, #f2ede4);
 }
-.kiw-breadcrumb-item:focus-visible { outline: 2px solid var(--primary, #39D353); outline-offset: 2px; }
+.kiw-breadcrumb-item:focus-visible { outline: 2px solid var(--primary, #10b981); outline-offset: 2px; }
 /* The last item is the current page: it is not a link and reads at full weight. */
 .kiw-breadcrumb-item.is-current,
 .kiw-breadcrumb-item[aria-current="page"] {
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
   font-weight: 700;
   cursor: default;
 }
@@ -52,6 +52,6 @@ a.kiw-breadcrumb-item:hover {
 .kiw-breadcrumb-list > li:not(:last-child) > .kiw-breadcrumb-item::after {
   content: "/";
   margin-left: 0.35rem;
-  color: var(--border, #0B1F3B);
+  color: var(--border, #1c1917);
 }
 </style>

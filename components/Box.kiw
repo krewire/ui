@@ -12,32 +12,32 @@
   box-sizing: border-box;
 }
 .kiw-box-border {
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
 }
 .kiw-box-rounded {
   border-radius: var(--radius, 10px);
 }
 .kiw-box-shadow {
-  box-shadow: var(--pop-sm, 2px 2px 0px var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 }
 .kiw-box-default {
-  background: var(--bg, #FAF8F4);
-  color: var(--fg, #0B1F3B);
+  background: var(--bg, #fafaf9);
+  color: var(--fg, #1c1917);
 }
 .kiw-box-surface {
   background: var(--bg-2, #f2ede4);
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .kiw-box-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .kiw-box-card {
-  background: var(--bg, #FAF8F4);
-  color: var(--fg, #0B1F3B);
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  background: var(--bg, #fafaf9);
+  color: var(--fg, #1c1917);
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
   border-radius: var(--radius, 10px);
-  box-shadow: var(--pop, 4px 4px 0px var(--border, #0B1F3B));
+  box-shadow: var(--pop, 4px 4px 0px var(--border, #1c1917));
   padding: 1.25rem;
 }
 </style>

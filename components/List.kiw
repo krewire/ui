@@ -15,7 +15,7 @@
 <style>
 .kiw-list {
   box-sizing: border-box;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -37,5 +37,5 @@
 .kiw-list-gap-lg > li { margin-bottom: 1rem; }
 
 .kiw-list-muted { color: var(--muted, #57677d); }
-.kiw-list-primary > li::marker { color: var(--primary, #39D353); }
+.kiw-list-primary > li::marker { color: var(--primary, #10b981); }
 </style>

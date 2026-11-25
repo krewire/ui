@@ -14,12 +14,12 @@
   box-sizing: border-box;
   border-radius: 50%;
   border-style: solid;
-  border-color: var(--border, #0B1F3B);
+  border-color: var(--border, #1c1917);
   border-top-color: transparent;
   animation: kiw-spin 0.7s linear infinite;
   vertical-align: middle;
 }
-.kiw-spinner-xs { width: 0.75rem; height: 0.75rem; border-width: 1.5px; }
+.kiw-spinner-xs { width: 0.75rem; height: 0.75rem; border-width: 1px; }
 .kiw-spinner-sm { width: 1rem; height: 1rem; border-width: 2px; }
 .kiw-spinner-md { width: 1.5rem; height: 1.5rem; border-width: 2.5px; }
 .kiw-spinner-lg { width: 2.25rem; height: 2.25rem; border-width: 3px; }

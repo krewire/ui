@@ -21,9 +21,9 @@
 .kiw-text-lg { font-size: 1.125rem; }
 .kiw-text-xl { font-size: 1.25rem; }
 
-.kiw-text-default { color: var(--fg, #0B1F3B); }
+.kiw-text-default { color: var(--fg, #1c1917); }
 .kiw-text-muted { color: var(--muted, #57677d); }
-.kiw-text-primary { color: var(--primary, #39D353); }
+.kiw-text-primary { color: var(--primary, #10b981); }
 .kiw-text-error { color: var(--error, #FF3B2E); }
 
 .kiw-text-normal { font-weight: 400; }

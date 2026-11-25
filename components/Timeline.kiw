@@ -63,21 +63,21 @@
   display: grid;
   place-items: center;
   background: var(--bg-2, #f2ede4);
-  color: var(--fg, #0B1F3B);
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  box-shadow: 1.5px 1.5px 0px var(--border, #0B1F3B);
+  color: var(--fg, #1c1917);
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   font-size: 0.75rem;
   font-weight: 900;
   flex-shrink: 0;
 }
 
 .dot-primary {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
 }
 .dot-secondary {
   background: var(--secondary, #00D1C1);
-  color: var(--secondary-content, #0B1F3B);
+  color: var(--secondary-content, #1c1917);
 }
 .dot-accent {
   background: var(--accent, #FF3B2E);
@@ -87,10 +87,10 @@
 .timeline-content {
   flex: 1 1 auto;
   min-width: 0;
-  background: var(--bg, #FAF8F4);
+  background: var(--bg, #fafaf9);
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   padding: 0.85rem 1.15rem;
 }
 
@@ -106,7 +106,7 @@
 .timeline-title {
   font-size: 0.92rem;
   font-weight: 800;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 
 .timeline-date {
@@ -126,16 +126,16 @@ html.dark .timeline-line, [data-theme="dark"] .timeline-line, .dark .timeline-li
   background: var(--border-subtle, rgba(250, 248, 244, 0.2));
 }
 html.dark .timeline-dot, [data-theme="dark"] .timeline-dot, .dark .timeline-dot {
-  border-color: var(--border, #FAF8F4);
-  box-shadow: 1.5px 1.5px 0px #39D353;
+  border-color: var(--border, #fafaf9);
+  box-shadow: 1.5px 1.5px 0px #10b981;
 }
 html.dark .timeline-content, [data-theme="dark"] .timeline-content, .dark .timeline-content {
-  background: var(--bg, #0B1F3B);
-  border-color: var(--border, #FAF8F4);
-  box-shadow: 2px 2px 0px #39D353;
+  background: var(--bg, #1c1917);
+  border-color: var(--border, #fafaf9);
+  box-shadow: 2px 2px 0px #10b981;
 }
 html.dark .timeline-title, [data-theme="dark"] .timeline-title, .dark .timeline-title {
-  color: var(--fg, #FAF8F4);
+  color: var(--fg, #fafaf9);
 }
 html.dark .timeline-date, [data-theme="dark"] .timeline-date, .dark .timeline-date,
 html.dark .timeline-desc, [data-theme="dark"] .timeline-desc, .dark .timeline-desc {

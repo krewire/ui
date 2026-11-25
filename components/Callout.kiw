@@ -30,8 +30,8 @@
   gap: 0.75rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
-  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   background: var(--bg-2, #f2ede4);
   margin: 1rem 0;
   box-sizing: border-box;
@@ -64,17 +64,17 @@
   font-size: 0.95rem;
   font-weight: 800;
   margin: 0 0 0.35rem;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .kiw-callout-body {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--fg, #0B1F3B);
+  color: var(--fg, #1c1917);
 }
 .kiw-callout-body p {
   margin: 0;
 }
-.kiw-callout-info { border-left: 5px solid var(--primary, #39D353); }
+.kiw-callout-info { border-left: 5px solid var(--primary, #10b981); }
 .kiw-callout-success { border-left: 5px solid #22c55e; }
 .kiw-callout-warning { border-left: 5px solid #f59e0b; }
 .kiw-callout-error { border-left: 5px solid var(--error, #FF3B2E); }
@@ -83,15 +83,15 @@
 html[data-theme="dark"] .kiw-callout,
 .dark .kiw-callout {
   background: var(--bg-dark-2, #0d223f);
-  border-color: var(--border-dark, #FAF8F4);
-  box-shadow: 2px 2px 0px var(--border-dark, #FAF8F4);
+  border-color: var(--border-dark, #fafaf9);
+  box-shadow: 2px 2px 0px var(--border-dark, #fafaf9);
 }
 html[data-theme="dark"] .kiw-callout-title,
 .dark .kiw-callout-title {
-  color: var(--fg-dark, #FAF8F4);
+  color: var(--fg-dark, #fafaf9);
 }
 html[data-theme="dark"] .kiw-callout-body,
 .dark .kiw-callout-body {
-  color: var(--fg-dark, #FAF8F4);
+  color: var(--fg-dark, #fafaf9);
 }
 </style>

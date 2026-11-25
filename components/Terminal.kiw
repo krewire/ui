@@ -19,8 +19,8 @@
   </div>
   {/if}
   <div class="terminal-body flex items-center gap-2 sm:gap-2.5 px-3 py-2 sm:px-3.5 sm:py-2.5 lg:px-4 lg:py-3 overflow-x-auto min-w-0">
-    <span class="terminal-prompt font-mono font-black {#if promptColor == 'muted'}text-[#8fa2bc]{:else}text-[#39D353]{/if} text-sm shrink-0 select-none">{#if prompt}{prompt}{:else}${/if}</span>
-    <code class="terminal-code font-mono text-xs sm:text-[13px] font-bold text-[#FAF8F4] whitespace-nowrap overflow-x-auto flex-1 min-w-0">{#if command}{command}{:else if body}{body}{/if}</code>
+    <span class="terminal-prompt font-mono font-black {#if promptColor == 'muted'}text-[#8fa2bc]{:else}text-[#10b981]{/if} text-sm shrink-0 select-none">{#if prompt}{prompt}{:else}${/if}</span>
+    <code class="terminal-code font-mono text-xs sm:text-[13px] font-bold text-[#fafaf9] whitespace-nowrap overflow-x-auto flex-1 min-w-0">{#if command}{command}{:else if body}{body}{/if}</code>
     {#if (!title && command && !hideCopy)}
       <button type="button"
               class="terminal-copy-btn shrink-0 ml-auto"
@@ -35,11 +35,11 @@
 <style>
 .terminal {
   position: relative;
-  background: #0B1F3B;
-  color: #FAF8F4;
+  background: #1c1917;
+  color: #fafaf9;
   border-radius: var(--radius, 10px);
-  border: var(--pop-border, 2.5px solid #0B1F3B);
-  box-shadow: var(--pop-shadow-sm, 2px 2px 0px #0B1F3B);
+  border: var(--pop-border, 1px solid var(--border, #e7e5e4));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   box-sizing: border-box;
   max-width: 100%;
   overflow: hidden;
@@ -47,8 +47,8 @@
 html[data-theme="dark"] .terminal,
 .dark .terminal {
   background: #071426;
-  border-color: #FAF8F4;
-  box-shadow: 2px 2px 0px #39D353;
+  border-color: #fafaf9;
+  box-shadow: 2px 2px 0px #10b981;
 }
 .terminal-bar {
   display: flex;
@@ -56,12 +56,12 @@ html[data-theme="dark"] .terminal,
   gap: 8px;
   padding: 8px 12px;
   background: #112646;
-  border-bottom: 2px solid var(--border, #0B1F3B);
+  border-bottom: 2px solid var(--border, #1c1917);
 }
 html[data-theme="dark"] .terminal-bar,
 .dark .terminal-bar {
-  background: #0B1F3B;
-  border-bottom-color: #FAF8F4;
+  background: #1c1917;
+  border-bottom-color: #fafaf9;
 }
 .terminal-dots {
   display: inline-flex;
@@ -77,7 +77,7 @@ html[data-theme="dark"] .terminal-bar,
 }
 .terminal-dot.dot-red { background: #FF3B2E; }
 .terminal-dot.dot-yellow { background: #ffbd2e; }
-.terminal-dot.dot-green { background: #39D353; }
+.terminal-dot.dot-green { background: #10b981; }
 .terminal-title {
   margin-left: 6px;
   font-size: 0.75rem;
@@ -119,7 +119,7 @@ html[data-theme="dark"] .terminal-bar,
   padding: 3px 9px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.1);
-  color: #FAF8F4;
+  color: #fafaf9;
   border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -127,18 +127,18 @@ html[data-theme="dark"] .terminal-bar,
   user-select: none;
 }
 .terminal-copy-btn:hover {
-  background: var(--primary, #39D353);
-  color: var(--primary-content, #0B1F3B);
-  border-color: var(--primary, #39D353);
-  transform: translate(-1px, -1px);
+  background: var(--primary, #10b981);
+  color: var(--primary-content, #1c1917);
+  border-color: var(--primary, #10b981);
+  transform: translateY(-1px);
 }
 .terminal-copy-btn:active {
   transform: translate(0, 0);
 }
 .terminal-copy-btn.copied {
-  background: var(--primary, #39D353) !important;
-  color: var(--primary-content, #0B1F3B) !important;
-  border-color: var(--primary, #39D353) !important;
+  background: var(--primary, #10b981) !important;
+  color: var(--primary-content, #1c1917) !important;
+  border-color: var(--primary, #10b981) !important;
 }
 </style>
 

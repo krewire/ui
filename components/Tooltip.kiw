@@ -26,10 +26,10 @@
   font-size: 0.78rem;
   font-weight: 500;
   line-height: 1.35;
-  color: var(--bg, #FAF8F4);
-  background: var(--fg, #0B1F3B);
+  color: var(--bg, #fafaf9);
+  background: var(--fg, #1c1917);
   border-radius: calc(var(--radius, 10px) * 0.5);
-  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
+  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.12s ease;
@@ -45,5 +45,5 @@
   opacity: 1;
   visibility: visible;
 }
-.kiw-tooltip:focus-visible { outline: 2px solid var(--primary, #39D353); outline-offset: 3px; }
+.kiw-tooltip:focus-visible { outline: 2px solid var(--primary, #10b981); outline-offset: 3px; }
 </style>
