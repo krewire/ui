@@ -1,7 +1,7 @@
 name: Release Pipeline
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Krewire UI Pop-Brutalist Component Library Multi-Track Release Pipeline (ADR-R7P3K)
+# Krewire UI clean, modern Component Library Multi-Track Release Pipeline (ADR-R7P3K)
 # Tracks: lts, stable, pre-release (rc, beta, alpha), experimental, dev
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -193,7 +193,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
           tag_name: ${{ needs.classify.outputs.version }}
-          name: Krewire UI Pop-Brutalist Library ${{ needs.classify.outputs.version }} (${{ needs.classify.outputs.track }})
+          name: Krewire UI clean, modern Library ${{ needs.classify.outputs.version }} (${{ needs.classify.outputs.track }})
           prerelease: ${{ needs.classify.outputs.is_prerelease == 'true' }}
           draft: false
           files: |

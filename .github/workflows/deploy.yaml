@@ -1,7 +1,7 @@
 name: Deploy Pipeline
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Krewire UI Pop-Brutalist Component Catalog Deploy Pipeline (ADR-R7P3K)
+# Krewire UI clean, modern Component Catalog Deploy Pipeline (ADR-R7P3K)
 # Targets:
 #   - production: lts & stable component registry
 #   - staging: pre-release (rc, beta, alpha) test catalog

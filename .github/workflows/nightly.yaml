@@ -1,7 +1,7 @@
 name: Nightly Pipeline
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Krewire UI Pop-Brutalist Component Library Nightly Build Pipeline (ADR-R7P3K)
+# Krewire UI clean, modern Component Library Nightly Build Pipeline (ADR-R7P3K)
 # Automated daily bundle of canonical UI components and style tokens
 # Triggered daily on schedule from branch 'main' or via manual dispatch
 # ─────────────────────────────────────────────────────────────────────────────
@@ -131,7 +131,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.classify.outputs.version }}
-          name: Krewire UI Pop-Brutalist Library ${{ needs.classify.outputs.version }} (nightly)
+          name: Krewire UI clean, modern Library ${{ needs.classify.outputs.version }} (nightly)
           prerelease: true
           draft: false
           files: |
