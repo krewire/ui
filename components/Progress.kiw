@@ -26,7 +26,7 @@
   flex: 1;
   overflow: hidden;
   background: var(--bg-2, #f2ede4);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   border-radius: 999px;
   box-sizing: border-box;
 }

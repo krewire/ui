@@ -133,7 +133,7 @@ details.dropdown-container summary {
   right: 0;
   width: 100%;
   background: var(--bg, #fafaf9);
-  border-bottom: var(--pop-border, 1px solid var(--border, #e7e5e4));
+  border-bottom: var(--pop-border, 1px solid var(--border, #e2ded4));
   box-shadow: 0 10px 30px -5px rgba(11, 31, 59, 0.15), var(--pop-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03));
   z-index: 100;
 }

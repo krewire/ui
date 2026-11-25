@@ -87,7 +87,7 @@
   height: 1.25rem;
   border-radius: 50%;
   background: var(--primary, #10b981);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   cursor: pointer;
   transition: transform 0.1s ease;
@@ -101,7 +101,7 @@
   height: 1.25rem;
   border-radius: 50%;
   background: var(--primary, #10b981);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   cursor: pointer;
 }

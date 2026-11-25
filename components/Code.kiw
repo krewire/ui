@@ -8,7 +8,7 @@
   font-size: 0.875em;
   background: var(--bg-2, #f2ede4);
   color: var(--fg, #1c1917);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   border-radius: calc(var(--radius, 10px) * 0.4);
   padding: 0.1em 0.35em;
   white-space: nowrap;

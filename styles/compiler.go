@@ -165,86 +165,86 @@ func (c *Compiler) renderTokens() string {
   --ui-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
   --ui-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
 
-  --pop-border: 1px solid var(--border, #e7e5e4);
-  --pop-border-thin: 1px solid var(--border-subtle, #f5f5f4);
+  --pop-border: 1px solid var(--border, #e2ded4);
+  --pop-border-thin: 1px solid var(--border-subtle, #ede9e0);
   --pop-shadow: var(--ui-shadow-sm);
   --pop-shadow-lg: var(--ui-shadow-md);
   --pop-shadow-sm: var(--ui-shadow-sm);
   --pop-shadow-hover: var(--ui-shadow-md);
 
-  --bg: #fafaf9;
-  --bg-2: #f5f5f4;
-  --bg-3: #e7e5e4;
-  --fg: #1c1917;
-  --fg-muted: #78716c;
-  --fg-subtle: #a8a29e;
-  --border: #e7e5e4;
-  --border-subtle: #f5f5f4;
-  --border-focus: #10b981;
+  --bg: #FAF8F4;
+  --bg-2: #F2EDE4;
+  --bg-3: #E8E2D5;
+  --fg: #0B1F3B;
+  --fg-muted: #57677d;
+  --fg-subtle: #8fa2bc;
+  --border: #e2ded4;
+  --border-subtle: #ede9e0;
+  --border-focus: #39D353;
 
-  --primary: #10b981;
-  --primary-content: #ffffff;
-  --primary-hover: #059669;
-  --primary-subtle: rgba(16, 185, 129, 0.12);
+  --primary: #39D353;
+  --primary-content: #0B1F3B;
+  --primary-hover: #2ecc50;
+  --primary-subtle: rgba(57, 211, 83, 0.14);
 
-  --secondary: #0d9488;
-  --secondary-content: #ffffff;
-  --secondary-hover: #0f766e;
-  --secondary-subtle: rgba(13, 148, 136, 0.12);
+  --secondary: #00D1C1;
+  --secondary-content: #0B1F3B;
+  --secondary-hover: #00b8aa;
+  --secondary-subtle: rgba(0, 209, 193, 0.14);
 
-  --accent: #f59e0b;
+  --accent: #FF3B2E;
   --accent-content: #ffffff;
-  --accent-hover: #d97706;
-  --accent-subtle: rgba(245, 158, 11, 0.14);
+  --accent-hover: #e0281b;
+  --accent-subtle: rgba(255, 59, 46, 0.14);
 
-  --success: #10b981;
+  --success: #39D353;
   --info: #0284c7;
   --warning: #f59e0b;
-  --error: #ef4444;
+  --error: #FF3B2E;
 
   --surface: #ffffff;
-  --surface-muted: #f5f5f4;
-  --accent-cyan: #0d9488;
+  --surface-muted: #F2EDE4;
+  --accent-cyan: #00D1C1;
 }
 
 [data-theme="dark"],
 html.dark,
 .dark {
-  --bg: #0a0f0d;
-  --bg-2: #121a16;
-  --bg-3: #1a2620;
-  --fg: #f5f5f4;
-  --fg-muted: #a8a29e;
-  --fg-subtle: #78716c;
-  --border: #24362e;
-  --border-subtle: #1a2620;
-  --border-focus: #34d399;
+  --bg: #0B1F3B;
+  --bg-2: #071527;
+  --bg-3: #0f284a;
+  --fg: #FAF8F4;
+  --fg-muted: #9cb0cb;
+  --fg-subtle: #657e9f;
+  --border: #1c3a63;
+  --border-subtle: #132c4d;
+  --border-focus: #39D353;
 
-  --primary: #34d399;
-  --primary-content: #0a0f0d;
-  --primary-hover: #6ee7b7;
-  --primary-subtle: rgba(52, 211, 153, 0.16);
+  --primary: #39D353;
+  --primary-content: #0B1F3B;
+  --primary-hover: #5eed75;
+  --primary-subtle: rgba(57, 211, 83, 0.18);
 
-  --secondary: #2dd4bf;
-  --secondary-content: #0a0f0d;
-  --secondary-hover: #5eead4;
-  --secondary-subtle: rgba(45, 212, 191, 0.16);
+  --secondary: #00D1C1;
+  --secondary-content: #0B1F3B;
+  --secondary-hover: #33ddd0;
+  --secondary-subtle: rgba(0, 209, 193, 0.18);
 
-  --accent: #fbbf24;
-  --accent-content: #0a0f0d;
-  --accent-hover: #fcd34d;
-  --accent-subtle: rgba(251, 191, 36, 0.16);
+  --accent: #FF5C52;
+  --accent-content: #ffffff;
+  --accent-hover: #ff7870;
+  --accent-subtle: rgba(255, 92, 82, 0.18);
 
-  --success: #34d399;
+  --success: #39D353;
   --info: #38bdf8;
   --warning: #fbbf24;
   --error: #f87171;
 
-  --surface: #111814;
-  --surface-muted: #18221d;
+  --surface: #0f284a;
+  --surface-muted: #071527;
 
-  --pop-border: 1px solid #24362e;
-  --pop-border-thin: 1px solid #1a2620;
+  --pop-border: 1px solid #1c3a63;
+  --pop-border-thin: 1px solid #132c4d;
   --pop-shadow: var(--ui-shadow-sm);
   --pop-shadow-lg: var(--ui-shadow-md);
   --pop-shadow-sm: var(--ui-shadow-sm);

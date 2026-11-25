@@ -62,7 +62,7 @@
   width: 2rem;
   height: 2rem;
   border-radius: var(--radius-sm, 6px);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   background: var(--bg, #fafaf9);
   color: var(--fg, #1c1917);
   box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
@@ -88,7 +88,7 @@
   background: var(--bg, #fafaf9);
   color: var(--fg, #1c1917);
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   box-shadow: var(--pop-shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05));
   padding: 0.35rem;
   display: flex;

@@ -26,7 +26,7 @@
   width: 100%;
   padding: 0.65rem 1rem;
   box-sizing: border-box;
-  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   font-size: 0.85rem;
   line-height: 1.4;
   position: relative;

@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 .kiw-box-border {
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
 }
 .kiw-box-rounded {
   border-radius: var(--radius, 10px);
@@ -35,7 +35,7 @@
 .kiw-box-card {
   background: var(--bg, #fafaf9);
   color: var(--fg, #1c1917);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   border-radius: var(--radius, 10px);
   box-shadow: var(--pop, 4px 4px 0px var(--border, #1c1917));
   padding: 1.25rem;

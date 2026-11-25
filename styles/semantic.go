@@ -32,31 +32,31 @@ var SemanticComponents = []SemanticComponent{
 .badge-primary {
   background-color: var(--primary-subtle);
   color: var(--primary);
-  border-color: rgba(16, 185, 129, 0.3);
+  border-color: rgba(57, 211, 83, 0.3);
 }
 .badge-secondary {
   background-color: var(--secondary-subtle);
   color: var(--secondary);
-  border-color: rgba(13, 148, 136, 0.3);
+  border-color: rgba(0, 209, 193, 0.3);
 }
 .badge-accent {
   background-color: var(--accent-subtle);
   color: var(--accent);
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: rgba(255, 59, 46, 0.3);
 }
 .badge-muted {
   background-color: var(--bg-2);
   color: var(--fg-muted);
 }
 .badge-green {
-  background-color: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: var(--primary, #10b981);
+  background-color: rgba(57, 211, 83, 0.14);
+  border-color: rgba(57, 211, 83, 0.3);
+  color: var(--primary, #39D353);
 }
 .badge-cyan {
-  background-color: rgba(13, 148, 136, 0.12);
-  border-color: rgba(13, 148, 136, 0.3);
-  color: var(--secondary, #0d9488);
+  background-color: rgba(0, 209, 193, 0.14);
+  border-color: rgba(0, 209, 193, 0.3);
+  color: var(--secondary, #00D1C1);
 }
 .badge-yellow {
   background-color: rgba(245, 158, 11, 0.12);
@@ -64,9 +64,9 @@ var SemanticComponents = []SemanticComponent{
   color: var(--accent, #f59e0b);
 }
 .badge-red {
-  background-color: rgba(239, 68, 68, 0.12);
-  border-color: rgba(239, 68, 68, 0.3);
-  color: var(--error, #ef4444);
+  background-color: rgba(255, 59, 46, 0.14);
+  border-color: rgba(255, 59, 46, 0.3);
+  color: var(--error, #FF3B2E);
 }
 .badge-purple {
   background-color: rgba(139, 92, 246, 0.12);
@@ -198,63 +198,63 @@ var SemanticComponents = []SemanticComponent{
 .btn-lg { padding: 0.625rem 1.25rem; font-size: 1rem; border-radius: var(--radius-lg, 12px); }
 
 .btn-primary, button.btn-primary, a.btn-primary {
-  background: var(--primary, #10b981);
-  color: var(--primary-content, #ffffff) !important;
-  border-color: var(--primary, #10b981);
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B) !important;
+  border-color: var(--primary, #39D353);
 }
 .btn-primary:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-primary:hover:not(:disabled):not([aria-disabled="true"]),
 a.btn-primary:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: var(--primary-hover, #059669);
-  border-color: var(--primary-hover, #059669);
-  color: var(--primary-content, #ffffff) !important;
+  background: var(--primary-hover, #2ecc50);
+  border-color: var(--primary-hover, #2ecc50);
+  color: var(--primary-content, #0B1F3B) !important;
 }
 
 .btn-secondary, button.btn-secondary, a.btn-secondary {
-  background: var(--secondary, #0d9488);
-  color: var(--secondary-content, #ffffff) !important;
-  border-color: var(--secondary, #0d9488);
+  background: var(--secondary, #00D1C1);
+  color: var(--secondary-content, #0B1F3B) !important;
+  border-color: var(--secondary, #00D1C1);
 }
 .btn-secondary:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-secondary:hover:not(:disabled):not([aria-disabled="true"]),
 a.btn-secondary:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: var(--secondary-hover, #0f766e);
-  border-color: var(--secondary-hover, #0f766e);
-  color: var(--secondary-content, #ffffff) !important;
+  background: var(--secondary-hover, #00b8aa);
+  border-color: var(--secondary-hover, #00b8aa);
+  color: var(--secondary-content, #0B1F3B) !important;
 }
 
 .btn-accent, .btn-danger, .btn-error,
 button.btn-accent, button.btn-danger, button.btn-error,
 a.btn-accent, a.btn-danger, a.btn-error {
-  background: var(--accent, #f59e0b);
+  background: var(--accent, #FF3B2E);
   color: #ffffff !important;
-  border-color: var(--accent, #f59e0b);
+  border-color: var(--accent, #FF3B2E);
 }
 .btn-accent:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-accent:hover:not(:disabled):not([aria-disabled="true"]),
 a.btn-accent:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: var(--accent-hover, #d97706);
-  border-color: var(--accent-hover, #d97706);
+  background: var(--accent-hover, #e0281b);
+  border-color: var(--accent-hover, #e0281b);
   color: #ffffff !important;
 }
 
 .btn-outline, button.btn-outline, a.btn-outline {
   background: transparent;
-  color: var(--fg, #1c1917) !important;
-  border-color: var(--border, #e7e5e4);
+  color: var(--fg, #0B1F3B) !important;
+  border-color: var(--border, #e2ded4);
 }
 .btn-outline:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-outline:hover:not(:disabled):not([aria-disabled="true"]),
 a.btn-outline:hover:not(:disabled):not([aria-disabled="true"]) {
-  background: var(--bg-2, #f5f5f4);
-  color: var(--fg, #1c1917) !important;
+  background: var(--bg-2, #F2EDE4);
+  color: var(--fg, #0B1F3B) !important;
 }
 
 .btn-ghost, button.btn-ghost, a.btn-ghost {
   background: transparent;
   border-color: transparent;
   box-shadow: none;
-  color: var(--fg, #1c1917) !important;
+  color: var(--fg, #0B1F3B) !important;
 }
 .btn-ghost:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-ghost:hover:not(:disabled):not([aria-disabled="true"]),
@@ -278,8 +278,8 @@ a.btn-ghost:hover:not(:disabled):not([aria-disabled="true"]) {
   transition: all 0.15s ease;
 }
 .btn-logout:hover {
-  background: var(--error, #ef4444);
-  border-color: var(--error, #ef4444);
+  background: var(--error, #FF3B2E);
+  border-color: var(--error, #FF3B2E);
   color: #ffffff;
 }
 
@@ -290,13 +290,13 @@ a.btn-ghost:hover:not(:disabled):not([aria-disabled="true"]) {
   gap: 0.625rem;
   width: 100%;
   padding: 0.75rem 1.25rem;
-  background-color: var(--primary, #10b981);
-  color: var(--primary-content, #ffffff);
+  background-color: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid var(--primary, #10b981);
+  border: 1px solid var(--primary, #39D353);
   border-radius: var(--radius, 8px);
   box-shadow: var(--ui-shadow-sm);
   cursor: pointer;
@@ -304,10 +304,10 @@ a.btn-ghost:hover:not(:disabled):not([aria-disabled="true"]) {
   box-sizing: border-box;
 }
 .btn-sso:hover {
-  background-color: var(--primary-hover, #059669);
+  background-color: var(--primary-hover, #2ecc50);
   transform: translateY(-1px);
   box-shadow: var(--ui-shadow);
-  color: var(--primary-content, #ffffff);
+  color: var(--primary-content, #0B1F3B);
   text-decoration: none;
 }
 .btn-sso:active {
@@ -464,9 +464,9 @@ textarea.form-textarea, .field-textarea {
   font-size: 0.875rem;
   font-family: inherit;
   border-radius: var(--radius, 8px);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   background: var(--surface, #ffffff);
-  color: var(--fg, #1c1917);
+  color: var(--fg, #0B1F3B);
   box-shadow: var(--ui-shadow-sm);
   outline: none;
   box-sizing: border-box;
@@ -474,21 +474,21 @@ textarea.form-textarea, .field-textarea {
 }
 input.form-input:focus, .field-input:focus,
 select.form-select:focus, textarea.form-textarea:focus {
-  border-color: var(--primary, #10b981);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  border-color: var(--primary, #39D353);
+  box-shadow: 0 0 0 2px rgba(57, 211, 83, 0.2);
 }
 .field-input.has-error, input.form-input.has-error {
-  border-color: var(--error, #ef4444);
+  border-color: var(--error, #FF3B2E);
 }
 .form-hint, .field-help {
   font-size: 0.78rem;
-  color: var(--fg-muted, #78716c);
+  color: var(--fg-muted, #57677d);
   margin-top: 0.25rem;
 }
 .form-error, .field-error {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--error, #ef4444);
+  color: var(--error, #FF3B2E);
   margin-top: 0.25rem;
 }`,
 	},
@@ -514,16 +514,16 @@ select.form-select:focus, textarea.form-textarea:focus {
   place-items: center;
   width: 32px;
   height: 32px;
-  background: var(--primary, #10b981);
-  border: 1px solid var(--primary, #10b981);
+  background: var(--primary, #39D353);
+  border: 1px solid var(--primary, #39D353);
   border-radius: var(--radius-sm, 6px);
   box-shadow: var(--ui-shadow-sm);
-  color: #ffffff;
+  color: var(--primary-content, #0B1F3B);
   flex-shrink: 0;
 }
 .brand-badge {
-  background: rgba(13, 148, 136, 0.1);
-  border: 1px solid rgba(13, 148, 136, 0.3);
+  background: rgba(0, 209, 193, 0.1);
+  border: 1px solid rgba(0, 209, 193, 0.3);
   border-radius: 9999px;
   padding: 0.15rem 0.55rem;
   font-size: 0.72rem;

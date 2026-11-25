@@ -40,7 +40,7 @@
 /* An initials avatar with no image needs a border to match the pop style; an
    <img> carries its own, and a border would double up on the source. */
 .kiw-avatar-initials {
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 }
 </style>

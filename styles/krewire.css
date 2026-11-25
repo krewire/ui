@@ -116,8 +116,8 @@
   --ui-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
 
   /* Code Garden Elevation & Refined Borders */
-  --pop-border: 1px solid var(--border, #e7e5e4);
-  --pop-border-thin: 1px solid var(--border-subtle, #f5f5f4);
+  --pop-border: 1px solid var(--border, #e2ded4);
+  --pop-border-thin: 1px solid var(--border-subtle, #ede9e0);
   --pop-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
   --pop-shadow-lg: 0 8px 16px -2px rgba(0, 0, 0, 0.06), 0 3px 6px -2px rgba(0, 0, 0, 0.03);
   --pop-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
@@ -134,7 +134,7 @@
   --ui-transition: var(--ui-duration-normal) var(--ui-ease-default);
 
   /* Focus ring */
-  --ui-focus-ring: 2px solid var(--primary, #10b981);
+  --ui-focus-ring: 2px solid var(--primary, #39D353);
   --ui-focus-ring-offset: 2px;
 
   /* =========================================================================
@@ -154,51 +154,51 @@
   --ui-z-toast: 1600;
 
   /* =========================================================================
-     6. CODE GARDEN LIGHT THEME PALETTE (Default)
+     6. CODE GARDEN LIGHT THEME PALETTE (Default - Krewire Brand)
      ========================================================================= */
-  --bg: #fafaf9;
-  --bg-2: #f5f5f4;
-  --bg-3: #e7e5e4;
-  --bg-subtle: rgba(28, 25, 23, 0.04);
-  --fg: #1c1917;
-  --fg-muted: #78716c;
-  --fg-subtle: #a8a29e;
+  --bg: #FAF8F4;
+  --bg-2: #F2EDE4;
+  --bg-3: #E8E2D5;
+  --bg-subtle: rgba(11, 31, 59, 0.04);
+  --fg: #0B1F3B;
+  --fg-muted: #57677d;
+  --fg-subtle: #8fa2bc;
 
-  --border: #e7e5e4;
-  --border-subtle: #f5f5f4;
-  --border-focus: #10b981;
+  --border: #e2ded4;
+  --border-subtle: #ede9e0;
+  --border-focus: #39D353;
 
-  --primary: #10b981;
-  --primary-content: #ffffff;
-  --primary-hover: #059669;
-  --primary-active: #047857;
-  --primary-subtle: rgba(16, 185, 129, 0.12);
+  --primary: #39D353;
+  --primary-content: #0B1F3B;
+  --primary-hover: #2ecc50;
+  --primary-active: #28b846;
+  --primary-subtle: rgba(57, 211, 83, 0.14);
 
-  --secondary: #0d9488;
-  --secondary-content: #ffffff;
-  --secondary-hover: #0f766e;
-  --secondary-subtle: rgba(13, 148, 136, 0.12);
+  --secondary: #00D1C1;
+  --secondary-content: #0B1F3B;
+  --secondary-hover: #00b8aa;
+  --secondary-subtle: rgba(0, 209, 193, 0.14);
 
-  --accent: #f59e0b;
+  --accent: #FF3B2E;
   --accent-content: #ffffff;
-  --accent-hover: #d97706;
-  --accent-subtle: rgba(245, 158, 11, 0.14);
+  --accent-hover: #e0281b;
+  --accent-subtle: rgba(255, 59, 46, 0.14);
 
-  --success: #10b981;
-  --success-content: #ffffff;
+  --success: #39D353;
+  --success-content: #0B1F3B;
   --info: #0284c7;
   --info-content: #ffffff;
   --warning: #f59e0b;
-  --warning-content: #1c1917;
-  --error: #ef4444;
+  --warning-content: #0B1F3B;
+  --error: #FF3B2E;
   --error-content: #ffffff;
 
-  --dot-color: rgba(28, 25, 23, 0.06);
+  --dot-color: rgba(11, 31, 59, 0.06);
 
   /* Scrollbar */
-  --scrollbar-track: #f5f5f4;
-  --scrollbar-thumb: #d6d3d1;
-  --scrollbar-thumb-hover: #a8a29e;
+  --scrollbar-track: #F2EDE4;
+  --scrollbar-thumb: #d8d3c8;
+  --scrollbar-thumb-hover: #8fa2bc;
 
   /* Semantic UI Aliases */
   --ui-bg: var(--bg);
@@ -240,9 +240,9 @@
   --shadow-lg: var(--pop-shadow-lg);
 
   /* Canonical Brand Accent Palette */
-  --accent-cyan: #0d9488;
-  --accent-green: #10b981;
-  --accent-red: #ef4444;
+  --accent-cyan: #00D1C1;
+  --accent-green: #39D353;
+  --accent-red: #FF3B2E;
   --accent-yellow: #f59e0b;
   --accent-purple: #8b5cf6;
 
@@ -251,62 +251,62 @@
 }
 
 /* =========================================================================
-   7. CODE GARDEN DARK THEME PALETTE
+   7. CODE GARDEN DARK THEME PALETTE (Krewire Brand)
    ========================================================================= */
 [data-theme="dark"],
 html.dark,
 .dark {
-  --bg: #0a0f0d;
-  --bg-2: #121a16;
-  --bg-3: #1a2620;
-  --bg-subtle: rgba(245, 245, 244, 0.05);
-  --fg: #f5f5f4;
-  --fg-muted: #a8a29e;
-  --fg-subtle: #78716c;
+  --bg: #0B1F3B;
+  --bg-2: #071527;
+  --bg-3: #0f284a;
+  --bg-subtle: rgba(250, 248, 244, 0.05);
+  --fg: #FAF8F4;
+  --fg-muted: #9cb0cb;
+  --fg-subtle: #657e9f;
 
-  --border: #24362e;
-  --border-subtle: #1a2620;
-  --border-focus: #34d399;
+  --border: #1c3a63;
+  --border-subtle: #132c4d;
+  --border-focus: #39D353;
 
-  --primary: #34d399;
-  --primary-content: #0a0f0d;
-  --primary-hover: #6ee7b7;
-  --primary-active: #34d399;
-  --primary-subtle: rgba(52, 211, 153, 0.16);
+  --primary: #39D353;
+  --primary-content: #0B1F3B;
+  --primary-hover: #5eed75;
+  --primary-active: #39D353;
+  --primary-subtle: rgba(57, 211, 83, 0.18);
 
-  --secondary: #2dd4bf;
-  --secondary-content: #0a0f0d;
-  --secondary-hover: #5eead4;
-  --secondary-subtle: rgba(45, 212, 191, 0.16);
+  --secondary: #00D1C1;
+  --secondary-content: #0B1F3B;
+  --secondary-hover: #33ddd0;
+  --secondary-subtle: rgba(0, 209, 193, 0.18);
 
-  --accent: #fbbf24;
-  --accent-content: #0a0f0d;
-  --accent-hover: #fcd34d;
-  --accent-subtle: rgba(251, 191, 36, 0.16);
+  --accent: #FF5C52;
+  --accent-content: #ffffff;
+  --accent-hover: #ff7870;
+  --accent-subtle: rgba(255, 92, 82, 0.18);
 
-  --success: #34d399;
-  --success-content: #0a0f0d;
+  --success: #39D353;
+  --success-content: #0B1F3B;
   --info: #38bdf8;
-  --info-content: #0a0f0d;
+  --info-content: #0B1F3B;
   --warning: #fbbf24;
-  --warning-content: #0a0f0d;
+  --warning-content: #0B1F3B;
   --error: #f87171;
   --error-content: #ffffff;
 
   /* Code Garden Refined Offsets in Dark Mode */
-  --pop-border: 1px solid #24362e;
-  --pop-border-thin: 1px solid #1a2620;
+  --pop-border: 1px solid #1c3a63;
+  --pop-border-thin: 1px solid #132c4d;
   --pop-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
   --pop-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
   --pop-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --pop-shadow-hover: 0 4px 12px -2px rgba(52, 211, 153, 0.25);
+  --pop-shadow-hover: 0 4px 12px -2px rgba(57, 211, 83, 0.25);
 
-  --dot-color: rgba(245, 245, 244, 0.06);
+  --dot-color: rgba(250, 248, 244, 0.06);
 
   /* Scrollbar */
-  --scrollbar-track: #121a16;
-  --scrollbar-thumb: #24362e;
-  --scrollbar-thumb-hover: #34d399;
+  --scrollbar-track: #071527;
+  --scrollbar-thumb: #1c3a63;
+  --scrollbar-thumb-hover: #39D353;
 
   /* Elevation */
   --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
@@ -1034,7 +1034,7 @@ a.btn-accent:hover:not(:disabled):not([aria-disabled="true"]) {
 .btn-outline, button.btn-outline, a.btn-outline {
   background: transparent;
   color: var(--fg, #1c1917) !important;
-  border-color: var(--border, #e7e5e4);
+  border-color: var(--border, #e2ded4);
 }
 .btn-outline:hover:not(:disabled):not([aria-disabled="true"]),
 button.btn-outline:hover:not(:disabled):not([aria-disabled="true"]),
@@ -1060,7 +1060,7 @@ a.btn-ghost:hover:not(:disabled):not([aria-disabled="true"]) {
 
 .btn-logout {
   background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm, 6px);
@@ -1137,7 +1137,7 @@ textarea.form-textarea, .field-textarea {
   font-size: 0.875rem;
   font-family: inherit;
   border-radius: var(--radius, 8px);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   background: var(--surface, #ffffff);
   color: var(--fg, #1c1917);
   box-shadow: var(--ui-shadow-sm);
@@ -1171,7 +1171,7 @@ select.form-select:focus, textarea.form-textarea:focus {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: var(--radius-lg, 12px);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
@@ -1186,7 +1186,7 @@ table.brutalist-table, table.kiw-table, table.table {
 table.brutalist-table th, table.kiw-table th, table.table th {
   background: var(--bg-2, #f5f5f4);
   color: var(--fg-muted, #78716c);
-  border-bottom: 1px solid var(--border, #e7e5e4);
+  border-bottom: 1px solid var(--border, #e2ded4);
   padding: 0.75rem 1rem;
   font-weight: 600;
   font-size: 0.75rem;
@@ -1194,7 +1194,7 @@ table.brutalist-table th, table.kiw-table th, table.table th {
   white-space: nowrap;
 }
 table.brutalist-table td, table.kiw-table td, table.table td {
-  border-bottom: 1px solid var(--border, #e7e5e4);
+  border-bottom: 1px solid var(--border, #e2ded4);
   padding: 0.75rem 1rem;
   vertical-align: middle;
 }
@@ -1216,7 +1216,7 @@ table.table tr:hover td {
   gap: 0.75rem;
   padding: 0.85rem 1.15rem;
   border-radius: var(--radius, 8px);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   box-shadow: var(--ui-shadow-sm);
   margin: 1rem 0;
   font-size: 0.875rem;
@@ -1246,7 +1246,7 @@ table.table tr:hover td {
 }
 .alert-close {
   background: transparent;
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   border-radius: 6px;
   cursor: pointer;
   font-size: 1.1rem;
@@ -1283,7 +1283,7 @@ table.table tr:hover td {
 header.top-bar, .top-bar {
   background-color: var(--surface, #ffffff);
   border: none;
-  border-bottom: 1px solid var(--border, #e7e5e4);
+  border-bottom: 1px solid var(--border, #e2ded4);
   box-shadow: var(--ui-shadow-sm);
   padding: 0.875rem 1.5rem;
   display: flex;
@@ -1321,7 +1321,7 @@ header.top-bar, .top-bar {
 }
 .metric-card {
   background: var(--surface, #ffffff);
-  border: 1px solid var(--border, #e7e5e4);
+  border: 1px solid var(--border, #e2ded4);
   border-radius: var(--radius-lg, 12px);
   box-shadow: var(--ui-shadow-sm);
   padding: 1.25rem;

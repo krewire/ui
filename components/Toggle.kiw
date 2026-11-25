@@ -71,7 +71,7 @@
   width: 2.75rem;
   height: 1.5rem;
   background: var(--bg-2, #f2ede4);
-  border: var(--pop-border-thin, 1px solid var(--border, #e7e5e4));
+  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
   border-radius: 999px;
   box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   transition: background-color 0.15s ease;
