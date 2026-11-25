@@ -53,7 +53,7 @@
         <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mb-1" data-i18n="footer.col_contrib">Contribution</strong>
         <a href="#benefits" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.perks">Contributor Perks &amp; Access</a>
         <a href="#where-to-start" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.where_start">Where to Start</a>
-        <a href="/docs/getting-started" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.getting_started">Getting Started</a>
+        <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/getting-started" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.getting_started">Getting Started</a>
         <a href="#pathways" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.pathways">Contribution Pathways</a>
         <a href="#standards" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.standards">The Krewire Way</a>
       </div>
@@ -140,25 +140,25 @@
           <!-- Workloads col -->
           <div class="flex flex-col gap-2">
             <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mb-1" data-i18n="footer.workloads_title">8 Workloads</strong>
-            <a href="/docs/workloads/app" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">app — Fullstack Monolith</a>
-            <a href="/docs/workloads/cli" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">cli — Terminal TUI</a>
-            <a href="/docs/workloads/site" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">site — Scoped SSG</a>
-            <a href="/docs/workloads/book" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">book — Docs &amp; Books</a>
-            <a href="/docs/workloads/worker" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">worker — Async Queues</a>
-            <a href="/docs/workloads/service" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">service — Microservices</a>
-            <a href="/docs/workloads/infra" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">infra — Cloud IaC</a>
-            <a href="/docs/workloads/gateway" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">gateway — Reverse Proxy</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/app" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">app — Fullstack Monolith</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/cli" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">cli — Terminal TUI</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/site" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">site — Scoped SSG</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/book" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">book — Docs &amp; Books</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/worker" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">worker — Async Queues</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/service" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">service — Microservices</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/infra" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">infra — Cloud IaC</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads/gateway" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">gateway — Reverse Proxy</a>
           </div>
 
           <!-- Docs col -->
           <div class="flex flex-col gap-2">
             <strong class="text-2xs font-black tracking-widest uppercase text-fg dark:text-fg-dark mb-1" data-i18n="footer.docs_title">Documentation</strong>
-            <a href="/docs/overview" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">1. Overview</a>
-            <a href="/docs/getting-started" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">2. Getting Started</a>
-            <a href="/docs/workloads" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">3. Workloads in Depth</a>
-            <a href="/docs/cli-reference" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">4. CLI Reference</a>
-            <a href="/docs/packages" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">5. Packages &amp; Libraries</a>
-            <a href="/docs/guides" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">6. Architecture &amp; Guides</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/overview" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">1. Overview</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/getting-started" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">2. Getting Started</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/workloads" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">3. Workloads in Depth</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/cli-reference" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">4. CLI Reference</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/packages" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">5. Packages &amp; Libraries</a>
+            <a href="{#if docsBase}{docsBase}{:else}https://krewire.com{/if}/docs/guides" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">6. Architecture &amp; Guides</a>
           </div>
 
           <!-- Products & Repos col -->
