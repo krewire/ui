@@ -9,7 +9,7 @@
   line-height: 1;
   color: var(--fg, #1c1917);
   background: var(--bg, #fafaf9);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
   border-radius: calc(var(--radius, 10px) * 0.4);
   box-shadow: 0 2px 0px var(--border, #1c1917);
   white-space: nowrap;

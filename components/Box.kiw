@@ -12,13 +12,13 @@
   box-sizing: border-box;
 }
 .kiw-box-border {
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
 }
 .kiw-box-rounded {
   border-radius: var(--radius, 10px);
 }
 .kiw-box-shadow {
-  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 }
 .kiw-box-default {
   background: var(--bg, #fafaf9);
@@ -35,9 +35,9 @@
 .kiw-box-card {
   background: var(--bg, #fafaf9);
   color: var(--fg, #1c1917);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
   border-radius: var(--radius, 10px);
-  box-shadow: var(--pop, 4px 4px 0px var(--border, #1c1917));
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(11, 31, 59, 0.05));
   padding: 1.25rem;
 }
 </style>

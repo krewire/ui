@@ -41,10 +41,10 @@
   }
 }
 .modal-dialog[open] {
-  animation: kui-fade-in var(--kui-duration-normal, 200ms) var(--kui-ease-pop, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+  animation: kui-fade-in var(--kui-duration-normal, 200ms) var(--kui-ease-standard, cubic-bezier(0.16, 1, 0.3, 1))) forwards;
 }
 .modal-dialog[open] .modal-box {
-  animation: kui-pop-in var(--kui-duration-normal, 200ms) var(--kui-ease-pop, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+  animation: kui-zoom-in var(--kui-duration-normal, 200ms) var(--kui-ease-standard, cubic-bezier(0.16, 1, 0.3, 1))) forwards;
 }
 .modal-dialog[open]::backdrop {
   animation: kui-fade-in var(--kui-duration-normal, 200ms) ease-out forwards;
@@ -55,7 +55,7 @@
 }
 .modal-dialog.closing .modal-box,
 .modal-dialog[data-state="closed"] .modal-box {
-  animation: kui-pop-out var(--kui-duration-fast, 150ms) ease-in forwards;
+  animation: kui-zoom-out var(--kui-duration-fast, 150ms) ease-in forwards;
 }
 .modal-dialog::backdrop {
   background: rgba(11, 31, 59, 0.45);
@@ -63,9 +63,9 @@
 }
 .modal-box {
   background: var(--bg, #fafaf9);
-  border: var(--pop-border, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border);
   border-radius: var(--radius, 14px);
-  box-shadow: var(--pop-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03));
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08)));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -76,7 +76,7 @@
   justify-content: space-between;
   padding: 0.85rem 1rem;
   background: var(--bg-2, #f0ede5);
-  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border-bottom: 1px solid var(--border-subtle, var(--border));
 }
 .modal-title {
   margin: 0;

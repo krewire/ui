@@ -36,7 +36,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  border-bottom: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border-bottom: 1px solid var(--border-subtle, var(--border));
   margin-bottom: 0.75rem;
 }
 .kiw-tab {

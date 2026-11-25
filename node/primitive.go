@@ -18,7 +18,7 @@ type ButtonProps struct {
 	Attrs    Attrs
 }
 
-// Button renders a clickable button or anchor link with Pop-Brutalist styling.
+// Button renders a clickable button or anchor link.
 func Button(props ButtonProps, children ...Node) Node {
 	var tag string
 	attrs := make(Attrs)

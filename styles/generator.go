@@ -444,9 +444,9 @@ func resolveBaseUtility(cls string) string {
 	case "border-transparent":
 		return "border-color: transparent;"
 	case "border-pop":
-		return "border: var(--pop-border);"
+		return "border: 1px solid var(--border);"
 	case "border-pop-thin":
-		return "border: var(--pop-border-thin);"
+		return "border: 1px solid var(--border-subtle, var(--border));"
 	case "rounded-none":
 		return "border-radius: 0px;"
 	case "rounded-xs":
@@ -482,11 +482,11 @@ func resolveBaseUtility(cls string) string {
 	case "shadow-xl":
 		return "box-shadow: var(--ui-shadow-xl);"
 	case "shadow-pop":
-		return "box-shadow: var(--pop-shadow);"
+		return "box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0,0,0,0.05));"
 	case "shadow-pop-sm":
-		return "box-shadow: var(--pop-shadow-sm);"
+		return "box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0,0,0,0.05));"
 	case "shadow-pop-lg":
-		return "box-shadow: var(--pop-shadow-lg);"
+		return "box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.08));"
 	}
 
 	// Transitions & Interactivity

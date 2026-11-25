@@ -159,18 +159,24 @@ func (c *Compiler) renderTokens() string {
   --radius-sm: var(--ui-radius-sm);
   --radius-lg: var(--ui-radius-lg);
 
-  --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --ui-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-  --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --ui-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --ui-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px 0 rgba(11, 31, 59, 0.05);
+  --shadow: 0 1px 3px 0 rgba(11, 31, 59, 0.08), 0 1px 2px -1px rgba(11, 31, 59, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(11, 31, 59, 0.08), 0 2px 4px -2px rgba(11, 31, 59, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(11, 31, 59, 0.08), 0 4px 6px -4px rgba(11, 31, 59, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(11, 31, 59, 0.08), 0 8px 10px -6px rgba(11, 31, 59, 0.03);
+
+  --ui-shadow-sm: var(--shadow-sm);
+  --ui-shadow: var(--shadow);
+  --ui-shadow-md: var(--shadow-md);
+  --ui-shadow-lg: var(--shadow-lg);
+  --ui-shadow-xl: var(--shadow-xl);
 
   --pop-border: 1px solid var(--border, #e2ded4);
   --pop-border-thin: 1px solid var(--border-subtle, #ede9e0);
-  --pop-shadow: var(--ui-shadow-sm);
-  --pop-shadow-lg: var(--ui-shadow-md);
-  --pop-shadow-sm: var(--ui-shadow-sm);
-  --pop-shadow-hover: var(--ui-shadow-md);
+  --pop-shadow: var(--shadow-sm);
+  --pop-shadow-lg: var(--shadow-md);
+  --pop-shadow-sm: var(--shadow-sm);
+  --pop-shadow-hover: var(--shadow-md);
 
   --bg: #FAF8F4;
   --bg-2: #F2EDE4;
@@ -285,9 +291,10 @@ func (c *Compiler) renderAnimations() string {
   --kui-duration-fast: 150ms;
   --kui-duration-normal: 200ms;
   --kui-duration-slow: 300ms;
-  --kui-ease-pop: cubic-bezier(0.16, 1, 0.3, 1);
+  --kui-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
   --kui-ease-out: cubic-bezier(0, 0, 0.2, 1);
   --kui-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --kui-ease-pop: var(--kui-ease-standard);
 }
 
 @keyframes kui-fade-in {
@@ -295,14 +302,34 @@ func (c *Compiler) renderAnimations() string {
   to { opacity: 1; }
 }
 
-@keyframes kui-pop-in {
-  from { opacity: 0; transform: scale(0.95) translateY(4px); }
+@keyframes kui-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes kui-zoom-in {
+  from { opacity: 0; transform: scale(0.97) translateY(4px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes kui-zoom-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.97) translateY(4px); }
+}
+
+@keyframes kui-pop-in {
+  from { opacity: 0; transform: scale(0.97) translateY(4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes kui-pop-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.97) translateY(4px); }
 }
 
 .animate-in {
   animation-duration: var(--kui-duration-normal);
-  animation-timing-function: var(--kui-ease-pop);
+  animation-timing-function: var(--kui-ease-standard);
   animation-fill-mode: both;
 }
 

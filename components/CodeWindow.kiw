@@ -31,8 +31,8 @@
   color: #fafaf9;
   border-radius: var(--radius, 12px);
   overflow: hidden;
-  box-shadow: var(--pop-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03));
-  border: var(--pop-border, 1px solid var(--border, #e2ded4));
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08)));
+  border: 1px solid var(--border);
   max-width: 100%;
   min-width: 0;
   width: 100%;

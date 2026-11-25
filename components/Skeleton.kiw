@@ -41,14 +41,14 @@
   height: 2.5rem;
   width: 7.5rem;
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
 }
 
 .skeleton-card {
   height: 12rem;
   width: 100%;
   border-radius: var(--radius-lg, 14px);
-  border: var(--pop-border, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border);
 }
 
 html.dark .skeleton, [data-theme="dark"] .skeleton, .dark .skeleton {

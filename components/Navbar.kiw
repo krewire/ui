@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 bg-bg dark:bg-bg-dark w-full navbar relative" style="border: none !important; border-top: none !important; border-left: none !important; border-right: none !important; border-bottom: var(--pop-border, 1px solid var(--border, #e2ded4)) !important;">
+<header class="sticky top-0 z-50 bg-bg dark:bg-bg-dark w-full navbar relative" style="border: none !important; border-top: none !important; border-left: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important;">
   <div class="container-site flex items-center justify-between gap-3 py-3.5">
     <div class="flex items-center gap-3 min-w-0">
       {#if showSidebarToggle}
@@ -71,7 +71,7 @@
             <div class="px-1 pt-1 pb-2">
               <a href="{actionHref}" class="btn btn-primary w-full justify-center min-h-[42px] text-sm font-bold shadow-[2px_2px_0px_var(--border)]">{#if actionLabel}{actionLabel}{:else}Action →{/if}</a>
             </div>
-            <hr class="my-2" style="border-color:var(--pop-border); border-width: 1px">
+            <hr class="my-2" style="border-color:1px solid var(--border); border-width: 1px">
           {/if}
           {#if drawer}
             {drawer}
@@ -124,7 +124,7 @@
                 </a>
               </div>
 
-              <hr class="my-2" style="border-color:var(--pop-border); border-width: 1px">
+              <hr class="my-2" style="border-color:1px solid var(--border); border-width: 1px">
             {/if}
 
             {#if body}
@@ -192,13 +192,13 @@ header.navbar {
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
-  border-bottom: var(--pop-border, 1px solid var(--border, #e2ded4)) !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 
 :root[data-theme="dark"] .navbar,
 html[data-theme="dark"] .navbar,
 .dark .navbar {
-  border-bottom: var(--pop-border, 1px solid var(--border, #262626)) !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .navbar .container-site {

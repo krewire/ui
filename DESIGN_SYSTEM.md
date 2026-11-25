@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Krewire UI Design System (`kui`) is an accessible, high-contrast, zero-dependency design system designed specifically for the Krewire Go ecosystem. It blends modern neo-brutalist ("pop-brutalist") aesthetics — distinct borders, crisp offset drop shadows, vibrant accents, and monospace cues — with rock-solid semantic HTML and WCAG AA/AAA accessibility.
+The Krewire UI Design System (`kui`) is an accessible, clean, and modern design system designed specifically for the Krewire Go ecosystem. It pairs refined borders, soft elevation shadows, brand accents, and monospace cues with rock-solid semantic HTML and WCAG AA/AAA accessibility.
 
 ---
 
@@ -14,13 +14,13 @@ The Krewire UI Design System (`kui`) is an accessible, high-contrast, zero-depen
 2. **Zero Runtime JavaScript Bloat**:
    Interactive components prioritize native browser primitives (`<details>`, `<summary>`, `<dialog>`, semantic tags). Where JavaScript is needed (e.g. click-outside listeners), it is lightweight, framework-free vanilla JS.
 
-3. **High-Contrast Neo-Brutalist Visuals**:
-   - Signature pop-borders (`2px` to `2.5px` solid `#0B1F3B` in light, `#FAF8F4` in dark).
-   - Hard offset box-shadows (`2px 2px`, `4px 4px`, `6px 6px`) without fuzzy blur.
+3. **Clean & Modern Visuals**:
+   - Refined 1px borders (`1px solid var(--border)`).
+   - Soft elevation shadows (`var(--shadow-sm)`, `var(--shadow-md)`, `var(--shadow-lg)`).
    - Distinct surface colors that separate interactive elements from background content.
 
 4. **Deterministic Token Inheritance**:
-   All component styles inherit from single-sourced CSS variables (`--primary`, `--bg`, `--fg`, `--border`, `--radius`, `--pop-shadow`). Overriding a token at `:root` or per-container instantly cascades through all components.
+   All component styles inherit from single-sourced CSS variables (`--primary`, `--bg`, `--fg`, `--border`, `--radius`, `--shadow`). Overriding a token at `:root` or per-container instantly cascades through all components.
 
 ---
 
@@ -95,21 +95,22 @@ Spacing adheres to an unambiguous 4px / 8px grid:
 
 ---
 
-## 5. Neo-Brutalist Pop Tokens
+## 5. Elevation & Shadow Tokens
 
-The signature Krewire visual fingerprint:
+Standard modern elevation scale:
 
 ```css
---pop-border: 2.5px solid var(--border);
---pop-border-thin: 2px solid var(--border);
---pop-shadow: 4px 4px 0px var(--border);
---pop-shadow-sm: 2px 2px 0px var(--border);
---pop-shadow-lg: 6px 6px 0px var(--border);
+--border: 1px solid var(--border-color);
+--border-subtle: 1px solid var(--border-subtle-color);
+--shadow-sm: 0 1px 2px 0 rgba(11, 31, 59, 0.05);
+--shadow: 0 1px 3px 0 rgba(11, 31, 59, 0.08), 0 1px 2px -1px rgba(11, 31, 59, 0.05);
+--shadow-md: 0 4px 6px -1px rgba(11, 31, 59, 0.08), 0 2px 4px -2px rgba(11, 31, 59, 0.04);
+--shadow-lg: 0 10px 15px -3px rgba(11, 31, 59, 0.08), 0 4px 6px -4px rgba(11, 31, 59, 0.03);
 ```
 
 ### Hover & Active State Physics
-- Standard clickable surfaces translate `-1.5px, -1.5px` or `-2px, -2px` on `:hover` and grow the drop shadow from `4px 4px` to `6px 6px`.
-- On `:active`, surfaces translate back to `0px, 0px` (or `+1px, +1px`) with a compressed `1px 1px` shadow to deliver tactile tactile button feedback.
+- Standard clickable surfaces translate `translateY(-1px)` or `translateY(-2px)` on `:hover` with a soft elevation shadow increase (`var(--shadow-md)`).
+- On `:active`, surfaces translate back to `translateY(0px)` with `var(--shadow-sm)`.
 
 ---
 

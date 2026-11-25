@@ -64,7 +64,7 @@
   place-items: center;
   background: var(--bg-2, #f2ede4);
   color: var(--fg, #1c1917);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
   box-shadow: 1.5px 1.5px 0px var(--border, #1c1917);
   font-size: 0.75rem;
   font-weight: 900;
@@ -89,8 +89,8 @@
   min-width: 0;
   background: var(--bg, #fafaf9);
   border-radius: var(--radius, 10px);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
-  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border-subtle, var(--border));
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   padding: 0.85rem 1.15rem;
 }
 

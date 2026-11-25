@@ -7,12 +7,14 @@ import "fmt"
 // generated stylesheet.
 const (
 	// radiusToken is the base corner radius for UI surfaces.
-	radiusToken = "10px"
-	// popBorderToken is the pop-brutalist outline applied to surfaces.
-	popBorderToken = "2px solid var(--ui-border)"
-	// popShadowToken and popShadowSmallToken are the hard offset shadows.
-	popShadowToken      = "3px 3px 0px var(--ui-border)"
-	popShadowSmallToken = "2px 2px 0px var(--ui-border)"
+	radiusToken = "8px"
+	// borderToken is the clean modern outline applied to surfaces.
+	borderToken     = "1px solid var(--ui-border)"
+	borderThinToken = "1px solid var(--ui-border-subtle, var(--ui-border))"
+	// shadowToken, shadowSmallToken, and shadowMediumToken are soft elevation shadows.
+	shadowToken       = "0 1px 3px 0 rgba(11, 31, 59, 0.08), 0 1px 2px -1px rgba(11, 31, 59, 0.05)"
+	shadowSmallToken  = "0 1px 2px 0 rgba(11, 31, 59, 0.05)"
+	shadowMediumToken = "0 4px 6px -1px rgba(11, 31, 59, 0.08), 0 2px 4px -2px rgba(11, 31, 59, 0.04)"
 	// fontSansToken and fontMonoToken are the default font stacks.
 	fontSansToken = "Inter, system-ui, -apple-system, sans-serif"
 	fontMonoToken = "ui-monospace, SFMono-Regular, Menlo, monospace"
@@ -41,9 +43,15 @@ const colorTokenDecls = `
 // on :root and inherited by the dark block, so they are written only once.
 const geometryTokenDecls = `
   --ui-radius: ` + radiusToken + `;
-  --ui-pop-border: ` + popBorderToken + `;
-  --ui-pop-shadow: ` + popShadowToken + `;
-  --ui-pop-shadow-sm: ` + popShadowSmallToken + `;
+  --ui-border-width: 1px;
+  --ui-border-line: ` + borderToken + `;
+  --ui-border-thin: ` + borderThinToken + `;
+  --ui-shadow: ` + shadowToken + `;
+  --ui-shadow-sm: ` + shadowSmallToken + `;
+  --ui-shadow-md: ` + shadowMediumToken + `;
+  --ui-pop-border: ` + borderToken + `;
+  --ui-pop-shadow: ` + shadowToken + `;
+  --ui-pop-shadow-sm: ` + shadowSmallToken + `;
   --ui-font-sans: ` + fontSansToken + `;
   --ui-font-mono: ` + fontMonoToken + `;
 `

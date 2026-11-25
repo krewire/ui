@@ -1,6 +1,6 @@
 package styles
 
-// TokenDefinition holds the design token values for the Code Garden aesthetic.
+// ThemeTokens holds the design token values for the design system.
 type ThemeTokens struct {
 	// Colors
 	Primary          string

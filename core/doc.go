@@ -1,5 +1,5 @@
 // Package ui provides the primary public facade, application builder, layout
-// engine, and theme primitives for the Krewire Pop-Brutalist UI framework.
+// engine, and theme primitives for the Krewire UI framework.
 //
 // # Architectural Model & Subsystem Boundaries
 //
@@ -15,7 +15,7 @@
 //   - ui/node: High-performance virtual DOM / render tree and semantic HTML nodes (leaf).
 //   - ui/widget: Standalone HTML widgets (Button, Badge, Card, Alert, Table, Modal).
 //   - ui/panel: Dashboard layout composition, metric cards, and collapsible panels.
-//   - ui/styles: Embedded Pop-Brutalist CSS tokens and theme variables (leaf).
+//   - ui/styles: Embedded CSS tokens and theme variables (leaf).
 //   - ui/kiw: Go-native component compiler, template desugaring, and diagnostics.
 //   - ui/dsl: Domain-specific language contracts and template bindings.
 //   - ui/editors: Language server and editor integration protocols.

@@ -31,9 +31,9 @@ const (
 	bodyClass = "ui-app"
 	// headerOpenTag opens the top navigation bar. The break belongs after
 	// </header>, where RenderShell writes it, so the tag itself stays on one line.
-	headerOpenTag = `<header style="background:var(--ui-surface); border-bottom:var(--ui-pop-border); padding:0.85rem 1.5rem; display:flex; align-items:center; justify-content:space-between;">`
+	headerOpenTag = `<header style="background:var(--ui-surface); border-bottom:1px solid var(--ui-border); padding:0.85rem 1.5rem; display:flex; align-items:center; justify-content:space-between;">`
 	// brandMarkTag is the app mark shown at the head of the navigation bar.
-	brandMarkTag = "<span style=\"background:var(--ui-primary); color:var(--ui-primary-content); width:28px; height:28px; display:inline-grid; place-items:center; border-radius:6px; font-weight:900; border:var(--ui-pop-border); box-shadow:var(--ui-pop-shadow-sm);\">◈</span>"
+	brandMarkTag = "<span style=\"background:var(--ui-primary); color:var(--ui-primary-content); width:28px; height:28px; display:inline-grid; place-items:center; border-radius:6px; font-weight:700; border:1px solid var(--ui-border); box-shadow:var(--ui-shadow-sm);\">◈</span>"
 	// navOpenTag opens the navigation link list.
 	navOpenTag = `<nav style="display:flex; align-items:center; gap:0.5rem;">`
 	// mainOpenTag opens the main content canvas.

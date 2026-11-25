@@ -50,7 +50,7 @@
   font-size: 0.9rem;
   font-family: inherit;
   border-radius: calc(var(--radius, 10px) - 2px);
-  border: var(--pop-border-thin, 1px solid var(--border, #e2ded4));
+  border: 1px solid var(--border-subtle, var(--border));
   background: var(--bg-2, #f0ede5);
   color: var(--fg, #1c1917);
   box-shadow: inset 1px 1px 0px rgba(0,0,0,0.08);

@@ -24,8 +24,8 @@ const componentCSS = `
   font-size: 0.875rem;
   font-weight: 700;
   border-radius: var(--ui-radius);
-  border: var(--ui-pop-border);
-  box-shadow: var(--ui-pop-shadow-sm);
+  border: 1px solid var(--ui-border);
+  box-shadow: var(--ui-shadow-sm);
   background: var(--ui-surface);
   color: var(--ui-fg);
   cursor: pointer;
@@ -33,8 +33,8 @@ const componentCSS = `
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .ui-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--ui-pop-shadow);
+  transform: translateY(-1px);
+  box-shadow: var(--ui-shadow);
 }
 .ui-btn-primary {
   background: var(--ui-primary);
@@ -72,19 +72,19 @@ const componentCSS = `
 
 .ui-card {
   background: var(--ui-bg);
-  border: var(--ui-pop-border);
+  border: 1px solid var(--ui-border);
   border-radius: var(--ui-radius);
-  box-shadow: var(--ui-pop-shadow);
+  box-shadow: var(--ui-shadow);
   padding: 1.25rem;
 }
 .ui-card-header {
-  border-bottom: 1.5px solid var(--ui-border);
+  border-bottom: 1px solid var(--ui-border);
   padding-bottom: 0.75rem;
   margin-bottom: 1rem;
 }
 .ui-card-title {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
 }
 .ui-card-desc {
@@ -96,8 +96,8 @@ const componentCSS = `
 .ui-alert {
   padding: 0.9rem 1.2rem;
   border-radius: var(--ui-radius);
-  border: var(--ui-pop-border);
-  box-shadow: var(--ui-pop-shadow-sm);
+  border: 1px solid var(--ui-border);
+  box-shadow: var(--ui-shadow-sm);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -135,10 +135,10 @@ const componentCSS = `
   font-size: 0.9rem;
   font-family: inherit;
   border-radius: calc(var(--ui-radius) - 2px);
-  border: var(--ui-pop-border);
+  border: 1px solid var(--ui-border);
   background: var(--ui-surface);
   color: var(--ui-fg);
-  box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   outline: none;
   box-sizing: border-box;
 }
@@ -159,16 +159,16 @@ const componentCSS = `
 
 /* Panels */
 .ui-panel {
-  border: var(--ui-pop-border);
+  border: 1px solid var(--ui-border);
   border-radius: var(--ui-radius);
   background: var(--ui-bg);
-  box-shadow: var(--ui-pop-shadow);
+  box-shadow: var(--ui-shadow);
   overflow: hidden;
 }
 .ui-panel-head {
   padding: 1rem 1.25rem;
   background: var(--ui-surface);
-  border-bottom: var(--ui-pop-border);
+  border-bottom: 1px solid var(--ui-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,7 +176,7 @@ const componentCSS = `
 }
 .ui-panel-title {
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
 }
 .ui-panel-body {
@@ -186,10 +186,10 @@ const componentCSS = `
 /* Stats */
 .ui-stat {
   padding: 1.25rem;
-  border: var(--ui-pop-border);
+  border: 1px solid var(--ui-border);
   border-radius: var(--ui-radius);
   background: var(--ui-bg);
-  box-shadow: var(--ui-pop-shadow-sm);
+  box-shadow: var(--ui-shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -217,7 +217,7 @@ const componentCSS = `
 .ui-table-wrap {
   width: 100%;
   overflow-x: auto;
-  border: var(--ui-pop-border);
+  border: 1px solid var(--ui-border);
   border-radius: var(--ui-radius);
   background: var(--ui-bg);
 }
@@ -230,8 +230,8 @@ const componentCSS = `
 .ui-table th {
   padding: 0.75rem 1rem;
   background: var(--ui-surface);
-  font-weight: 800;
-  border-bottom: var(--ui-pop-border);
+  font-weight: 700;
+  border-bottom: 1px solid var(--ui-border);
   color: var(--ui-fg);
 }
 .ui-table td {

@@ -133,8 +133,8 @@ details.dropdown-container summary {
   right: 0;
   width: 100%;
   background: var(--bg, #fafaf9);
-  border-bottom: var(--pop-border, 1px solid var(--border, #e2ded4));
-  box-shadow: 0 10px 30px -5px rgba(11, 31, 59, 0.15), var(--pop-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03));
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 30px -5px rgba(11, 31, 59, 0.15), var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.08)));
   z-index: 100;
 }
 
@@ -142,8 +142,8 @@ details.dropdown-container summary {
 html[data-theme="dark"] .dropdown-menu-fullwidth,
 .dark .dropdown-menu-fullwidth {
   background: var(--bg-dark, #1c1917);
-  border-bottom: var(--pop-border, 2.5px solid #fafaf9);
-  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.65), var(--pop-shadow-lg, 0 10px 15px -3px rgba(16, 185, 129, 0.25));
+  border-bottom: var(1px solid var(--border), 2.5px solid #fafaf9);
+  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.65), var(--shadow-lg, 0 10px 15px -3px rgba(57, 211, 83, 0.25));
 }
 
 /* Dropdown Icons */
@@ -200,7 +200,7 @@ html[data-theme="dark"] .dropdown-product-card,
 .dropdown-product-card:hover {
   border-color: var(--primary, #10b981);
   transform: translateY(-2px);
-  box-shadow: var(--pop-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 }
 
 /* Large screen / desktop nav menu display */

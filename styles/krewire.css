@@ -107,21 +107,27 @@
   --radius-lg: var(--ui-radius-lg);
 
   /* =========================================================================
-     3. ELEVATION, SHADOWS & CODE GARDEN MODERN TOKENS
+     3. ELEVATION & SHADOWS
      ========================================================================= */
-  --ui-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --ui-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-  --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --ui-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --ui-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px 0 rgba(11, 31, 59, 0.05);
+  --shadow: 0 1px 3px 0 rgba(11, 31, 59, 0.08), 0 1px 2px -1px rgba(11, 31, 59, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(11, 31, 59, 0.08), 0 2px 4px -2px rgba(11, 31, 59, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(11, 31, 59, 0.08), 0 4px 6px -4px rgba(11, 31, 59, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(11, 31, 59, 0.08), 0 8px 10px -6px rgba(11, 31, 59, 0.03);
 
-  /* Code Garden Elevation & Refined Borders */
+  --ui-shadow-sm: var(--shadow-sm);
+  --ui-shadow: var(--shadow);
+  --ui-shadow-md: var(--shadow-md);
+  --ui-shadow-lg: var(--shadow-lg);
+  --ui-shadow-xl: var(--shadow-xl);
+
+  /* Legacy aliases for backwards compatibility */
   --pop-border: 1px solid var(--border, #e2ded4);
   --pop-border-thin: 1px solid var(--border-subtle, #ede9e0);
-  --pop-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
-  --pop-shadow-lg: 0 8px 16px -2px rgba(0, 0, 0, 0.06), 0 3px 6px -2px rgba(0, 0, 0, 0.03);
-  --pop-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --pop-shadow-hover: 0 4px 12px -2px rgba(16, 185, 129, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --pop-shadow: var(--shadow-sm);
+  --pop-shadow-lg: var(--shadow-md);
+  --pop-shadow-sm: var(--shadow-sm);
+  --pop-shadow-hover: var(--shadow-md);
 
   /* =========================================================================
      4. TRANSITION, MOTION & FOCUS
@@ -293,13 +299,24 @@ html.dark,
   --error: #f87171;
   --error-content: #ffffff;
 
-  /* Code Garden Refined Offsets in Dark Mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 10px -2px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+
+  --ui-shadow-sm: var(--shadow-sm);
+  --ui-shadow: var(--shadow);
+  --ui-shadow-md: var(--shadow-md);
+  --ui-shadow-lg: var(--shadow-lg);
+
+  /* Legacy aliases for backwards compatibility */
   --pop-border: 1px solid #1c3a63;
   --pop-border-thin: 1px solid #132c4d;
-  --pop-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
-  --pop-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-  --pop-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --pop-shadow-hover: 0 4px 12px -2px rgba(57, 211, 83, 0.25);
+  --pop-shadow: var(--shadow-sm);
+  --pop-shadow-lg: var(--shadow-md);
+  --pop-shadow-sm: var(--shadow-sm);
+  --pop-shadow-hover: var(--shadow-md);
 
   --dot-color: rgba(250, 248, 244, 0.06);
 
@@ -456,8 +473,8 @@ button:disabled, input:disabled, textarea:disabled, select:disabled {
   color: var(--primary-content);
   padding: 0.5rem 1.25rem;
   font-weight: var(--ui-font-bold);
-  border: var(--pop-border);
-  box-shadow: var(--pop-shadow);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   z-index: var(--ui-z-toast);
   border-radius: var(--ui-radius-sm);
 }
