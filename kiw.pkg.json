@@ -2,7 +2,7 @@
   "$schema": "https://krewire.com/schemas/kiw.pkg.schema.json",
   "name": "@krewire/ui",
   "version": "0.2.0",
-  "description": "Krewire Pop-Brutalist design system component library and UI kit",
+  "description": "Krewire clean, modern design system component library and UI kit",
   "author": "Krewire Team",
   "license": "MIT",
   "main": "./components",
