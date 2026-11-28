@@ -1,6 +1,6 @@
 # Krewire UI (`github.com/krewire/ui`) — Module Reference
 
-Krewire UI is a pure-Go, CGO-free multi-module monorepo organized around **Model C package distribution** ([ADR-K7P9L](https://github.com/krewire/internal)) and the **6-Layer Pyramid Architecture** ([ADR-E8P9D](https://github.com/krewire/internal)). There is no root `go.mod`; instead, `go.work` coordinates 10 independent Go modules.
+Krewire UI is a pure-Go, CGO-free multi-module monorepo organized around **Model C package distribution** ([ADR-003](https://github.com/krewire/internal)) and the **6-Layer Pyramid Architecture** ([ADR-001](https://github.com/krewire/internal)). There is no root `go.mod`; instead, `go.work` coordinates 10 independent Go modules.
 
 Nine of the ten modules are self-contained leaf or near-leaf packages with zero external dependencies, while `core` (`package ui`) serves as the ergonomic composition facade.
 
