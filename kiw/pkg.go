@@ -42,9 +42,9 @@ type PackageManifest struct {
 // componentsPackageFile mirrors the components.json shape used as the single
 // manifest for both the component catalog and package distribution.
 type componentsPackageFile struct {
-	Schema     string `json:"$schema,omitempty"`
-	Version    int    `json:"version"`
-	Package    struct {
+	Schema  string `json:"$schema,omitempty"`
+	Version int    `json:"version"`
+	Package struct {
 		Name         string            `json:"name"`
 		Version      string            `json:"version"`
 		Description  string            `json:"description,omitempty"`
