@@ -1,0 +1,7 @@
+project:
+  name: "ui"
+  version: "0.1.0"
+  description: "Clean, modern .kiw design system and UI component catalog"
+
+build:
+  output: "bin"
